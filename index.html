@@ -3,10 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Browser tag title -->
   <title>chinrunja's blog</title>
+  
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      font-size: 10px;
+    }
+    
+    body {
+      width: 70%;
+      margin: 0 auto;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    h1 {
+      font-size: 4rem;
+      text-align: center;
+    }
+    
+    p {
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+    
+  </style>
+  
 </head>
 <body>
+  <!-- Website title -->
   <h1>Welcome to chinrunja's blog!</h1>
+  <!-- Web content -->
   <p>Website is under construction.</p>
+  <!-- Button for background color change -->
+  <button>Change background color</button>
+  
+  <script>
+    // Button for background color change script
+    const btn = document.querySelector('button');
+    
+    function random(number) {
+      return Math.floor(Math.random() * (number + 1));
+    }
+    
+    btn.onclick = function() {
+      const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+      document.body.style.backgroundColor = rndCol;
+    }
+  </script>
+  
 </body>
 </html>
