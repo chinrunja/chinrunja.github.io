@@ -31,6 +31,21 @@
       font-size: 1.6rem;
       line-height: 1.5;
     }
+
+    div {
+      margin: 0;
+      width: 100px;
+      height: 100px;
+      background-color: black;
+    }
+
+    section {
+      width: 400px;
+      height: 400px;
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      border: 10px solid grey;
+    }
     
   </style>
   
@@ -41,7 +56,16 @@
   <!-- Web content -->
   <p>Website is under construction.</p>
   <!-- Button for background color change -->
-  <button>Change background color</button>
+  <button>Click following square change color</button>
+
+  <p></p>
+
+  <section>
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+  </section>
   
   <script>
     // Button for background color change script
@@ -51,10 +75,20 @@
       return Math.floor(Math.random() * (number + 1));
     }
     
-    btn.onclick = function() {
+    btn.onclick = bgChange;
+
+    function bgChange(event) {
       const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
-      document.body.style.backgroundColor = rndCol;
+    //document.body.style.backgroundColor = rndCol;
+      event.target.style.backgroundColor = rndCol;
     }
+
+    const divs = document.querySelectorAll('div');
+
+    for (var i = 0; i < 16; i ++) {
+      divs[i].onclick = bgChange;
+    }
+    
   </script>
   
 </body>
