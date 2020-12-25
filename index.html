@@ -5,91 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Browser tag title -->
   <title>chinrunja's blog</title>
-  
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-    }
-    
-    html {
-      font-size: 10px;
-    }
-    
-    body {
-      width: 70%;
-      margin: 0 auto;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    
-    h1 {
-      font-size: 4rem;
-      text-align: center;
-    }
-    
-    p {
-      font-size: 1.6rem;
-      line-height: 1.5;
-    }
-
-    div {
-      margin: 0;
-      width: 100px;
-      height: 100px;
-      background-color: black;
-    }
-
-    section {
-      width: 400px;
-      height: 400px;
-      display: grid;
-      grid-template-columns: repeat(4, 100px);
-      border: 10px solid grey;
-    }
-    
-  </style>
-  
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-  <!-- Website title -->
-  <h1>Welcome to chinrunja's blog!</h1>
-  <!-- Web content -->
-  <p>Website is under construction.</p>
-  <!-- Button for background color change -->
-  <button>Click following square change color</button>
-
-  <p></p>
-
-  <section>
-      <div></div><div></div><div></div><div></div>
-      <div></div><div></div><div></div><div></div>
-      <div></div><div></div><div></div><div></div>
-      <div></div><div></div><div></div><div></div>
-  </section>
-  
-  <script>
-    // Button for background color change script
-    const btn = document.querySelector('button');
-    
-    function random(number) {
-      return Math.floor(Math.random() * (number + 1));
-    }
-    
-    btn.onclick = bgChange;
-
-    function bgChange(event) {
-      const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
-    //document.body.style.backgroundColor = rndCol;
-      event.target.style.backgroundColor = rndCol;
-    }
-
-    const divs = document.querySelectorAll('div');
-
-    for (var i = 0; i < 16; i ++) {
-      divs[i].onclick = bgChange;
-    }
-    
-  </script>
-  
+  <header>
+    <!-- Website title -->
+    <h1>Welcome to chinrunja's blog!</h1>
+  </header>
+  <nav>
+    <ul>
+      <li>Homepage</li>
+      <li><a href="html/colorSquare.html" title="colorSquare" target = _blank><strong>Color Square</strong></a></li>
+      <li><a href="html/ballGame.html" title="ballGame" target = _blank><strong>Ball Game</strong></a></li>
+    </ul>
+  </nav>
+  <main>
+    <!-- Button for background color change -->
+    <button>Click change color</button>
+    <!-- Web content -->
+    <p>Website is under construction.</p>
+  </main>
+  <footer>
+  </footer>
+  <script src="script/index.js"></script>
 </body>
 </html>
