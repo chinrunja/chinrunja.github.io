@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Funlibs</title>
+</head>
+<body>
+	<!-- 2021-03-24 updated -->
+
+	<h1>JavaScript Funlibs--记录常用小函数</h1>
+
+	<h2>1. 输出num范围内的素数（质数）</h2>
+	<pre><code>
+	// 输出num范围内的素数（质数）
+	function showPrimes(num) {
+
+		for (let i = 2; i < num; i++) {
+			if ( isPrime(i) ) {
+				console.log(i);
+			}
+		}
+
+	}
+
+	function isPrime(num) {
+	    
+		for (let j = 2; j < num; j++) {
+			if (num % j === 0) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	showPrimes(10); // 2,3,5,7
+	</code></pre>
+
+	<h2>2.判断对象是否为空</h2>
+	<pre><code>
+	// 判断对象是否为空
+	function isEmpty(obj) {
+		
+		for (let key in obj) {
+			return false;
+		}
+
+		return true;
+	}
+	</code></pre>
+
+	<h2>3.递归返回范围内数组</h2>
+	<pre><code>
+	// 递归返回正序范围内数组
+	function rangeOfNumbers(startNum, endNum) {
+
+		if (startNum === endNum) return [startNum];
+		else if (startNum < endNum) {
+			endNum--;
+			return ( rangeOfNumbers(startNum, endNum) ).concat(endNum + 1);
+		}
+	}
+
+	rangeOfNumbers(4,7); // [4,5,6,7]
+
+	// 递归返回逆序范围内数组
+	function rangeOfNumbers(startNum, endNum) {
+
+		if (startNum === endNum) return [endNum];
+		else if (startNum < endNum) {
+			startNum++;
+			return ( rangeOfNumbers(startNum, endNum) ).concat(startNum - 1);
+		}
+	}
+
+	rangeOfNumbers(4,7); // [7,6,5,4]
+	</code></pre>
+
+	<h2>To Do List</h2>
+	<ol>
+		<li>丰富Funlibs函数库</li>
+		<li>添加CSS,使&lt;pre&gt;&lt;code&gt;标签中的代码有颜色</li>
+		<li>...</li>
+	</ol>
+	<label>更新于<input type="date" value="2021-03-24" disabled>__chinrunja</label>
+
+	<!-- 2021-03-25 will update -->
+
+	<script type="text/javascript">
+		// 输出num范围内的素数（质数）
+		function showPrimes(num) {
+
+			for (let i = 2; i < num; i++) {
+				if ( isPrime(i) ) {
+					console.log(i);
+				}
+			}
+
+		}
+
+		function isPrime(num) {
+		    
+			for (let j = 2; j < num; j++) {
+				if (num % j === 0) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		showPrimes(10); // 2,3,5,7
+
+		// 判断对象是否为空
+		function isEmpty(obj) {
+			
+			for (let key in obj) {
+				return false;
+			}
+
+			return true;
+		}
+
+		// 递归返回正序范围内数组
+		function rangeOfNumbers(startNum, endNum) {
+
+			if (startNum === endNum) return [startNum];
+			else if (startNum < endNum) {
+				endNum--;
+				return ( rangeOfNumbers(startNum, endNum) ).concat(endNum + 1);
+			}
+		}
+
+		rangeOfNumbers(4,7); // [4,5,6,7]
+
+		// 递归返回逆序范围内数组
+		function rangeOfNumbers(startNum, endNum) {
+
+			if (startNum === endNum) return [endNum];
+			else if (startNum < endNum) {
+				startNum++;
+				return ( rangeOfNumbers(startNum, endNum) ).concat(startNum - 1);
+			}
+		}
+
+		rangeOfNumbers(4,7); // [7,6,5,4]
+	</script>
+</body>
+</html>
