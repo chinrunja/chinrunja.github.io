@@ -2,77 +2,117 @@
 <html>
 <head>
 	<title>JavaScript Funlibs</title>
+	<style type="text/css">
+		pre {
+			background-color: rgb(52, 61, 70);
+			color: rgb(216, 222, 233);
+
+			font-family: monospace, Helvetica, sans-serif;
+			font-size: 18px;
+			font-weight: lighter;
+
+			overflow: auto;
+			line-height: 1.2;
+			tab-size: 4;
+			/*white-space: pre-wrap;*/
+		}
+
+		code .keyword {
+			color: rgb(162, 149, 198);
+		}
+		  
+		code .function {
+		    color: rgb(96, 180, 167);
+		}
+
+		code .methods {
+			color: rgb(96, 153, 188);
+		}
+
+		code .variable {
+			color: rgb(249,174,87);
+		}
+
+		code .operator {
+			color: rgb(249,123,87);
+		}
+
+		code .boolean {
+			color: rgb(236,91,87);
+		}
+
+	</style>
 </head>
 <body>
 	<!-- 2021-03-24 updated -->
 
 	<h1>JavaScript Funlibs--记录常用小函数</h1>
-
+	<hr>
 	<h2>1. 输出num范围内的素数（质数）</h2>
 	<pre><code>
 	// 输出num范围内的素数（质数）
-	function showPrimes(num) {
+	<span class="keyword">function</span> <span class="function">showPrimes</span>(<span class="variable">num</span>) {
 
-		for (let i = 2; i < num; i++) {
-			if ( isPrime(i) ) {
-				console.log(i);
+		<span class="keyword">for</span> (<span class="keyword">let</span> i <span class="operator">=</span> <span class="variable">2</span>; i <span class="operator"><</span> num; i<span class="operator">++</span>) {
+			<span class="keyword">if</span> ( <span class="methods">isPrime</span>(i) ) {
+				<span class="methods">console</span>.<span class="methods">log</span>(i);
 			}
 		}
 
 	}
 
-	function isPrime(num) {
+	<span class="keyword">function</span> <span class="function">isPrime</span>(<span class="variable">num</span>) {
 	    
-		for (let j = 2; j < num; j++) {
-			if (num % j === 0) {
-				return false;
+		<span class="keyword">for</span> (<span class="keyword">let</span> j <span class="operator">=</span> <span class="variable">2</span>; j <span class="operator"><</span> num; j<span class="operator">++</span>) {
+			<span class="keyword">if</span> (num <span class="operator">%</span> j <span class="operator">===</span> <span class="variable">0</span>) {
+				<span class="keyword">return</span> <span class="boolean">false</span>;
 			}
 		}
 
-		return true;
+		<span class="keyword">return</span> <span class="boolean">true</span>;
 	}
 
-	showPrimes(10); // 2,3,5,7
+	<span class="methods">showPrime</span>(<span class="variable">10</span>); // 2,3,5,7
 	</code></pre>
 
 	<h2>2.判断对象是否为空</h2>
 	<pre><code>
 	// 判断对象是否为空
-	function isEmpty(obj) {
+	<span class="keyword">function</span> <span class="function">isEmpty</span>(<span class="variable">obj</span>) {
 		
-		for (let key in obj) {
-			return false;
+		<span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> obj) {
+			<span class="keyword">return</span> <span class="boolean">false</span>;
 		}
 
-		return true;
+		<span class="keyword">return</span> <span class="boolean">true</span>;
 	}
 	</code></pre>
 
 	<h2>3.递归返回范围内数组</h2>
 	<pre><code>
 	// 递归返回正序范围内数组
-	function rangeOfNumbers(startNum, endNum) {
+	<span class="keyword">function</span> <span class="function">rangeOfNumbers</span>(<span class="variable">startNum</span>, <span class="variable">endNum</span>) {
 
-		if (startNum === endNum) return [startNum];
-		else if (startNum < endNum) {
-			endNum--;
-			return ( rangeOfNumbers(startNum, endNum) ).concat(endNum + 1);
+		<span class="keyword">if</span> (startNum <span class="operator">===</span> endNum) <span class="keyword">return</span> [startNum];
+		<span class="keyword">else</span> <span class="keyword">if</span> (startNum <span class="operator"><</span> endNum) {
+			endNum<span class="operator">--</span>;
+			<span class="keyword">return</span> ( <span class="methods">rangeOfNumbers</span>(startNum, endNum) ).<span class="methods">concate</span>(endNum <span class="operator">+</span> <span class="variable">1</span>);
 		}
 	}
 
-	rangeOfNumbers(4,7); // [4,5,6,7]
+	<span class="methods">rangeOfNumbers</span>(<span class="variable">4</span>,<span class="variable">7</span>); // [4,5,6,7]
 
 	// 递归返回逆序范围内数组
-	function rangeOfNumbers(startNum, endNum) {
+	<span class="keyword">functionction</span> <span class="function">rangeOfNumbers</span>(<span class="variable">startNum</span>, <span class="variable">endNum</span>) {
 
-		if (startNum === endNum) return [endNum];
-		else if (startNum < endNum) {
-			startNum++;
-			return ( rangeOfNumbers(startNum, endNum) ).concat(startNum - 1);
+		<span class="keyword">if</span> (startNum <span class="operator">===</span> endNum) <span class="keyword">return</span> [endNum];
+		<span class="keyword">else</span> <span class="keyword">if</span> (startNum <span class="operator"><</span> endNum) {
+			startNum<span class="operator">++</span>;
+			<span class="keyword">return</span> ( <span class="methods">rangeOfNumbers</span>(startNum, endNum) ).<span class="methods">concate</span>(startNum <span class="operator">-</span> <span class="variable">1</span>);
 		}
 	}
 
-	rangeOfNumbers(4,7); // [7,6,5,4]
+	<span class="methods">rangeOfNumbers</span>(<span class="variable">4</span>,<span class="variable">7</span>); // [7,6,5,4]
 	</code></pre>
 
 	<h2>To Do List</h2>
@@ -82,8 +122,28 @@
 		<li>...</li>
 	</ol>
 	<label>更新于<input type="date" value="2021-03-24" disabled>__chinrunja</label>
+	<hr>
+	<!-- 2021-03-25 updated -->
+	<h2>4. 生成范围内随机数（包含起止点）</h2>
+	<pre><code>
+	// 生成范围内随机数（包含起止点）
+	<span class="keyword">function</span> <span class="function">randomInteger</span>(<span class="variable">min</span>, <span class="variable">max</span>) {
+    	<span class="keyword">return</span> <span class="keyword">Math</span>.<span class="methods">floor</span>(<span class="keyword">Math</span>.<span class="methods">random</span>() <span class="operator">*</span> (max <span class="operator">-</span> min <span class="operator">+</span> <span class="variable">1</span>)) <span class="operator">+</span> min;
+	}
 
-	<!-- 2021-03-25 will update -->
+	<span class="methods">randomInteger</span>(<span class="variable">1</span>, <span class="variable">5</span>);
+	</code></pre>
+
+	<h2>Complaints</h2>
+	<ol>
+		<li>太菜了，搜了&lt;pre&gt;&lt;code&gt;样式化，搞不定，只能徒手加CSS和一堆的&lt;span&gt;标签...</li>
+		<li>还是学个js模块来完成code颜色样式化吧</li>
+		<li>今天更新内容有点少，时间都花在替换&lt;span&gt;标签上了...</li>
+		<li>对了，配色用的是sublime text3的Mariana主题，取色器取的颜色</li>
+	</ol>
+	<label>更新于<input type="date" value="2021-03-25" disabled>__chinrunja</label>
+	<hr>
+
 
 	<script type="text/javascript">
 		// 输出num范围内的素数（质数）
@@ -143,6 +203,13 @@
 		}
 
 		rangeOfNumbers(4,7); // [7,6,5,4]
+
+		// 生成范围内随机数（包含起止点）
+		function randomInteger(min, max) {
+    		return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		randomInteger(1, 5);		
 	</script>
 </body>
 </html>
