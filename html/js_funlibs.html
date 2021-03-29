@@ -53,7 +53,7 @@
 
 	<h1>JavaScript Funlibs--记录常用函数（方法）</h1>
 	<hr>
-	<h2>索引</h2>
+	<h2 id="索引">索引</h2>
 	<ul>
 		<li><a href="#1. 输出num范围内的素数（质数）">1. 输出num范围内的素数（质数）</a></li>
 		<li><a href="#2. 判断对象是否为空">2. 判断对象是否为空</a></li>
@@ -63,7 +63,7 @@
 		<li><a href="#6. 随机排列数组">6. 随机排列数组</a></li>
 		<li><a href="#7. 数组去重">7. 数组去重</a></li>
 		<li><a href="#8. 数组去重--使用Set集合数据类型">8. 数组去重--使用Set集合数据类型</a></li>
-		<li><a href="#9. 使用Symbol.iteraor迭代对象">9. 使用Symbol.iteraor迭代对象</a></li>
+		<li><a href="#9. 使用Symbol.iteraor迭代对象">9. 使用Symbol.iteraor迭代对象</a></li><li><a href="#10. 遍历对象并修改值">10. 遍历对象并修改值</a></li><li><a href="#11. 许多天之前是哪个月几号？">11. 许多天之前是哪个月几号？</a></li>
 	</ul>
 	<hr>
 	<h2 id="1. 输出num范围内的素数（质数）">1. 输出num范围内的素数（质数）</h2>
@@ -355,7 +355,7 @@
   		alert(num); // 1, 然后是 2, 3, 4, 5
 	}
 	</code></pre>
-	<p>参考来源<a href="https://zh.javascript.info/iterable">JAVASCRIPT.INFO</a></p>
+	<p>参考来源<a href="https://zh.javascript.info/iterable">JAVASCRIPT.INFO</a>使用Symbol.iteraor迭代示例</p>
 
 	<h3>To Do List</h3>
 	<ol>
@@ -363,6 +363,58 @@
 		<li>用CSS美化网页</li>
 	</ol>
 	<label>更新于<input type="date" value="2021-03-28" disabled>__chinrunja</label>
+	<hr>
+
+	<!-- 2021-03-29 updated -->
+
+	<div class="fixed"><a class="index" href="#索引">回到索引</a></div>
+
+	<h2 id="10. 遍历对象并修改值">10. 遍历对象并修改值</h2>
+	<ol>
+		<li>使用 Object.entries(obj) 从 obj 获取由键/值对组成的数组。</li>
+		<li>对该数组使用数组方法，例如 map。</li>
+		<li>对结果数组使用 Object.fromEntries(array) 方法，将结果转回成对象。</li>
+	</ol>
+	<pre><code class="language-javascript">
+	let prices = {
+  		banana: 1,
+  		orange: 2,
+  		meat: 4
+	};
+
+	// 方法1：转换为数组，之后使用 map 方法，然后通过 fromEntries 再转回到对象
+	Object.fromEntries(Object.entries(prices).map(([key, value]) => [key, value * 2]));
+
+	// 方法2：使用for...of,遍历Object.keys操作对象
+	for (let key of Object.keys(prices)) {
+    	prices[key] *= 2;
+	}
+	</code></pre>
+	<p>方法1参考来源<a href="https://zh.javascript.info/keys-values-entries">JAVASCRIPT.INFO</a>的Object.keys，values，entries的转换对象示例</p>
+
+	<h2 id="11. 许多天之前是哪个月几号？">11. 许多天之前是哪个月几号？</h2>
+	<pre><code class="language-javascript">
+	let date = new Date(2015, 0, 2);
+
+	function getDateAgo(date, days) {
+		let dateCopy = new Date(date);
+
+		dateCopy.setDate(dateCopy.getDate() - days);
+		return dateCopy.getDate();
+	}
+
+	console.log( getDateAgo(date, 1) ); // 1, (1 Jan 2015)
+	console.log( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
+	console.log( getDateAgo(date, 365) ); // 2, (2 Jan 2014)
+	</code></pre>
+	<p>参考来源<a href="https://zh.javascript.info/date">JAVASCRIPT.INFO</a>的日期和时间任务</p>
+
+	<h3>To Do List</h3>
+	<ol>
+		<li>丰富Funlibs函数库</li>
+		<li>用CSS美化网页</li>
+	</ol>
+	<label>更新于<input type="date" value="2021-03-29" disabled>__chinrunja</label>
 	<hr>
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
@@ -503,6 +555,34 @@
 		for (let num of range) {
   			console.log(num);
 		}
+
+		// 方法1：转换为数组，之后使用 map 方法，然后通过 fromEntries 再转回到对象
+		let prices = {
+  			banana: 1,
+  			orange: 2,
+  			meat: 4
+		};
+
+		Object.fromEntries(Object.entries(prices).map(([key, value]) => [key, value * 2]));
+
+		// 方法2：使用for...of,遍历Object.keys操作对象
+		for (let key of Object.keys(prices)) {
+    		prices[key] *= 2;
+		}
+
+		// N天前是几月几号？
+		let date = new Date(2015, 0, 2);
+
+		function getDateAgo(date, days) {
+			let dateCopy = new Date(date);
+
+			dateCopy.setDate(dateCopy.getDate() - days);
+			return dateCopy.getDate();
+		}
+
+		console.log( getDateAgo(date, 1) ); // 1, (1 Jan 2015)
+		console.log( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
+		console.log( getDateAgo(date, 365) ); // 2, (2 Jan 2014)
 
 	</script>
 </body>

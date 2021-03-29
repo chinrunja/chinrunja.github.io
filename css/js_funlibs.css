@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -27,3 +27,27 @@ h2::before, h2::after {
 	color: black;
 	width: 10px;
 }
+
+/* 2021-03-29 updated*/
+
+.fixed {
+	/*color: rgb(216, 222, 233);*/
+	/*background-color: rgb(52, 61, 70);*/
+	text-align: center;
+
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	width: 6%;
+
+	padding: 10px;
+	margin: 0 auto;
+
+	border: 2px dashed black;
+	border-radius: 15px;
+}
+
+/*.index::hover, .index::visited, .index {
+	color: rgb(216, 222, 233);
+	text-decoration: none;
+}*/
