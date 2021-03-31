@@ -1,0 +1,47 @@
+/* 2021-03-31 copy from js_funlib.css */
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background-color: #a9a9a9;
+}
+
+body {
+  width: 75%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	color: rgb(216, 222, 233);
+	background: black;
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+h2::before, h2::after {
+	content: "-";
+	color: black;
+	width: 10px;
+}
+
+/* fixed 返回索引暂未使用 */
+.fixed {
+	/*color: rgb(216, 222, 233);*/
+	/*background-color: rgb(52, 61, 70);*/
+	text-align: center;
+
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	width: 6%;
+
+	padding: 10px;
+	margin: 0 auto;
+
+	border: 2px dashed black;
+	border-radius: 15px;
+}
