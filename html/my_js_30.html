@@ -18,6 +18,8 @@
 	<ol>
 		<li><a href="#JavaScript Drum Kit">第一天： JavaScript Drum Kit</a></li>
 		<li><a href="#JS + CSS Clock">第二天： JS + CSS Clock</a></li>
+		<li><a href="#Scoped CSS Variables and JS">第三天： Scoped CSS Variables and JS</a></li>
+		
 	</ol>
 	<hr>
 
@@ -133,7 +135,6 @@
       height:1px;
       background:red;
 
-      
       margin-top: -height/2;
       transition: all 1s;
 
@@ -199,6 +200,71 @@
 		<li>网页美化</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1617288509615</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-02 updated -->
+
+	<h2 id="Scoped CSS Variables and JS">第三天： Scoped CSS Variables and JS</h2>
+	<p>查看我的<a href="../js30/day_03/index-START.html">完成示例</a></p>
+	<h3>解决过程(用自己的笨方法，两个多小时才弄出来)</h3>
+	<ol>
+		<li>CSS 部分
+			<ol>
+				<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:root">:root</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_variables">var(--xxx)</a>都没用过看MDN还是很容易上手的。（用的时候有参考指南的使用方法）</li>
+				<li>在style便签加入img的CSS样式，使用CSS变量值</li>
+				<li>img的背景色用的是background, 不是backbround-color,参考了完成的代码才知道，是用于改变spacing颜色的</li>
+				<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter-function/blur()">filter: blur()</a>，<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/change_event">change</a>都可以在MDN上找到用法</li>
+			</ol>
+		</li>
+		<li>JS 部分
+			<ol>
+				<li>添加监听事件我起初用的oninput,后面发现虽然值有改变，但没应用在元素上，然后改成了onchange，手动一个一个加的监听</li>
+				<li>没有使用鼠标监听事件</li>
+				<li>没有使用forEach给快速给所有元素加监听，因为要给不同input设定不同值，索性就都分开来了</li>
+			</ol>
+		</li>
+		<li>
+	<pre><code class="language-css">
+	// CSS 部分
+	:root {
+      --spacing: 12px;
+      --blur: 12px;
+      --base: #ffc600;
+    }
+
+    .hl {
+      color: var(--base);
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+	</code></pre>
+	<pre><code class="language-javascript">
+	// JS 部分
+	const inputElem = document.getElementsByTagName('input');
+
+    inputElem[0].onchange = function() {
+      document.documentElement.style.setProperty('--spacing', inputElem[0].value + 'px');
+    }
+    inputElem[1].onchange = function() {
+      document.documentElement.style.setProperty('--blur', inputElem[1].value + 'px');
+    }
+    inputElem[2].onchange = function() {
+      document.documentElement.style.setProperty('--base', inputElem[2].value);
+    }
+	</code></pre>
+	</li>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>晚上23点多完成，更新网页后过了0点，清明假期开始了</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1617380373597</em> __chinrunja</label>
 	<hr>
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
