@@ -20,9 +20,12 @@
 		<li><a href="#JS + CSS Clock">第二天： JS + CSS Clock</a></li>
 		<li><a href="#Scoped CSS Variables and JS">第三天： Scoped CSS Variables and JS</a></li>
 		<li><a href="#Array Cardio 💪">第四天： Array Cardio 💪</a></li>
+		<li><a href="#Flex Panels 💪">第五天： Flex Panels 💪</a></li>
 		
 	</ol>
 	<hr>
+
+	<div class="fixed"><a class="index" href="#索引">回到索引</a></div>
 
 	<!-- 2021-03-31 updated -->
 
@@ -117,7 +120,7 @@
 		</li>
 		<li>完成如下（代码清晰易懂，就不注释了）：
 	<pre><code class="language-css">
-	// CSS 部分
+	/* CSS 部分 */
 	.hour-hand {
       height:6px;
       background:blue;
@@ -226,7 +229,7 @@
 		</li>
 		<li>
 	<pre><code class="language-css">
-	// CSS 部分
+	/* CSS 部分 */
 	:root {
       --spacing: 12px;
       --blur: 12px;
@@ -257,7 +260,8 @@
       document.documentElement.style.setProperty('--base', inputElem[2].value);
     }
 	</code></pre>
-	</li>
+		</li>
+	</ol>
 
 	<h3>ToDo & Thought</h3>
 	<ol>
@@ -280,6 +284,54 @@
 		<li>网页美化</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1617459964539</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-04 updated -->
+
+	<h2 id="Flex Panels 💪">第五天： Flex Panels 💪</h2>
+	<p>查看我的<a href="../js30/day_05/index-START.html">完成示例</a></p>
+	<p>今天的示例跟第一天的很像，当然这里说的是JavaScript的用法，CSS的话对我来说还是比较难</p>
+	<h3>解决过程跟第一天类似</h3>
+	<ul>
+		<li>CSS 部分
+			<ol>
+				<li>将 .panels 设置为 display:flex, flex-direction: row;</li>
+				<li>将 .panel，设为 `display:flex, flex: 1, flex-direction: row;</li>
+			</ol>
+		</li>
+		<li>JS 部分
+			<ol>
+				<li>获取所有类名为 panel 的元素</li>
+				<li>使用forEach添加click事件侦听，增加.open类以实现效果</li>
+				<li>同样使用forEach添加transitionend事件侦听，然后移除.open类，移除效果</li>
+				<li>模版.cta类此处我没使用</li>
+			</ol>
+		</li>
+		<li>JS代码如下：
+	<pre><code class="language-javascript">
+	// JS 部分
+	const panels = document.querySelectorAll('.panel');
+
+    panels.forEach((panel) => panel.onclick = function() {
+      this.classList.add('open');
+    });
+
+    panels.forEach((panel) => panel.addEventListener("transitionend", recover, false));
+
+    function recover() {
+      this.classList.remove('open');
+    }
+	</code></pre>
+		</li>
+	</ul>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1617534496901</em> __chinrunja</label>
 	<hr>
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
