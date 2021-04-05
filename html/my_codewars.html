@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+	<title>My codewars</title>
+	<link rel="stylesheet" type="text/css" href="../css/js_funlibs.css">
+	<link rel="stylesheet" type="text/css" href="../css/modules/prism.css">
+
+</head>
+<body>
+	<!-- 2021-04-05 updated -->
+
+	<h1>Codewars--JavaScript答题记录</h1>
+	<hr>
+	<h2 id="索引">索引</h2>
+	<ul>
+		<li><a href="#Day 01">Day 01</a></li>
+		
+	</ul>
+	<hr>
+	<h2 id="Day 01">Day 01</h2>
+	<h3>第一题</h3>
+	<p>Write a function, gooseFilter / goose-filter / goose_filter / GooseFilter, that takes an array of strings as an argument and returns a filtered array containing the same elements but with the 'geese' removed.
+
+	The geese are any strings in the following array, which is pre-populated in your solution:</p>
+	<pre><code class="language-javascript">
+	geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+	</code></pre>
+	<p>For example, if this array were passed as an argument:</p>
+	<pre><code class="language-javascript">
+	["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
+	</code></pre>
+	<p>Your function would return the following array:</p>
+	<pre><code class="language-javascript">
+	["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
+	</code></pre>
+	<p>The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed. Note that all of the strings will be in the same case as those provided, and some elements may be repeated.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function gooseFilter (birds) {
+  		var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+  		let arr = [];
+  		for (let bird of birds) {
+    		if (!geese.includes(bird)) arr.push(bird);
+  		}
+  		return arr;
+	}
+
+	// 高票方案
+	function gooseFilter (birds) {
+  		var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+  		return birds.filter(b => !geese.includes(b));
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.</p>
+	<p>Implement a function likes :: [String] -> String, which must take in input array, containing the names of people who like an item. It must return the display text as shown in the examples:</p>
+	<pre><code class="language-javascript">
+	likes [] -- must be "no one likes this"
+	likes ["Peter"] -- must be "Peter likes this"
+	likes ["Jacob", "Alex"] -- must be "Jacob and Alex like this"
+	likes ["Max", "John", "Mark"] -- must be "Max, John and Mark like this"
+	likes ["Alex", "Jacob", "Mark", "Max"] -- must be "Alex, Jacob and 2 others like this"
+	</code></pre>
+	<p>For 4 or more names, the number in and 2 others simply increases.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function likes(names) {
+  
+  		if (names[3]) {
+    		return `${names[0]}, ${names[1]} and ${names.length - 2 } others like this`;
+  		} else if (names[2]) {
+    		return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+  		} else if (names[1]) {
+    		return `${names[0]} and ${names[1]} like this`;
+  		} else if (names[0]) {
+    		return `${names[0]} likes this`;
+  		} else return 'no one likes this';
+  
+	}
+
+	// 高票方案
+	function likes(names) {
+  		names = names || [];
+  		switch(names.length) {
+    		case 0: return 'no one likes this'; break;
+    		case 1: return names[0] + ' likes this'; break;
+    		case 2: return names[0] + ' and ' + names[1] + ' like this'; break;
+    		case 3: return names[0] + ', ' + names[1] + ' and ' + names[2] + ' like this'; break;
+    		default: return names[0] + ', ' + names[1] + ' and ' + (names.length - 2) + ' others like this';
+  		}
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Trolls are attacking your comment section!</p>
+	<p>A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.</p>
+	<p>Your task is to write a function that takes a string and return a new string with all vowels removed.</p>
+	<p>For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".</p>
+	<p>Note: for this kata y isn't considered a vowel.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function disemvowel(str) {
+  		let vowels = ['a','o','e','i','u'];
+  		for (let i = 0; i < str.length; i++) {
+    		if ( vowels.includes(str[i]) || vowels.includes(str[i].toLowerCase()) ) {
+      			str = str.replace(str[i], '');
+      			i--;
+    		}
+  		}
+  		return str;
+	}
+
+	// 高票方案
+	function disemvowel(str) {
+  		return str.replace(/[aeiou]/gi, '');
+	}
+	</code></pre>
+	<label>更新于 <em>timestamp: 1617628341567</em> __chinrunja</label>
+	<hr>
+
+	<script src="../script/modules/prism.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	
+	</script>
+</body>
+</html>

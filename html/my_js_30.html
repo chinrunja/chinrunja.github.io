@@ -12,7 +12,8 @@
 	<h1>我的JavaScript30小记</h1>
 	<h2>感谢<a href="https://soyaine.github.io/JavaScript30/">未枝丫</a>的JavaScript30中文指南</h2>
 	<hr>
-	<p>我的其他网页<a href="js_funlibs.html">JavaScript Funlibs--记录常用函数（方法）</a></p>
+	<p>我的其他网页</p>
+	<span><a href="js_funlibs.html">(1) JavaScript Funlibs--记录常用函数（方法） </a></span><span><a href="my_codewars.html">(2) Codewars--JavaScript答题记录 </a></span>
 	<hr>
 	<h2 id="索引">索引</h2>
 	<ol>
@@ -21,6 +22,7 @@
 		<li><a href="#Scoped CSS Variables and JS">第三天： Scoped CSS Variables and JS</a></li>
 		<li><a href="#Array Cardio 💪">第四天： Array Cardio 💪</a></li>
 		<li><a href="#Flex Panels 💪">第五天： Flex Panels 💪</a></li>
+		<li><a href="#Type Ahead 👀">第六天： Type Ahead 👀--待返工</a></li>
 		
 	</ol>
 	<hr>
@@ -332,6 +334,63 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1617534496901</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-05 updated -->
+
+	<h2 id="Type Ahead 👀">第六天： Type Ahead 👀--待返工</h2>
+	<p><a href="../js30/day_04/index-START.html">示例</a></p>
+	<h3>今天的示例涉及fetch(),async,RegExp()，对萌新的我来说难度有点高，我把JS代码搬过来了，改天再回来返工</h3>
+	<pre><code class="language-javascript">
+	// JS 部分
+	const endpoint = 'https://gist.githubusercontent.com/soyaine/81399bb2b24ca1bb5313e1985533c640/raw/bdf7df2cbcf70706c4a5e51a7dfb8c933ed78878/TangPoetry.json';
+
+  	const poetrys = [];
+  	fetch(endpoint)
+    	.then(blob => blob.json())
+    	.then(data => poetrys.push(...data));
+
+  	function findMatches(wordToMatch, poetrys) {
+    	return poetrys.filter(poet => {
+      		// 正则找出匹配的诗句
+      		const regex = new RegExp(wordToMatch, 'gi');
+      		const author = poet.detail_author.join('');
+      		return poet.detail_text.match(regex) || poet.title.match(regex) || author.match(regex);
+    	});
+  	}
+
+  	function displayMatches() {
+    	const matches = findMatches(this.value, poetrys);
+    	const regex = new RegExp(this.value, 'gi');
+    	const html = matches.map(poet => {
+      	// 替换高亮的标签
+      	const text = poet.detail_text.replace(regex, `&lt;span class="hl"&gt;${ this.value }&lt;/span&gt;`);
+      	const title = poet.title.replace(regex, `&lt;span class="hl"&gt;${ this.value }&lt;/span&gt;`)
+      	// 构造 HTML 值
+      	return `
+      	&lt;li&gt;
+        	&lt;span class="poet"&gt;${ text }&lt;/span&gt;
+        	&lt;span class="title"&gt;${ title } - ${ poet.detail_author[0] }&lt;/span&gt;
+      	&lt;/li&gt;
+      	`;
+    	}).join('');
+    	suggestions.innerHTML = html;
+  	}
+
+  	const search = document.querySelector('.search');
+  	const suggestions = document.querySelector('.suggestions');
+
+  	search.addEventListener('change', displayMatches);
+  	search.addEventListener('keyup', displayMatches);
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1617626178167</em> __chinrunja</label>
 	<hr>
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
