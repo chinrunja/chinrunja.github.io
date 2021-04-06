@@ -8,13 +8,14 @@
 
 </head>
 <body>
-	<!-- 2021-04-05 updated -->
+	<!-- 2021/04/05 updated -->
 
 	<h1>Codewars--JavaScript答题记录</h1>
 	<hr>
 	<h2 id="索引">索引</h2>
 	<ul>
 		<li><a href="#Day 01">Day 01</a></li>
+		<li><a href="#Day 02">Day 02</a></li>
 		
 	</ul>
 	<hr>
@@ -118,6 +119,120 @@
 	}
 	</code></pre>
 	<label>更新于 <em>timestamp: 1617628341567</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/06 updated -->
+
+	<h2 id="Day 02">Day 02</h2>
+	<h3>第一题</h3>
+	<p>Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.</p>
+	<p>In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).</p>
+	<pre><code class="language-javascript">
+	DNAStrand ("ATTGC") // return "TAACG"
+
+	DNAStrand ("GTAT") // return "CATA" 
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function DNAStrand(dna){
+  	//your code here
+  		let dnaArr = dna.split("");
+  		for (let i = 0; i < dnaArr.length; i++) {
+    		switch (dna[i]) {
+        		case "A": dnaArr.splice(i, 1, "T"); break;
+        		case "T": dnaArr.splice(i, 1, "A"); break;
+        		case "C": dnaArr.splice(i, 1, "G"); break;
+        		case "G": dnaArr.splice(i, 1, "C"); break;
+    		}
+  		}
+  		return dnaArr.join("");
+	}
+
+	// 高票方案
+	function DNAStrand(dna) {
+  		return dna.replace(/./g, function(c) {
+    		return DNAStrand.pairs[c]
+  		})
+	}
+
+	DNAStrand.pairs = {
+  		A: 'T',
+  		T: 'A',
+  		C: 'G',
+  		G: 'C',
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?</p>
+	<pre><code class="language-javascript">
+	At the end of the first year there will be: 
+	1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+
+	At the end of the 2nd year there will be: 
+	1070 + 1070 * 0.02 + 50 => 1141 inhabitants (** number of inhabitants is an integer **)
+
+	At the end of the 3rd year there will be:
+	1141 + 1141 * 0.02 + 50 => 1213
+
+	It will need 3 entire years.
+	</code></pre>
+	<p>More generally given parameters:</p>
+	<p>p0, percent, aug (inhabitants coming or leaving each year), p (population to surpass)</p>
+	<p>the function nb_year should return n number of entire years needed to get a population greater or equal to p.</p>
+	<p>aug is an integer, percent a positive or null floating number, p0 and p are positive integers (> 0)</p>
+	<pre><code class="language-javascript">
+	Examples:
+	nb_year(1500, 5, 100, 5000) -> 15
+	nb_year(1500000, 2.5, 10000, 2000000) -> 10
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function nbYear(p0, percent, aug, p) {
+  		let year = 0;
+  
+  		while (p0 < p) {
+    		p0 = p0 + p0 * percent * 0.01 + aug;
+    		year++;
+  		}
+  
+  		return year;
+	}
+
+	// 高票方案
+	function nbYear(p0, percent, aug, p) {
+  		for(var y = 0; p0 < p; y++) p0 = p0 * (1 + percent / 100) + aug;
+  		return y;
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.</p>
+	<p>Examples:</p>
+	<pre><code class="language-javascript">
+	a = "xyaabbbccccdefww"
+	b = "xxxxyyyyabklmopq"
+	longest(a, b) -> "abcdefklmopqwxy"
+
+	a = "abcdefghijklmnopqrstuvwxyz"
+	longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function longest(s1, s2) {
+  		let set = new Set();
+  
+  		s1.split("").forEach((char) => set.add(char));
+  		s2.split("").forEach((char) => set.add(char));
+  
+  		return Array.from(set).sort().join("");
+	}
+
+	// 高票方案
+	const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('');
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1617671408099</em> __chinrunja</label>
 	<hr>
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
