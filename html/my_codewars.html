@@ -3,7 +3,7 @@
 <head>
 
 	<title>My codewars</title>
-	<link rel="stylesheet" type="text/css" href="../css/js_funlibs.css">
+	<link rel="stylesheet" type="text/css" href="../css/my_codewars.css">
 	<link rel="stylesheet" type="text/css" href="../css/modules/prism.css">
 
 </head>
@@ -17,9 +17,13 @@
 		<li><a href="#Day 01">Day 01</a></li>
 		<li><a href="#Day 02">Day 02</a></li>
 		<li><a href="#Day 03">Day 03</a></li>
+		<li><a href="#Day 04">Day 04</a></li>
 		
 	</ul>
 	<hr>
+
+	<div class="fixed"><a class="index" href="#索引">回到索引</a></div>
+
 	<h2 id="Day 01">Day 01</h2>
 	<h3>第一题</h3>
 	<p>Write a function, gooseFilter / goose-filter / goose_filter / GooseFilter, that takes an array of strings as an argument and returns a filtered array containing the same elements but with the 'geese' removed.
@@ -338,6 +342,138 @@
 
 	<label>更新于 <em>timestamp: 1617758620467</em> __chinrunja</label>
 	<hr>
+
+	<!-- 2021/04/08 updated -->
+
+	<h2 id="Day 04">Day 04</h2>
+	<h3>第一题</h3>
+	<p>Some numbers have funny properties. For example:</p>
+	<p>89 --> 8¹ + 9² = 89 * 1</p>
+	<p>695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2</p>
+	<p>46288 --> 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51</p>
+	<p>Given a positive integer n written as abcd... (a, b, c, d... being digits) and a positive integer p</p>
+	<p>we want to find a positive integer k, if it exists, such as the sum of the digits of n taken to the successive powers of p is equal to k * n.</p>
+	<p>In other words:</p>
+	<p>Is there an integer k such as : (a ^ p + b ^ (p+1) + c ^(p+2) + d ^ (p+3) + ...) = n * k</p>
+	<p>If it is the case we will return k, if not return -1.</p>
+	<p>Note: n and p will always be given as strictly positive integers.</p>
+	<p>digPow(89, 1) should return 1 since 8¹ + 9² = 89 = 89 * 1</p>
+	<p>digPow(92, 1) should return -1 since there is no k such as 9¹ + 2² equals 92 * k</p>
+	<p>digPow(695, 2) should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2</p>
+	<p>digPow(46288, 3) should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function digPow(n, p){
+  
+  		if (!(n > 0 && Math.trunc(n) == n) && (p > 0 && Math.trunc(p) == p)) return -1;
+  
+  		let num = n.toString(),
+      		sum = 0;
+  
+  		for (let i = 0; i < num.length; i++) {
+    		sum += (+num[i]) ** (p + i);
+  		}
+  
+  		return sum % n == 0 ? sum / n : -1;
+  
+	}
+
+	// 高票方案
+	function digPow(n, p) {
+  		var x = String(n).split("").reduce((s, d, i) => s + Math.pow(d, p + i), 0)
+  		return x % n ? -1 : x / n
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (like the name of this kata).</p>
+	<ul>
+		<li>Strings passed in will consist of only letters and spaces.</li>
+		<li>Spaces will be included only when more than one word is present.</li>
+	</ul>
+	<p>Examples:</p>
+	<p>spinWords("Hey fellow warriors") => "Hey wollef sroirraw"</p>
+	<p>spinWords("This is a test") => "This is a test"</p>
+	<p>spinWords("This is another test") => "This is rehtona test"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function spinWords(str) {
+   		return str
+          	   .split(" ")
+          	   .map((x) => {
+               		if (x.length >= 5) {
+              			x = x.split("").reverse().join("");
+            		}
+            		return x
+          		})
+          	   .join(" ");
+	}
+
+	// 高票方案
+	function spinWords(words) {
+  		return words.split(' ').map(function (word) {
+    		return (word.length > 4) ? word.split('').reverse().join('') : word;
+  		}).join(' ');
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.</p>
+	<p>Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function rot13(message){
+  		let alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  		let arr = alphabet.split("");
+  
+  		return message = message.split("").map((char) => {
+    		if (arr.includes(char)) {
+      			let index = arr.indexOf(char);
+      			if ( index < 13 || (index > 25 && index < 39) ) return alphabet[index + 13];
+      			else if ( (index > 12 && index < 26) || index > 38 ) return alphabet[index - 13];
+    		} else return char;
+  		}).join("");
+	}
+
+	// 高票方案
+	function rot13(message) {
+  		var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  		var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+  		return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1617848456248</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/xx/xx updated --更新模版
+
+	<h2 id="Day xx">Day xx</h2>
+	<h3>第一题</h3>
+	<p></p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	// 高票方案
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p></p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	// 高票方案
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p></p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	// 高票方案
+	</code></pre>
+
+	<label>更新于 <em>timestamp: </em> __chinrunja</label>
+	<hr>
+
+	 -->
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
 	<script type="text/javascript">

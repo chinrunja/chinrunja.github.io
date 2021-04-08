@@ -25,6 +25,7 @@
 		<li><a href="#Type Ahead 👀">第六天： Type Ahead 👀--待返工</a></li>
 		<li><a href="#Array Cardio 💪💪">第七天： Array Cardio 💪💪</a></li>
 		<li><a href="#HTML5 Canvas">第八天： HTML5 Canvas</a></li>
+		<li><a href="#Console Tricks!">第九天： Console Tricks!</a></li>
 		
 	</ol>
 	<hr>
@@ -474,6 +475,99 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1617799299662</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-08 updated -->
+
+	<h2 id="Console Tricks!">第九天： Console Tricks!</h2>
+	<h3>今天的示例是控制台的一些打印小技巧，不贴图了，代码如下</h3>
+	<pre><code class="language-javascript">
+	// JS 代码
+	const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('hello');
+
+    // Interpolated
+    console.log("输出一个字符串 %s ", "log");
+    console.log("输出一个整数是 %d ", 1.23); //1
+    console.log("输出一个小数是 %f ", 1.23); //1.23
+
+    // Styled
+    console.log("%c不同样式的输出效果", "color: #00fdff; font-size: 2em;");
+    console.log('%c I am some great text', 'font-size:50px; background:red; text-shadow: 10px 10px 0 blue');
+
+    // warning!
+    console.warn("三角感叹号图标，淡黄色背景");
+
+    // Error :|
+    console.error("红叉图标，红字红色背景");
+
+    // Info
+    console.info("蓝色圆形感叹号图标");
+
+
+    // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+
+    // clearing
+    // console.clear(); // Ctrl ＋ L
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    // console.clear(); // Ctrl ＋ L
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    });
+
+    // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    console.table(dogs);
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1617882735616</em> __chinrunja</label>
 	<hr>
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
