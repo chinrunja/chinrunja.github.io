@@ -26,6 +26,7 @@
 		<li><a href="#Array Cardio 💪💪">第七天： Array Cardio 💪💪</a></li>
 		<li><a href="#HTML5 Canvas">第八天： HTML5 Canvas</a></li>
 		<li><a href="#Console Tricks!">第九天： Console Tricks!</a></li>
+		<li><a href="#Hold Shift and Check Checkboxes">第十天： Hold Shift and Check Checkboxes</a></li>
 		
 	</ol>
 	<hr>
@@ -569,6 +570,89 @@
 	</ol>
 	<label>更新于 <em>timestamp: 1617882735616</em> __chinrunja</label>
 	<hr>
+
+	<!-- 2021-04-09 updated -->
+
+	<h2 id="Hold Shift and Check Checkboxes">第十天： Hold Shift and Check Checkboxes</h2>
+	<p>查看我的<a href="../js30/day_10/index-START.html">完成示例</a></p>
+	<h3>今天的示例是使用shift多选标签，指南已经贴出了实现代码</h3>
+	<p>原作者的方案有缺陷，使用中文指南作者的方案完美实现了按Shift键复选和取消复选</p>
+	<p>抄了一遍答案，理解后自己重写了一遍</p>
+	<pre><code class="language-javascript">
+	const boxes = document.querySelectorAll('.item input[type="checkbox"]');
+
+  	boxes.forEach(box => box.addEventListener('click', handleCheck1));
+  	// 方法一：
+  	// function handleCheck0(e) {
+  	//   let inBetween = false;
+
+  	//   if(e.shiftKey && this.checked) {
+  	//     boxes.forEach(input => {
+  	//       console.log(input);
+  	//       if (input === lastChecked || input === this) {
+  	//         inBetween = !inBetween;
+  	//       }
+  	//       if (inBetween) {
+  	//         console.log("on");
+  	//         input.checked = true;
+  	//       }
+  	//     });
+  	//   }
+
+  	//   lastChecked = this;
+  	// }
+
+  	// 方法二：
+  	let boxesArr = Array.from(boxes);
+  	let lastChecked;
+  	let onOff = false;
+
+  	console.log(boxesArr);
+
+  	function handleCheck1(e) {
+    	if (!lastChecked) lastChecked = this;
+    	onOff = lastChecked.checked ? true : false;
+    	if (e.shiftKey) {
+      		let start = boxesArr.indexOf(this);
+      		let end = boxesArr.indexOf(lastChecked);
+
+      		console.log(`start: ${start}, end: ${end}`);
+
+      		boxesArr.slice(Math.min(start, end), Math.max(start, end)).forEach(input => input.checked = onOff);
+    	}
+
+    	lastChecked = this;
+  	}
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1617973892735</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-xx-xx updated --更新模版
+
+	<h2 id="xx">第x天： xx</h2>
+	<p>查看我的<a href="../js30/day_xx/index-START.html">完成示例</a></p>
+	<h3></h3>
+	<pre><code class="language-javascript">
+
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: </em> __chinrunja</label>
+	<hr>
+
+	 -->
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
 
