@@ -19,6 +19,7 @@
 		<li><a href="#Day 03">Day 03</a></li>
 		<li><a href="#Day 04">Day 04</a></li>
 		<li><a href="#Day 05">Day 05</a></li>
+		<li><a href="#Day 06">Day 06</a></li>
 		
 	</ul>
 	<hr>
@@ -603,7 +604,182 @@
 	<hr>
 
 	
-	<!-- 2021/xx/xx updated --更新模版
+	<!-- 2021/04/10 updated -->
+
+	<h2 id="Day 06">Day 06</h2>
+	<h3>第一题</h3>
+	<p>Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.</p>
+	<p><strong>Intervals</strong></p>
+	<p>Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.</p>
+	<p><strong>Overlapping Intervals</strong></p>
+	<p>List containing overlapping intervals:</p>
+	<pre><code class="language-javascript">
+	[
+	  [1, 4],
+	  [7, 10],
+	  [3, 5]
+	]
+	</code></pre>
+	<p>The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.</p>
+	<pre><code class="language-javascript">
+	sumIntervals( [
+   		[1,2],
+   		[6, 10],
+   		[11, 15]
+	] ); // => 9
+
+	sumIntervals( [
+   		[1,4],
+   		[7, 10],
+   		[3, 5]
+	] ); // => 7
+
+	sumIntervals( [
+   		[1,5],
+   		[10, 20],
+   		[1, 6],
+   		[16, 19],
+   		[5, 11]
+	] ); // => 19
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function sumIntervals(intervals){
+  
+  		let set = new Set();
+    
+    	intervals.forEach(arr => {
+      		while (arr[0] < arr[1]) {
+        		set.add(arr[0]);
+          		arr[0]++;
+      		}
+    	});
+    
+    	return Array.from(set).length;
+    	// return set.size;
+	}
+
+	// 高票方案
+	function sumIntervals(intervals){
+  		var numbers = [];
+  		intervals.forEach( function(interval) {
+    		for (var i = interval[0] ; i < interval[1] ; i++) {
+      			if (numbers.indexOf(i) == -1) numbers.push(i);
+    		}
+  		});
+  		return numbers.length;
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>1, 246, 2, 123, 3, 82, 6, 41 are the divisors of number 246. Squaring these divisors we get: 1, 60516, 4, 15129, 9, 6724, 36, 1681. The sum of these squares is 84100 which is 290 * 290.</p>
+	<p><strong>Task</strong></p>
+	<p>Find all integers between m and n (m and n integers such as 1 <= m <= n) such that the sum of their squared divisors is itself a square.</p>
+	<p>We will return an array of subarrays or of tuples (in C an array of Pair) or a string. The subarrays (or tuples or Pairs) will have two elements: first the number the squared divisors of which is a square and then the sum of the squared divisors.</p>
+	<p><strong>Example:</strong></p>
+	<p>list_squared(1, 250) --> [[1, 1], [42, 2500], [246, 84100]]</p>
+	<p>list_squared(42, 250) --> [[42, 2500], [246, 84100]]</p>
+	<p>The form of the examples may change according to the language, see "Sample Tests".</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function listSquared(m, n) {
+		let list = [];
+    
+    	while (m < n) {
+        	let squaredSum,
+            	squaredRoot,
+        		arr = [];
+        
+        	for (let i = 1; i <= m; i++) {
+            	if (m % i === 0) arr.push(i);
+        	}
+        
+        	squaredSum = arr.map(value => value ** 2).reduce((sum, value) => sum + value, 0);
+        	squaredRoot = Math.sqrt(squaredSum);
+        
+        	if (Math.trunc(squaredRoot) == squaredRoot) list.push([m, squaredSum]);
+        	m++;
+    	}
+    
+    	return list;
+	}
+
+	// 高票方案
+	function listSquared (m, n) {
+  		var matches = [];
+
+  		for (var i = m; i <= n; ++i) {
+    		var sum = getDivisors(i).reduce((sum, n) => sum + n * n, 0);
+    		var ok = Number.isInteger(Math.sqrt(sum));
+
+    		if (ok) {
+      			matches.push([i, sum]);
+    		}
+  		}
+
+  		return matches;
+	}
+
+	function getDivisors (n) {
+  		var divisors = [];
+
+  		for (var i = 1; i <= n / 2; ++i) {
+    		if (n % i) {
+      			continue;
+    		}
+
+    		divisors.push(i);
+  		}
+
+  		return divisors.concat([n]);
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Given an array of integers, find the one that appears an odd number of times.</p>
+	<p>There will always be only one integer that appears an odd number of times.</p>
+	<pre><code class="language-javascript">
+	findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5]) --> 5;
+  	findOdd([1,1,2,-2,5,2,4,4,-1,-2,5]) --> -1;
+  	findOdd([20,1,1,2,2,3,3,5,5,4,20,4,5]) --> 5;
+  	findOdd([10]) --> 10;
+  	findOdd([1,1,1,1,1,1,10,1,1,1,1]) --> 10;
+  	findOdd([5,4,3,2,1,5,4,3,2,10,10]) --> 1;
+	// 我的方案
+	function findOdd(A) {
+		let Odd,
+    		obj = {};
+    
+    	A.forEach(a => {
+        	if (!obj[a]) obj[a] = 0;
+        	obj[a]++;
+    	});
+    
+    	let arr = Object.entries(obj);
+    	arr.forEach(b => {
+        	if (b[1] % 2 !== 0) Odd = b[0];
+    	});
+    
+    	return +Odd;
+	}
+
+	// 高票方案
+	function findOdd(A) {
+  		var obj = {};
+  		A.forEach(function(el){
+    		obj[el] ? obj[el]++ : obj[el] = 1;
+  		});
+  
+  		for(prop in obj) {
+    		if(obj[prop] % 2 !== 0) return Number(prop);
+  		}
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1618024425559</em> __chinrunja</label>
+	<hr>
+
+	 <!-- 2021/xx/xx updated --更新模版
 
 	<h2 id="Day xx">Day xx</h2>
 	<h3>第一题</h3>

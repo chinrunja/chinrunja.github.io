@@ -27,6 +27,7 @@
 		<li><a href="#HTML5 Canvas">第八天： HTML5 Canvas</a></li>
 		<li><a href="#Console Tricks!">第九天： Console Tricks!</a></li>
 		<li><a href="#Hold Shift and Check Checkboxes">第十天： Hold Shift and Check Checkboxes</a></li>
+		<li><a href="#HTML Video Player">第十一天： HTML Video Player</a></li>
 		
 	</ol>
 	<hr>
@@ -634,7 +635,79 @@
 	<label>更新于 <em>timestamp: 1617973892735</em> __chinrunja</label>
 	<hr>
 
-	<!-- 2021-xx-xx updated --更新模版
+	<!-- 2021-04-10 updated -->
+
+	<h2 id="HTML Video Player">第十一天： HTML Video Player</h2>
+	<p>查看我的<a href="../js30/day_11/index.html">完成示例</a></p>
+	<h3>今天的示例是使用JS实现HTML视频播放控制，指南已经贴出了实现代码</h3>
+	<pre><code class="language-javascript">
+	const player = document.querySelector('.player');
+	const video = player.querySelector('.viewer');
+	const progress = player.querySelector('.progress');
+	const progressBar = player.querySelector('.progress__filled');
+	const toggle = player.querySelector('.toggle');
+	const skipButtons = player.querySelectorAll('[data-skip]');
+	const ranges = player.querySelectorAll('.player__slider');
+	const fullscreenButtons = player.querySelector('.fullscreen');
+
+	let mousedown = false;
+
+	function togglePlay() {
+		video.paused ? video.play() : video.pause();
+	}
+
+	function updateButton() {
+		const icon = video.paused ? '►' : '❚❚';
+		toggle.textContent = icon;
+	}
+
+	function skip() {
+		video.currentTime += parseFloat(this.dataset.skip);
+	}
+
+	function handleRangeUpdate() {
+		video[this.name] = this.value;
+	}
+
+	function handleProgress() {
+		const percent = (video.currentTime / video.duration) * 100;
+		progressBar.style.flexBasis = `${percent}%`;
+	}
+
+	function scrub(e) {
+		const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+		video.currentTime = scrubTime;
+	}
+
+	function fullscreen() {
+		video.webkitRequestFullScreen();
+	}
+
+	video.addEventListener('click', togglePlay);
+	toggle.addEventListener('click', togglePlay);
+	video.addEventListener('play', updateButton);
+	video.addEventListener('pause', updateButton);
+	skipButtons.forEach(button => button.addEventListener('click', skip));
+	ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+	ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+	video.addEventListener('timeupdate', handleProgress);
+	progress.addEventListener('click', scrub);
+	progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+	progress.addEventListener('mousedown', () => mousedown = true);
+	progress.addEventListener('mouseup', () => mousedown = false);
+	fullscreenButtons.addEventListener('click', fullscreen);
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1618060718770</em> __chinrunja</label>
+	<hr>
+
+	 <!-- 2021-xx-xx updated --更新模版
 
 	<h2 id="xx">第x天： xx</h2>
 	<p>查看我的<a href="../js30/day_xx/index-START.html">完成示例</a></p>
