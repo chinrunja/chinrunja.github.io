@@ -28,6 +28,8 @@
 		<li><a href="#Console Tricks!">第九天： Console Tricks!</a></li>
 		<li><a href="#Hold Shift and Check Checkboxes">第十天： Hold Shift and Check Checkboxes</a></li>
 		<li><a href="#HTML Video Player">第十一天： HTML Video Player</a></li>
+		<li><a href="#Key Detection">第十二天： Key Detection</a></li>
+		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
 	<hr>
@@ -707,7 +709,72 @@
 	<label>更新于 <em>timestamp: 1618060718770</em> __chinrunja</label>
 	<hr>
 
-	 <!-- 2021-xx-xx updated --更新模版
+	<!-- 2021-04-11 updated -->
+
+	<h2 id="Key Detection">第十二天： Key Detection</h2>
+	<p>查看我的<a href="../js30/day_12/index-START.html">完成示例</a></p>
+	<h3>原作者的网页是检测到正确输入后弹出一堆独角兽，我改成了显示时钟并更换背景颜色，具体查看上面的示例链接</h3>
+	<pre><code class="language-javascript">
+	const pressed = [],
+		  secretCode = 'test',
+		  p = document.createElement('p'),
+		  h2 = document.createElement('h2'),
+		  input = document.querySelector('input');
+
+	let clockStart = false,
+		append = false;
+
+	function random(number) {
+  		return Math.floor(Math.random() * (number + 1));
+	}
+
+	function bgChange() {
+  		const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  		document.body.style.backgroundColor = rndCol;
+	}
+
+	function clockControl() {
+		if (!clockStart) {
+			h2.textContent = 'Show Time!';
+			if(!append) {
+				document.body.append(h2);
+				append = true;
+			}
+			clock.start();
+			input.value = "";
+			clockStart = true;
+		} else {
+			h2.textContent = 'Stop Time!';
+			clock.stop();
+			input.value = "";
+			clockStart = false;
+		}
+	}
+
+	window.addEventListener('keyup', (e) => {
+		console.log(e.key);
+		pressed.push(e.key);
+		pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+		if (pressed.join('').includes(secretCode)) {
+			clockControl();
+		}
+	});
+
+	// input.addEventListener('input', () => {
+	// 	if (input.value == 'test') clockControl();
+	// })
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1618147265436</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-xx-xx updated --更新模版
 
 	<h2 id="xx">第x天： xx</h2>
 	<p>查看我的<a href="../js30/day_xx/index-START.html">完成示例</a></p>
@@ -725,7 +792,7 @@
 	<label>更新于 <em>timestamp: </em> __chinrunja</label>
 	<hr>
 
-	 -->
+	-->
 
 	<script src="../script/modules/prism.js" type="text/javascript"></script>
 

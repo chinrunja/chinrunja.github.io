@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <style type="text/css">
+  p, h1, h2, input, div {
+  	text-align: center;
+  }
+
+  p {
+  	font-size: 40px;
+  }
+
+  </style>
+  <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+	<h1>键盘输入 test 查看效果</h1>
+	<div>
+		<input type="te" name="input">
+	</div>
+<script>
+	const pressed = [],
+		  secretCode = 'test',
+		  p = document.createElement('p'),
+		  h2 = document.createElement('h2'),
+		  input = document.querySelector('input');
+
+	let clockStart = false,
+		append = false;
+
+	function random(number) {
+  		return Math.floor(Math.random() * (number + 1));
+	}
+
+	function bgChange() {
+  		const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+  		document.body.style.backgroundColor = rndCol;
+	}
+
+	function clockControl() {
+		if (!clockStart) {
+			h2.textContent = 'Show Time!';
+			if(!append) {
+				document.body.append(h2);
+				append = true;
+			}
+			clock.start();
+			input.value = "";
+			clockStart = true;
+		} else {
+			h2.textContent = 'Stop Time!';
+			clock.stop();
+			input.value = "";
+			clockStart = false;
+		}
+	}
+
+	window.addEventListener('keyup', (e) => {
+		console.log(e.key);
+		pressed.push(e.key);
+		pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+		if (pressed.join('').includes(secretCode)) {
+			clockControl();
+		}
+	});
+
+	// input.addEventListener('input', () => {
+	// 	if (input.value == 'test') clockControl();
+	// })
+</script>
+</body>
+</html>
