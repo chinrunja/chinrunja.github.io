@@ -29,6 +29,7 @@
 		<li><a href="#Hold Shift and Check Checkboxes">第十天： Hold Shift and Check Checkboxes</a></li>
 		<li><a href="#HTML Video Player">第十一天： HTML Video Player</a></li>
 		<li><a href="#Key Detection">第十二天： Key Detection</a></li>
+		<li><a href="#Slide in on Scroll">第十三天： Slide in on Scroll</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -772,6 +773,59 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1618147265436</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-12 updated -->
+
+	<h2 id="Slide in on Scroll">第十三天： Slide in on Scroll</h2>
+	<p>查看我的<a href="../js30/day_13/index-START.html">完成示例</a></p>
+	<h3>指南已给出完整的实现方法，只需要遍历图片加入判断条件即可实现效果</h3>
+	<pre><code class="language-javascript">
+	function debounce(func, wait = 20, immediate = true) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    }
+
+    const slideImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e) {
+      console.log(e);
+      console.count(e);
+      
+      slideImages.forEach(img => {
+        const slideInAt = (window.scrollY + window.innerHeight) - img.height / 2;
+        const imgBottom = img.offsetTop + img.height;
+        const isHalfShow = slideInAt > img.offsetTop;
+        const isNotScrollPast = window.scrollY < imgBottom;
+
+        if (isHalfShow && isNotScrollPast) {
+          img.classList.add('active');
+        } else {
+          img.classList.remove('active');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', debounce(checkSlide));
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1618232714824</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版

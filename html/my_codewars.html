@@ -21,6 +21,7 @@
 		<li><a href="#Day 05">Day 05</a></li>
 		<li><a href="#Day 06">Day 06</a></li>
 		<li><a href="#Day 07">Day 07</a></li>
+		<li><a href="#Day 08">Day 08</a></li>
 		
 	</ul>
 	<hr>
@@ -30,7 +31,6 @@
 	<h2 id="Day 01">Day 01</h2>
 	<h3>第一题</h3>
 	<p>Write a function, gooseFilter / goose-filter / goose_filter / GooseFilter, that takes an array of strings as an argument and returns a filtered array containing the same elements but with the 'geese' removed.
-
 	The geese are any strings in the following array, which is pre-populated in your solution:</p>
 	<pre><code class="language-javascript">
 	geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
@@ -902,6 +902,147 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1618104752150</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/12 updated -->
+
+	<h2 id="Day 08">Day 08</h2>
+	<h3>第一题</h3>
+	<p>In this kata, you will write a function that returns the positions and the values of the "peaks" (or local maxima) of a numeric array.</p>
+	<p>For example, the array arr = [0, 1, 2, 5, 1, 0] has a peak at position 3 with a value of 5 (since arr[3] equals 5).</p>
+	<p>The output will be returned as an object with two properties: pos and peaks. Both of these properties should be arrays. If there is no peak in the given array, then the output should be {pos: [], peaks: []}.</p>
+	<p>Example: pickPeaks([3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 3]) should return {pos: [3, 7], peaks: [6, 3]} (or equivalent in other languages)</p>
+	<p>All input arrays will be valid integer arrays (although it could still be empty), so you won't need to validate the input.</p>
+	<p>The first and last elements of the array will not be considered as peaks (in the context of a mathematical function, we don't know what is after and before and therefore, we don't know if it is a peak or not).</p>
+	<p>Also, beware of plateaus !!! [1, 2, 2, 2, 1] has a peak while [1, 2, 2, 2, 3] and [1, 2, 2, 2, 2] do not. In case of a plateau-peak, please only return the position and value of the beginning of the plateau. For example: pickPeaks([1, 2, 2, 2, 1]) returns {pos: [1], peaks: [2]} (or equivalent in other languages)</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function pickPeaks(arr){
+    	let obj = {pos: [], peaks: []};
+    
+    	function append(index) {
+        	obj.pos.push(index);
+        	obj.peaks.push(arr[index]);
+    	}
+    
+  		arr.forEach((v, i, arr) => {
+      		if (v < arr[i+1]) {
+          		if (arr[i+1] > arr[i+2]) {
+          			append(i+1);
+          		}
+          		if (arr[i+1] == arr[i+2]) {
+                	let n = 3;
+              		while (arr[i+1] == arr[i+n]) {
+                    	n++;
+                	}
+                	if (arr[i+1] > arr[i+n]) {
+                    	append(i+1);
+                	}
+          		}
+      		}
+ 		});
+  		return obj;
+	}
+
+	// 高票方案
+	function pickPeaks(arr){
+  		var result = {pos: [], peaks: []};
+  		if(arr.length > 2) {
+    		var pos = -1;
+    		for(var i=1; i < arr.length; i++) {
+      			if(arr[i] > arr[i-1]) {
+        			pos = i;
+      			} else if(arr[i] < arr[i-1] && pos != -1) {
+        			result.pos.push(pos);
+        			result.peaks.push(arr[pos]);
+        			pos = -1;
+      			}
+    		}
+  		}
+  		return result;
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Given the string representations of two integers, return the string representation of the sum of those integers.</p>
+	<p>For example:</p>
+	<p>sumStrings('1','2') // => '3'</p>
+	<p>A string representation of an integer will contain no characters besides the ten numerals "0" to "9".</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function sumStrings(a,b) {
+    	let result = [],
+        	arrA = removeZero(a).split("").reverse(),
+    		arrB = removeZero(b).split("").reverse();
+    
+    
+    	function removeZero(str) {
+        	if (!str) return '0';
+        	for (let char of str) {
+            	if (char == '0') str = str.slice(1);
+            	else break;
+        	}
+        	return str;
+    	}
+        
+    	function add(A, B) {
+        	let lastCarry,
+            	len = A.length;
+        
+        	A.reduce((carry, v, i) => {
+        		let sum = +v + +B[i] + carry;
+            	if (sum >= 10) {
+                	carry = 1;
+                	result.push(sum - 10);
+            	} else {
+            		result.push(sum);
+            		carry = 0;
+            	}
+            	lastCarry = carry;
+            	return carry;
+    		}, 0);
+        
+        	if (lastCarry == 0) {
+        		result = result.concat(B.slice(len));
+        	} else {
+            	if (A.length == B.length) {
+            		result.push(1);
+            	} else {
+                	add([1], B.slice(len));
+            	}
+        	}
+    	}
+
+    	arrA.length > arrB.length ? add(arrB, arrA) : add(arrA, arrB);
+    
+    	return result.reverse().join("");
+	}
+
+	// 高票方案
+	String.prototype.reverse = function() {
+  		return this.split('').reverse().join('');
+	}
+
+	function sumStrings(a,b) {
+  		a = a.reverse(); b = b.reverse();
+  		var carry = 0;
+  		var index = 0;
+  		var sumDigits = [];
+  		while (index < a.length || index < b.length || carry != 0) {
+    		var aDigit = index < a.length ? parseInt(a[index]) : 0;
+    		var bDigit = index < b.length ? parseInt(b[index]) : 0;
+    		var digitSum = aDigit + bDigit + carry;
+    		sumDigits.push((digitSum % 10).toString());
+    		carry = Math.floor(digitSum / 10);
+    		index++;
+  		}
+  		sumDigits.reverse();
+  		while (sumDigits[0] == '0') sumDigits.shift();
+  		return sumDigits.join('');
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1618207212660</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
