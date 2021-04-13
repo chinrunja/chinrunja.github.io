@@ -30,6 +30,7 @@
 		<li><a href="#HTML Video Player">第十一天： HTML Video Player</a></li>
 		<li><a href="#Key Detection">第十二天： Key Detection</a></li>
 		<li><a href="#Slide in on Scroll">第十三天： Slide in on Scroll</a></li>
+		<li><a href="#JS Reference VS Copy">第十四天： JS Reference VS Copy</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -826,6 +827,35 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1618232714824</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-13 updated -->
+
+	<h2 id="JS Reference VS Copy">第十四天： JS Reference VS Copy</h2>
+	<p>查看我的<a href="../js30/day_14/index-START.html">完成示例</a></p>
+	<h3>使用Javascript 复制数组和对象（复制后改变新数组，不影响原数组），指南已列出方法</h3>
+	<pre><code class="language-javascript">
+	const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+	const team2 = players.slice();
+	const team3 = [].concat(players);
+	const team4 = [...players];
+	const team5 = Array.from(players);
+
+	const person = {
+        name: 'Wes Bos',
+        age: 18
+    }
+    const dev = Object.assign({}, wes);
+    const dev2 = JSON.parse(JSON.stringify(wes));
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1618316309119</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版
