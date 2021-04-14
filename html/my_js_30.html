@@ -31,6 +31,7 @@
 		<li><a href="#Key Detection">第十二天： Key Detection</a></li>
 		<li><a href="#Slide in on Scroll">第十三天： Slide in on Scroll</a></li>
 		<li><a href="#JS Reference VS Copy">第十四天： JS Reference VS Copy</a></li>
+		<li><a href="#LocalStorage">第十五天： LocalStorage</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -856,6 +857,65 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1618316309119</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-14 updated -->
+
+	<h2 id="LocalStorage">第十五天： LocalStorage</h2>
+	<p>查看我的<a href="../js30/day_15/index-START.html">完成示例</a></p>
+	<h3>使用LocalStorage API存储数据到本地，刷新网页后，读取本地保存的数据(实现代码指南未提供，需自行增加）</h3>
+	<pre><code class="language-javascript">
+	// JS 部分
+	const addItems = document.querySelector('.add-items');
+  	const itemsList = document.querySelector('.plates');
+  	const items = [];
+
+  	// 以下7行代码读取本地数据展现在网页
+  	let storageItems = JSON.parse(localStorage.getItem('items'));
+
+  	if (storageItems != null) {
+    	for (let obj of storageItems) {
+    		items.push(obj);
+    	}
+    	populateList(items, itemsList);
+  	}
+
+  	function populateList(plates = [], plateslist) {
+    	plateslist.innerHTML = plates.map((plate, i) => {
+      		return `
+        		&lt;li&gt;
+          			&lt;input type="checkbox" date-index=${i} id="item${i}" ${plate.done ? 'checked' : ''}&gt;
+          			&lt;label for="item${i}"&gt;${plate.text}&lt;/label&gt;
+        		&lt;/li&gt;  
+      		`;
+    	}).join('');
+  	}
+
+  	function addItem(e) {
+    	e.preventDefault();
+    	const text = this.querySelector('[name="item"]').value;
+    	const item = {
+      		text: text,
+      		done: false
+    	}
+
+    	items.push(item);
+    	this.reset();
+    	populateList(items, itemsList);
+    	localStorage.setItem('items', JSON.stringify(items));
+  	}
+
+  	addItems.addEventListener('submit', addItem);
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+		<li>PS:CSS的背景图无法访问，随意更换了一张</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1618405896539</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版

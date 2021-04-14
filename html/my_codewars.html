@@ -23,6 +23,7 @@
 		<li><a href="#Day 07">Day 07</a></li>
 		<li><a href="#Day 08">Day 08</a></li>
 		<li><a href="#Day 09">Day 09</a></li>
+		<li><a href="#Day 10">Day 10</a></li>
 		
 	</ul>
 	<hr>
@@ -1137,6 +1138,95 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1618278790629</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/14 updated -->
+
+	<h2 id="Day 10">Day 10</h2>
+	<h3>第一题</h3>
+	<p>You are given an odd-length array of integers, in which all of them are the same, except for one single number.</p>
+	<p>Complete the method which accepts such an array, and returns that single different number.</p>
+	<p>The input array will always be valid! (odd-length >= 3)</p>
+	<p>Examples:</p>
+	<p>[1, 1, 2] ==> 2</p>
+	<p>[17, 17, 3, 17, 17, 17, 17] ==> 3</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function stray(numbers) {
+		let obj = {};
+    
+    	numbers.forEach((n) => {
+        	if (!obj[n]) obj[n] = 0;
+        	obj[n]++;
+    	});
+    
+    	for (let idx in obj) {
+        	if (obj[idx] == 1) return +idx;
+    	}
+	}
+
+	// 高票方案
+	function stray(numbers){
+  		for (var i in numbers){
+     		if (numbers.indexOf(numbers[i]) === numbers.lastIndexOf(numbers[i])){return numbers[i]}
+  		}
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.</p>
+	<p>Examples:</p>
+	<pre><code class="language-javascript">
+	"abcde" -> 0 # no characters repeats more than once
+	"aabbcde" -> 2 # 'a' and 'b'
+	"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+	"indivisibility" -> 1 # 'i' occurs six times
+	"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+	"aA11" -> 2 # 'a' and '1'
+	"ABBA" -> 2 # 'A' and 'B' each occur twice
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function duplicateCount(text){
+		let obj = {},
+        	count = 0;
+    
+    	for (let char of text.toLowerCase()) {
+        	if (!obj[char]) obj[char] = 0;
+        	obj[char]++;
+    	}
+    
+    	for (let idx in obj) {
+        	if (obj[idx] >= 2) count++;
+    	}
+    
+    	return count;
+	}
+
+	// 高票方案
+	function duplicateCount(text){
+  		return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length;
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Given a string of arbitrary length with any ascii characters. Write a function to determine whether the string contains the whole word "English".</p>
+	<p>The order of characters is important -- a string "abcEnglishdef" is correct but "abcnEglishsef" is not correct.</p>
+	<p>Upper or lower case letter does not matter -- "eNglisH" is also correct.</p>
+	<p>Return value as boolean values, true for the string to contains "English", false for it does not.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function spEng(sentence) {
+		return sentence.toLowerCase().indexOf('english') == -1 ? false : true;
+	}
+
+	// 高票方案
+	function spEng(s){
+   		return /english/i.test(s)
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1618364251429</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
