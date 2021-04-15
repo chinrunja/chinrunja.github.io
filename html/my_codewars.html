@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-
+  	<meta charset="UTF-8">
 	<title>My codewars</title>
+  	<link rel="icon" href="../img/favicon.jpg">
 	<link rel="stylesheet" type="text/css" href="../css/my_codewars.css">
 	<link rel="stylesheet" type="text/css" href="../css/modules/prism.css">
 
@@ -24,6 +25,7 @@
 		<li><a href="#Day 08">Day 08</a></li>
 		<li><a href="#Day 09">Day 09</a></li>
 		<li><a href="#Day 10">Day 10</a></li>
+		<li><a href="#Day 11">Day 11</a></li>
 		
 	</ul>
 	<hr>
@@ -1227,6 +1229,68 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1618364251429</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/15 updated -->
+
+	<h2 id="Day 11">Day 11</h2>
+	<h3>第一题</h3>
+	<p>Complete the solution so that it returns a formatted string. The return value should equal "Value is VALUE" where value is a 5 digit padded number.</p>
+	<p>Example:</p>
+	<p>solution(5) // should return "Value is 00005"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function solution(value) {
+  		return `Value is ${('0000' + value).slice(-5)}`;
+	}
+
+	// 高票方案
+	function solution(value) {
+  		return "Value is " + ("00000" + value).slice(-5);
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Find the greatest common divisor of two positive integers. The integers can be large, so you need to find a clever solution.</p>
+	<p>The inputs x and y are always greater or equal to 1, so the greatest common divisor will always be an integer that is also greater or equal to 1.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function mygcd(x,y) {
+  	let a = Math.max(x, y),
+      	b = Math.min(x, y);
+  
+  		return a % b == 0 ? b : mygcd(a%b, b);
+	}
+
+	// 高票方案
+	function mygcd(x,y){
+  		return y == 0 ? x : mygcd(y, x % y)
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.</p>
+	<p>For example:</p>
+	<p>solution([1, 2, 10, 50, 5]); // should return [1,2,5,10,50]</p>
+	<p>solution(null); // should return []</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function solution(nums){
+  		if(nums == null) return [];
+  		else {
+    		return nums.sort((a, b) => a > b ? 1 : -1);
+  		}
+	}
+
+	// 高票方案
+	function solution(nums){
+  		return (nums || []).sort(function(a, b){
+    		return a - b
+  		});
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1618448448636</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
