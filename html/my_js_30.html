@@ -34,6 +34,7 @@
 		<li><a href="#JS Reference VS Copy">第十四天： JS Reference VS Copy</a></li>
 		<li><a href="#LocalStorage">第十五天： LocalStorage</a></li>
 		<li><a href="#Mouse Shadow">第十六天： Mouse Shadow</a></li>
+		<li><a href="#Sort Without Articles">第十七天： Sort Without Articles</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -961,6 +962,49 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1618489159289</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-16 updated -->
+
+	<h2 id="Sort Without Articles">第十七天： Sort Without Articles</h2>
+	<p>查看我的<a href="../js30/day_17/index-START.html">完成示例</a></p>
+	<h3>去除数组前缀，将数组加入到网页列表中</h3>
+	<pre><code class="language-javascript">
+	// JS 部分
+	const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+	const ul = document.querySelector('#bands');
+
+	function delPrefix(str) {
+  		return str.replace(/^(The|A|An)\s{1}/, '');
+	}
+
+	let sortBands = bands.map(band => delPrefix(band)).sort();
+
+	/* || 指南给出的排序方案
+	var sortedbands = bands.sort(function(a,b){
+    	return delPrefix(a) > delPrefix(b) ? 1 : -1;
+	});
+	*/
+
+	for (let band of sortBands) {
+  		let li = document.createElement('li');
+  		li.textContent = band;
+  		ul.append(li);
+	}
+
+	/* || 指南给出的列表插入方案
+	document.getElementById('bands').innerHTML = '&lt;li&gt;'+sortedbands.join('&lt;/li&gt;&lt;li&gt;')+'&lt;/li&gt;';
+	*/
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1618575186973</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版
