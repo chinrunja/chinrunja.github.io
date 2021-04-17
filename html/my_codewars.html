@@ -27,6 +27,7 @@
 		<li><a href="#Day 10">Day 10</a></li>
 		<li><a href="#Day 11">Day 11</a></li>
 		<li><a href="#Day 12">Day 12</a></li>
+		<li><a href="#Day 13">Day 13</a></li>
 		
 	</ul>
 	<hr>
@@ -1361,6 +1362,142 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1618533191899</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/17 updated -->
+
+	<h2 id="Day 13">Day 13</h2>
+	<h3>第一题</h3>
+	<p>Given a two-dimensional array representation of a glass of mixed liquids, sort the array such that the liquids appear in the glass based on their density. (Lower density floats to the top) The width of the glass will not change from top to bottom.</p>
+	<pre><code class="language-javascript">
+	======================
+	|   Density Chart    |
+	======================
+	| Honey   | H | 1.36 |
+	| Water   | W | 1.00 |
+	| Alcohol | A | 0.87 |
+	| Oil     | O | 0.80 |
+	----------------------
+
+	[                            [
+ 		['H', 'H', 'W', 'O'],        ['O','O','O','O']
+ 		['W', 'W', 'O', 'W'],  =>    ['W','W','W','W']
+ 		['H', 'H', 'O', 'O']         ['H','H','H','H']
+ 	]                           ]
+	</code></pre>
+	<p>The glass representation may be larger or smaller. If a liquid doesn't fill a row, it floats to the top and to the left.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function separateLiquids(glass) {
+  		if (glass.length == 0) return [];
+  
+  		let chart = {
+        	H: 1.36,
+        	W: 1.00,
+        	A: 0.87,
+        	O: 0.80
+  		};
+  		let n = glass[0].length;
+  		let sortArr = [].concat.apply([], glass);
+  		let len = sortArr.length;
+  
+  		sortArr.sort((a, b) => chart[a] > chart[b] ? 1 : -1);
+  
+  		for (let i = 0; i < len / n; i++) {
+    		glass[i] = sortArr.slice(i*n, i*n+n);
+  		}
+    
+  		return glass;
+	}
+
+	// 高票方案
+	function separateLiquids(glass) {
+
+  		if (!glass.length) 
+    		return glass;
+  
+  		var res = []
+  			, width = glass[0].length
+  			,  flat = glass
+      		.reduce((a, b) => a.concat(b), [])
+      		.filter(a => a)
+      		.sort((a, b) => 'HWAO'.indexOf(b) - 'HWAO'.indexOf(a));
+
+  		while (flat.length > 0)
+    		res.push(flat.splice(0, width));
+
+  		while (res.length < glass.length)
+    		res.push([]);
+
+  		return res;
+  
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>This time no story, no theory. The examples below show you how to write function accum:</p>
+	<p>Examples:</p>
+	<p>accum("abcd") -> "A-Bb-Ccc-Dddd"</p>
+	<p>accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"</p>
+	<p>accum("cwAt") -> "C-Ww-Aaa-Tttt"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function accum(s) {
+  		return s
+    		.toLowerCase()
+    		.split("")
+    		.map((char, i) => char.toUpperCase() + char.repeat(i))
+    		.join("-");
+	}
+
+	// 高票方案
+	function accum(s) {
+  		return s.split('').map((c, i) => (c.toUpperCase() + c.toLowerCase().repeat(i))).join('-');
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer.</p>
+	<p>Square all numbers k (0 <= k <= n) between 0 and n.</p>
+	<p>Count the numbers of digits d used in the writing of all the k**2.</p>
+	<p>Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.</p>
+	<p>Examples:</p>
+	<pre><code class="language-javascript">
+	n = 10, d = 1 
+	the k*k are 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
+	We are using the digit 1 in: 1, 16, 81, 100. The total count is then 4.
+
+	nb_dig(25, 1) returns 11 since
+	the k*k that contain the digit 1 are:
+	1, 16, 81, 100, 121, 144, 169, 196, 361, 441.
+	So there are 11 digits 1 for the squares of numbers between 0 and 25.
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function nbDig(n, d) {
+    	let count = 0;
+    	for (let i = 0; i <= n; i++) {
+        	for (let char of String(i*i)) {
+    		    if (char == d)
+            	  	count++;
+        	}
+    	}
+    
+    	return count;
+	}
+
+	// 高票方案
+	function nbDig(n, d) {
+		var res=0;
+    	for (var g=0;g<=n;g++){
+      		var square=(g*g+"").split("");
+      		square.forEach((s)=>s==d?res++:null)
+    	}
+    	return res;
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1618627389843</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
