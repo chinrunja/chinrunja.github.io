@@ -30,6 +30,7 @@
 		<li><a href="#Day 13">Day 13</a></li>
 		<li><a href="#Day 14">Day 14</a></li>
 		<li><a href="#Day 15">Day 15</a></li>
+		<li><a href="#Day 16">Day 16</a></li>
 		
 	</ul>
 	<hr>
@@ -1718,6 +1719,91 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1618793289485</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/20 updated -->
+
+	<h2 id="Day 16">Day 16</h2>
+	<h3>第一题</h3>
+	<p>Write a function that takes a string and returns an array containing binary numbers equivalent to the ASCII codes of the characters of the string. The binary strings should be eight digits long.</p>
+	<p>Example: 'man' should return [ '01101101', '01100001', '01101110' ]</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function wordToBin(str){
+  		let arr = str.split('').map(char => ('0'.repeat(4) + char.charCodeAt().toString(2)).slice(-8));
+  		return arr;
+	}
+
+	// 高票方案
+	const wordToBin = (x) => [...x].map(el=> el.codePointAt().toString(2).padStart(8,'0'));
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>John has invited some friends. His list is:</p>
+	<P>s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";</P>
+	<P>Could you make a program that</P>
+	<P>1. makes this string uppercase</P>
+	<P>2. gives it sorted in alphabetical order by last name.</P>
+	<P>When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.</P>
+	<P>So the result of function meeting(s) will be:</P>
+	<P>"(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"</P>
+	<P>It can happen that in two distinct families with the same family name two people have the same first name too.</P>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function meeting(s) {
+    	let arr = s.split(";").map(str => str.split(":"));
+    	arr = arr.map(n => [n[1].toUpperCase(), " " + n[0].toUpperCase()]);
+    	arr.sort((a, b) => {
+        	if (a[0] == b[0]) {
+            	return a[1] > b[1] ? 1 : -1;
+        	}
+        	return a[0] > b[0] ? 1 : -1;
+    	});
+    
+    	return '(' + arr.join(')(') + ')';
+	}
+
+	// 高票方案
+	function meeting(s) {
+  		let string = s.toUpperCase().split(';')
+            .map(x => x.split(':').reverse().join(', '))
+            .sort()
+            .join(')(')
+  		return '(' + string + ')'
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Your task is to write a function called valid_spacing() or validSpacing() which checks if a string has valid spacing. The function should return either True or False.</p>
+	<p>For this kata, the definition of valid spacing is one space between words, and no leading or trailing spaces. Below are some examples of what the function should return.</p>
+	<pre><code class="language-javascript">
+	'Hello world' = true
+	' Hello world' = false
+	'Hello world  ' = false
+	'Hello  world' = false
+	'Hello' = true
+	// Even though there are no spaces, it is still valid because none are needed
+	'Helloworld' = true 
+	// true because we are not checking for the validity of words.
+	'Helloworld ' = false
+	' ' = false
+	'' = true
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function validSpacing(s) {
+  		let len = s.length;
+		if (s[0] == " " || s[len - 1] == " " || s.indexOf("  ") != -1) return false;
+  		return true;
+	}
+
+	// 高票方案
+	function validSpacing(s) {
+  		return s.trim() == s && !s.includes("  ");
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1618900109804</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
