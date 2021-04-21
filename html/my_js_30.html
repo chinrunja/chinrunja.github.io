@@ -39,6 +39,7 @@
 		<li><a href="#Webcam Fun">第十九天： Webcam Fun</a></li>
 		<li><a href="#Speech Detection">第二十天： Speech Detection</a></li>
 		<li><a href="#Geolocation">第二十一天： Geolocation</a></li>
+		<li><a href="#Follow Along Link Highliter">第二十二天： Follow Along Link Highliter</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -1097,6 +1098,49 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1618921242245</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-21 updated -->
+
+	<h2 id="Follow Along Link Highliter">第二十二天： Follow Along Link Highliter</h2>
+	<p>查看我的<a href="../js30/day_22/index-START.html">完成示例</a></p>
+	<h3>今天这个项目比较好玩，刚好学完事件处理，用事件委托完成了同样效果</h3>
+	<pre><code class="language-javascript">
+	// JS 部分 -- 为了使移动设备能够体验相同效果，在完成示例中我把'mouse'换成了'pointer'
+	const menu = document.querySelector('.menu');
+    let span = document.createElement('span');
+    span.classList.add('highlight');
+    // 不加'none'的话，第一次点击会发现span元素从左上角飞下来
+    span.style.display = 'none';
+    document.body.append(span);
+    // 此处我使用的是'mouseover'事件监控，指南使用的是'mouseenter'
+    menu.onmouseover = function(e) {
+      // 确认鼠标是否在li元素内或li元素的子元素内
+      let elem = e.target.closest('li');
+      // 事件委托
+      if (!elem) return ;
+      let elemCoords = elem.getBoundingClientRect();
+      span.style.left = elemCoords.left + 'px';
+      span.style.top = elemCoords.top + 'px';
+      span.style.height = elemCoords.height + 'px';
+      span.style.width = elemCoords.width + 'px';
+      span.style.display = 'block';
+    }
+    // 使用'mouseout'事件，当鼠标移出li元素，则隐藏span（移除效果）
+    /*menu.onmouseout = function(e) {
+      let elem = e.target.closest('li');
+      if (!elem) return ;
+      span.style.display = 'none';
+    }*/
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1619009534093</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版

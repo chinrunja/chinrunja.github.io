@@ -31,6 +31,7 @@
 		<li><a href="#Day 14">Day 14</a></li>
 		<li><a href="#Day 15">Day 15</a></li>
 		<li><a href="#Day 16">Day 16</a></li>
+		<li><a href="#Day 17">Day 17</a></li>
 		
 	</ul>
 	<hr>
@@ -1804,6 +1805,119 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1618900109804</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/21 updated -->
+
+	<h2 id="Day 17">Day 17</h2>
+	<h3>第一题</h3>
+	<p>You will be given an array of objects (hashes in ruby) representing data about developers who have signed up to attend the coding meetup that you are organising for the first time.</p>
+	<p>Your task is to return the number of JavaScript developers coming from Europe.</p>
+	<p>For example, given the following list:</p>
+	<pre><code class="language-javascript">
+	var list1 = [
+  		{ firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'JavaScript' },
+  		{ firstName: 'Maia', lastName: 'S.', country: 'Tahiti', continent: 'Oceania', age: 28, language: 'JavaScript' },
+  		{ firstName: 'Shufen', lastName: 'L.', country: 'Taiwan', continent: 'Asia', age: 35, language: 'HTML' },
+  		{ firstName: 'Sumayah', lastName: 'M.', country: 'Tajikistan', continent: 'Asia', age: 30, language: 'CSS' }
+	];
+	</code></pre>
+	<p>your function should return number 1.</p>
+	<p>If, there are no JavaScript developers from Europe then your function should return 0.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function countDevelopers(list) {
+		return list.filter(n => n.language == 'JavaScript' && n.continent == 'Europe').length;
+	}
+
+	// 高票方案
+	function countDevelopers(list) {
+  		return list.filter(x=>x.continent=='Europe'&&x.language=='JavaScript').length;
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Imagine that you have an array of 3 integers each representing a different person. Each number can be 0, 1, or 2 which represents the number of hands that person holds up.</p>
+	<p>Now imagine there is a sequence which follows these rules:</p>
+	<ul>
+		<li>None of the people have their arms raised at first</li>
+		<li>Firstly, a person raises 1 hand; then they raise the second hand; after that they put both hands down - these steps form a cycle</li>
+		<li>Person #1 performs these steps all the time, person #2 advances only after person #1 puts their hands down, and person #3 advances only after person #2 puts their hands down</li>
+	</ul>
+	<p>The first 10 steps of the sequence represented as a table are:</p>
+	<pre><code class="language-javascript">
+	Step   P1   P2   P3
+	--------------------
+ 	0     0    0    0
+ 	1     1    0    0
+ 	2     2    0    0
+ 	3     0    1    0
+ 	4     1    1    0
+ 	5     2    1    0
+ 	6     0    2    0
+ 	7     1    2    0
+ 	8     2    2    0
+ 	9     0    0    1
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	const getPositions = s => {
+  		let a0 = '012',
+      		a1 = '000111222',
+      		a2 = '0'.repeat(9)+'1'.repeat(9)+'2'.repeat(9);
+  		return [+a0[s % 3], +a1[s % 9], +a2[s % 27]];
+	}
+
+	// 高票方案
+	const getPositions = s => {
+  		return [(s % 3), Math.floor(s/3) % 3, Math.floor(s/9) % 3];
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>You know how sometimes you write the the same word twice in a sentence, but then don't notice that it happened? For example, you've been distracted for a second. Did you notice that "the" is doubled in the first sentence of this description?</p>
+	<p>As as aS you can see, it's not easy to spot those errors, especially if words differ in case, like "as" at the beginning of this sentence.</p>
+	<p>Write a function that counts the number of sections repeating the same word (case insensitive). The occurence of two or more equal words next after each other counts as one.</p>
+	<p>Examples: </p>
+	<pre><code class="language-javascript">
+	"dog cat"                  -->  0
+	"dog DOG cat"              -->  1
+	"apple dog cat"            -->  0
+	"pineapple apple dog cat"  -->  0
+	"apple     apple dog cat"  -->  1
+	"apple dog apple dog cat"  -->  0
+	"dog dog DOG dog dog dog"  -->  1
+	"dog dog dog dog cat cat"  -->  2
+	"cat cat dog dog cat cat"  -->  3
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function countAdjacentPairs(s) {
+  		s = s.split(' ').map(v => v.toLowerCase());
+  		let count = 0,
+  			len = s.length;
+
+  		for (let i = 0; i < len; i++) {
+    		let flag;
+    		for (let j = i; j < len; j++) {
+      			if (s[j] != s[j+1]) {
+        			flag = j;
+        			break;
+      			}
+      			continue;
+    		}
+    		if (i != flag) count++;
+    		i = flag;
+  		}
+    
+  		return count;
+	}
+
+	// 高票方案
+	const countAdjacentPairs=(s)=>(s.match(/(\b\w+\s*\b)\1+/gi)||[]).length;
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1618974287941</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
