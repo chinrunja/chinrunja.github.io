@@ -32,6 +32,7 @@
 		<li><a href="#Day 15">Day 15</a></li>
 		<li><a href="#Day 16">Day 16</a></li>
 		<li><a href="#Day 17">Day 17</a></li>
+		<li><a href="#Day 18">Day 18</a></li>
 		
 	</ul>
 	<hr>
@@ -1741,7 +1742,9 @@
 
 	<h3>第二题</h3>
 	<p>John has invited some friends. His list is:</p>
-	<P>s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";</P>
+	<P>s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;<br>
+	Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;<br>
+	Alfred:Corwill";</P>
 	<P>Could you make a program that</P>
 	<P>1. makes this string uppercase</P>
 	<P>2. gives it sorted in alphabetical order by last name.</P>
@@ -1918,6 +1921,91 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1618974287941</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/22 updated -->
+
+	<h2 id="Day 18">Day 18</h2>
+	<h3>第一题</h3>
+	<p>Given a sequence of integers, return the sum of all the integers that have an even index, multiplied by the integer at the last index.</p>
+	<p>If the sequence is empty, you should return 0.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function evenLast(numbers) {
+  		return numbers
+    		.filter((v, i) => i % 2 == 0)
+    		.reduce((sum, v) => sum + v, 0) * numbers[numbers.length - 1] || 0;
+	}
+
+	// 高票方案
+	const evenLast = n => n.reduce((p, c, i) => i % 2 ? p : p + c, 0) * n[n.length - 1] || 0;
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>In a factory a printer prints labels for boxes. The printer uses colors which, for the sake of simplicity, are named with letters from a to z (except letters u, w, x or z that are for errors).</p>
+	<p>The colors used by the printer are recorded in a control string. For example a control string would be aaabbbbhaijjjm meaning that the printer used three times color a, four times color b, one time color h then one time color a... and so on.</p>
+	<p>Sometimes there are problems: lack of colors, technical malfunction and a control string is produced e.g. uuaaaxbbbbyyhwawiwjjjwwxym where errors are reported with letters u, w, x or z.</p>
+	<p>You have to write a function hist which given a string will output the errors as a string representing a histogram of the encountered errors.</p>
+	<p>Format of the output string:</p>
+	<p>letter (error letters are sorted in alphabetical order) in a field of 2 characters, a white space, number of error for that letter in a field of 6, as many "*" as the number of errors for that letter and "\r" (or "\n" depending on the langauge).</p>
+	<p>The string has a length greater or equal to one and contains only letters from a to z.</p>
+	<p>Examples:</p>
+	<p>s="uuaaaxbbbbyyhwawiwjjjwwxym"<br>
+	hist(s) => "u  2     **\rw  5     *****\rx  2     **"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function hist(s) {
+    	let print = '';
+    	let obj = {u: 0, w: 0, x: 0, z: 0};
+    	for (let char of s) {
+        	if (obj[char] != null) obj[char]++;
+    	}
+    	let keys = Object.keys(obj).filter(v => obj[v] != 0);
+    	for (let key of keys) {
+        	let str = key + "  " + obj[key] + " ".repeat(5) + "*".repeat(obj[key]);
+        	if (key != keys[keys.length - 1]) print += str + "\r";
+        	else  print += str;
+        
+    	}
+    	return print;
+	}
+
+	// 高票方案
+	function hist(s) {
+  		const u = s.match(/u/g);
+  		const w = s.match(/w/g);
+  		const x = s.match(/x/g);
+  		const z = s.match(/z/g);
+
+  		const results = [];
+  		if (u) results.push(`u  ${u.length}     ${'*'.repeat(u.length)}`);
+  		if (w) results.push(`w  ${w.length}     ${'*'.repeat(w.length)}`);
+  		if (x) results.push(`x  ${x.length}     ${'*'.repeat(x.length)}`);
+  		if (z) results.push(`z  ${z.length}     ${'*'.repeat(z.length)}`);
+  		return results.join(`\r`);
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Given an array of numbers (in string format), you must return a string. The numbers correspond to the letters of the alphabet in reverse order: a=26, z=1 etc. You should also account for '!', '?' and ' ' that are represented by '27', '28' and '29' respectively.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function switcher(x){
+  		let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  		alphabet = alphabet.split("").reverse().join("")+'!? ';
+  
+  		let str = '';
+  		x.forEach(v => str += alphabet[+v - 1]);
+  
+  		return str;
+	}
+
+	// 高票方案
+	const alpha = ' zyxwvutsrqponmlkjihgfedcba!? '
+	const switcher = x => x.map(item => alpha[item]).join('')
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619057470569</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版

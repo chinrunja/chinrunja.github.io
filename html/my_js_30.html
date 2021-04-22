@@ -40,6 +40,7 @@
 		<li><a href="#Speech Detection">第二十天： Speech Detection</a></li>
 		<li><a href="#Geolocation">第二十一天： Geolocation</a></li>
 		<li><a href="#Follow Along Link Highliter">第二十二天： Follow Along Link Highliter</a></li>
+		<li><a href="#Speech Synthesis">第二十三天： Speech Synthesis</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -1120,8 +1121,8 @@
       // 事件委托
       if (!elem) return ;
       let elemCoords = elem.getBoundingClientRect();
-      span.style.left = elemCoords.left + 'px';
-      span.style.top = elemCoords.top + 'px';
+      span.style.left = elemCoords.left + window.pageXOffset + 'px';
+      span.style.top = elemCoords.top + window.pageYOffset + 'px';
       span.style.height = elemCoords.height + 'px';
       span.style.width = elemCoords.width + 'px';
       span.style.display = 'block';
@@ -1141,6 +1142,38 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1619009534093</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-22 updated -->
+
+	<h2 id="Speech Synthesis">第二十三天： Speech Synthesis</h2>
+	<p>查看我的<a href="../js30/day_23/index-START.html">完成示例</a></p>
+	<h3>今天这个示例主要是使用Speech Synthesis API朗读文字，指南已给出代码，我稍微修改了一下</h3>
+	<pre><code class="language-javascript">
+	// 指南给出的朗读文字如下：
+	// msg.text = '你能说中文吗';
+
+	// 修改如下：--朗读textarea的文字
+	const msgText = document.querySelector('textarea');
+
+	msgText.onfocus = () => msgText.value = "";
+  	msgText.onblur = () => msgText.value ? null : msgText.value = "在此处输入朗读的文字";
+
+  	function speak() {
+  		// 将输入的文字赋值给朗读API
+    	msg.text = msgText.value;
+    	console.log(voicesDropdown.value);
+    	synth.speak(msg);
+  	}
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: </em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版

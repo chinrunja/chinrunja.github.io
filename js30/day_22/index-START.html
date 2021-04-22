@@ -36,8 +36,8 @@
       let elem = e.target.closest('li');
       if (!elem) return ;
       let elemCoords = elem.getBoundingClientRect();
-      span.style.left = elemCoords.left + 'px';
-      span.style.top = elemCoords.top + 'px';
+      span.style.left = elemCoords.left + window.pageXOffset + 'px';
+      span.style.top = elemCoords.top + window.pageYOffset + 'px';
       span.style.height = elemCoords.height + 'px';
       span.style.width = elemCoords.width + 'px';
       span.style.display = 'block';

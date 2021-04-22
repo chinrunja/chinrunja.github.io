@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Synthesis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="voiceinator">
+
+      <h1>The Voiceinator 5000</h1>
+
+      <select name="voice" id="voices">
+        <option value="">Select A Voice</option>
+      </select>
+
+      <label for="rate">Rate:</label>
+      <input name="rate" type="range" min="0" max="3" value="1" step="0.1">
+
+      <label for="pitch">Pitch:</label>
+
+      <input name="pitch" type="range" min="0" max="2" step="0.1">
+      <textarea name="text">在此处输入朗读的文字</textarea>
+      <button id="stop">Stop!</button>
+      <button id="speak">Speak</button>
+
+    </div>
+
+<script>
+  const synth = window.speechSynthesis;
+  const msg = new SpeechSynthesisUtterance();
+  const voicesDropdown = document.querySelector('[name="voice"]');
+  const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const speakButton = document.querySelector('#speak');
+  const stopButton = document.querySelector('#stop');
+  const msgText = document.querySelector('textarea');
+  let voices = [];
+  // msg.text = '你能说中文吗';
+
+  function getSupportVoice() {
+    voices = synth.getVoices();
+    for (let i = 0; i < voices.length; i++) {
+      var option = document.createElement('option');
+      option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+      if (voices[i].default) {
+        option.textContent += ' -- DEFAULT';
+      }
+
+      option.setAttribute('data-lang', voices[i].lang);
+      option.setAttribute('data-name', voices[i].name);
+      voicesDropdown.append(option);
+    }
+  }
+
+  msgText.onfocus = () => msgText.value = "";
+  msgText.onblur = () => msgText.value ? null : msgText.value = "在此处输入朗读的文字";
+
+  function speak() {
+    msg.text = msgText.value;
+    console.log(voicesDropdown.value);
+    synth.speak(msg);
+  }
+
+  function paramChange() {
+    msg[this.name] = this.value;
+  }
+
+  function stopSpeak() {
+    synth.cancel();
+  }
+
+  options.forEach(opt => opt.addEventListener('change', paramChange));
+  synth.addEventListener('voiceschanged', getSupportVoice);
+  speakButton.addEventListener('click', speak);
+  stopButton.addEventListener('click', stopSpeak);
+</script>
+
+</body>
+</html>
