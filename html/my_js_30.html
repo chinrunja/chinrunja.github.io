@@ -41,6 +41,7 @@
 		<li><a href="#Geolocation">第二十一天： Geolocation</a></li>
 		<li><a href="#Follow Along Link Highliter">第二十二天： Follow Along Link Highliter</a></li>
 		<li><a href="#Speech Synthesis">第二十三天： Speech Synthesis</a></li>
+		<li><a href="#Sticky Nav">第二十四天： Sticky Nav</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -1173,7 +1174,36 @@
 		<li>网页美化</li>
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
-	<label>更新于 <em>timestamp: </em> __chinrunja</label>
+	<label>更新于 <em>timestamp: 1619096073856</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-23 updated -->
+
+	<h2 id="Sticky Nav">第二十四天： Sticky Nav</h2>
+	<p>查看我的<a href="../js30/day_24/index-START.html">完成示例</a></p>
+	<h3>今天这个示例主要是监控页面滚动，当页面滚动到达Nav的位置时，更改Nav的position为fixed，使Nav贴在窗口上方</h3>
+	<pre><code class="language-javascript">
+	let changePoint = oNav.offsetTop;
+
+  	function adjustNav() {
+   		// window.scrollY == window.pageYOffset;
+    	if (window.scrollY >= changePoint) {
+      		oNav.className = 'fixed-nav';
+      		oLogo.style['max-width'] = '200px';
+    	} else {
+      		oNav.className = '';
+      		oLogo.style['max-width'] = '0';
+    	}
+  	}
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1619182342074</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版
