@@ -34,6 +34,7 @@
 		<li><a href="#Day 17">Day 17</a></li>
 		<li><a href="#Day 18">Day 18</a></li>
 		<li><a href="#Day 19">Day 19</a></li>
+		<li><a href="#Day 20">Day 20</a></li>
 		
 	</ul>
 	<hr>
@@ -2119,6 +2120,78 @@
 	<label>更新于 <em>timestamp: 1619144896804</em> __chinrunja</label>
 	<hr>
 
+	<!-- 2021/04/24 updated -->
+
+	<h2 id="Day 20">Day 20</h2>
+	<h3>第一题</h3>
+	<p>This series of katas will introduce you to basics of doing geometry with computers.</p>
+	<p>Point objects have x and y attributes (X and Y in C#) attributes.</p>
+	<p>Write a function calculating distance between Point a and Point b.</p>
+	<p>Tests round answers to 6 decimal places.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function distanceBetweenPoints(a, b) {
+  		return +Math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2).toFixed(6);
+	}
+
+	// 高票方案
+	function distanceBetweenPoints(a, b) {
+  		return Math.hypot(a.x - b.x, a.y - b.y);
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function removeChar(str){
+  		return str.slice(1, str.length - 1);
+	}
+
+	// 高票方案
+	function removeChar(str) {
+  		return str.slice(1, -1);
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Make me a window. I'll give you a number (N). You return a window.</p>
+	<p>The window will always be 2 x 2.</p>
+	<p>The window needs to have N number of periods across and N number of periods vertically in each pane.</p>
+	<p>Note: there should be no trailing new line characters at the end.</p>
+	<pre><code class="language-javascript">
+	N = 3
+
+	---------
+	|...|...|
+	|...|...|
+	|...|...|
+	|---+---|
+	|...|...|
+	|...|...|
+	|...|...|
+	---------
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function makeAWindow(num) {
+    	let upFrame = "-".repeat(num * 2 + 3) + "\n";
+    	let interFrame = ("|" + ".".repeat(num)).repeat(2) + "|\n";
+    	let midFrame = "|" + "-".repeat(num) + "+" + "-".repeat(num) + "|\n";
+    	return upFrame + interFrame.repeat(num) + midFrame + interFrame.repeat(num) + upFrame.slice(0, -1);
+	}
+
+	// 高票方案
+	function makeAWindow(num) {
+    	var side = `|${'.'.repeat(num)}|${'.'.repeat(num)}|\n`.repeat(num)
+    	var centre = `|${'-'.repeat(num)}+${'-'.repeat(num)}|\n`
+    	return '-'.repeat(num * 2 + 3) + '\n' + side + centre + side + '-'.repeat(num * 2 + 3) 
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619233390085</em> __chinrunja</label>
+	<hr>
+	
 	<!-- 2021/xx/xx updated --更新模版
 
 	<h2 id="Day xx">Day xx</h2>

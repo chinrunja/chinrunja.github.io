@@ -42,6 +42,7 @@
 		<li><a href="#Follow Along Link Highliter">第二十二天： Follow Along Link Highliter</a></li>
 		<li><a href="#Speech Synthesis">第二十三天： Speech Synthesis</a></li>
 		<li><a href="#Sticky Nav">第二十四天： Sticky Nav</a></li>
+		<li><a href="#Understanding JavaScript's Capture">第二十五天： Understanding JavaScript's Capture</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -1204,6 +1205,42 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1619182342074</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-24 updated -->
+
+	<h2 id="Understanding JavaScript's Capture">第二十五天： Understanding JavaScript's Capture</h2>
+	<p>查看我的<a href="../js30/day_25/index-START.html">完成示例</a></p>
+	<h3>今天这个示例主要是理解事件监控的捕获和冒泡</h3>
+	<pre><code class="language-javascript">
+    let divs = document.querySelectorAll('div');
+
+    // 捕获阶段
+    divs.forEach(div => div.addEventListener('click', logText, {
+        once: false,
+        capture: true
+    }));
+
+    // 冒泡阶段
+    divs.forEach(div => div.addEventListener('click', logText));
+
+    function logText(e) {
+    	console.log(this.className);
+        // console.log(this.classList.value);
+        let p = document.createElement('p');
+        p.textContent = `Capture => ${this.outerHTML} is clicked`;
+        document.body.append(p);
+        // e.stopPropagation();
+    }
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1619267639996</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版
