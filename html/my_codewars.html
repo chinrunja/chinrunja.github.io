@@ -35,6 +35,7 @@
 		<li><a href="#Day 18">Day 18</a></li>
 		<li><a href="#Day 19">Day 19</a></li>
 		<li><a href="#Day 20">Day 20</a></li>
+		<li><a href="#Day 21">Day 21</a></li>
 		
 	</ul>
 	<hr>
@@ -2192,6 +2193,149 @@
 	<label>更新于 <em>timestamp: 1619233390085</em> __chinrunja</label>
 	<hr>
 	
+	<!-- 2021/04/25 updated -->
+
+	<h2 id="Day 21">Day 21</h2>
+	<h3>第一题</h3>
+	<p>This kata is the first of a sequence of four about "Squared Strings".</p>
+	<p>You are given a string of n lines, each substring being n characters long: For example:</p>
+	<p>s = "abcd\nefgh\nijkl\nmnop"</p>
+	<p>We will study some transformations of this square of strings.</p>
+	<ul>
+		<li>Vertical mirror: vert_mirror (or vertMirror or vert-mirror)
+		<p>vert_mirror(s) => "dcba\nhgfe\nlkji\nponm"</p></li>
+		<li>Horizontal mirror: hor_mirror (or horMirror or hor-mirror)
+		<p>hor_mirror(s) => "mnop\nijkl\nefgh\nabcd"</p></li>
+	</ul>
+	<p>Write these two functions</p>
+	<p>high-order function oper(fct, s) where</p>
+	<p>fct is the function of one variable f to apply to the string s (fct will be one of vertMirror, horMirror)</p>
+	<p>s = "abcd\nefgh\nijkl\nmnop"</p>
+	<p>oper(vert_mirror, s) => "dcba\nhgfe\nlkji\nponm"</p>
+	<p>oper(hor_mirror, s) => "mnop\nijkl\nefgh\nabcd"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function vertMirror(strng) {
+    	return strng.split('\n').map(v => v.split("").reverse().join("")).join('\n');
+	}
+	function horMirror(strng) {
+    	return strng.split('\n').reverse().join('\n');
+	}
+	function oper(fct, s) {
+	    return fct(s);
+	}
+
+	// 高票方案
+	const vertMirror = s => s.map(s => [...s].reverse().join(''));
+	const horMirror = s => s.reverse();
+
+	const oper = (fct, s) => fct(s.split("\n")).join("\n");
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.</p>
+	<p>The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds.</p>
+	<p>It is much easier to understand with an example:</p>
+	<p>formatDuration(62)    // returns "1 minute and 2 seconds"</p>
+	<p>formatDuration(3662)  // returns "1 hour, 1 minute and 2 seconds"</p>
+	<p>For the purpose of this Kata, a year is 365 days and a day is 24 hours.</p>
+	<p>Note that spaces are important.</p>
+	<p>Detailed rules</p>
+	<p>The resulting expression is made of components like 4 seconds, 1 year, etc. In general, a positive integer and one of the valid units of time, separated by a space. The unit of time is used in plural if the integer is greater than 1.</p>
+	<p>The components are separated by a comma and a space (", "). Except the last component, which is separated by " and ", just like it would be written in English.</p>
+	<p>A more significant units of time will occur before than a least significant one. Therefore, 1 second and 1 year is not correct, but 1 year and 1 second is.</p>
+	<p>Different components have different unit of times. So there is not repeated units like in 5 seconds and 1 second.</p>
+	<p>A component will not appear at all if its value happens to be zero. Hence, 1 minute and 0 seconds is not valid, but it should be just 1 minute.</p>
+	<p>A unit of time must be used "as much as possible". It means that the function should not return 61 seconds, but 1 minute and 1 second instead. Formally, the duration specified by of a component must not be greater than any valid more significant unit of time.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function formatDuration (seconds) {
+    	if (!seconds) return 'now';
+	  	let time = {year: 0, day: 0, hour: 0, minute: 0, second: 0};
+    	let yearSeconds = 365 * 24 * 3600;
+    	time.year = Math.floor(seconds / yearSeconds);
+    	time.day = Math.floor(seconds % yearSeconds / (yearSeconds / 365));
+    	time.hour = Math.floor(seconds % (yearSeconds / 365) / 3600);
+    	time.minute = Math.floor(seconds % 3600 / 60);
+    	time.second = seconds % 60;
+    
+    	let print = "", temp = [];
+    
+    	for (let key of Object.keys(time)) {
+        	if (time[key] == 1) temp.push(time[key] + " " + key);
+        	if (time[key] > 1) temp.push(time[key] + " " + key + "s");
+    	}
+    
+    	let len = temp.length;
+    	if (len == 1) print = String(temp);
+    	if (len == 2) print = temp.join(" and ");
+    	if (len >= 3) print = temp.slice(0, -2).join(", ") + ", " + temp.slice(-2).join(' and ');
+    
+    	return print;
+	}
+
+	// 高票方案
+	function formatDuration (seconds) {
+  		var time = { year: 31536000, day: 86400, hour: 3600, minute: 60, second: 1 },
+      		res = [];
+
+  		if (seconds === 0) return 'now';
+  
+  		for (var key in time) {
+    		if (seconds >= time[key]) {
+      			var val = Math.floor(seconds/time[key]);
+      			res.push(val += val > 1 ? ' ' + key + 's' : ' ' + key);
+      			seconds = seconds % time[key];
+    		}
+  		}
+ 
+  		return res.length > 1 ? res.join(', ').replace(/,([^,]*)$/,' and'+'$1') : res[0]
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Let us begin with an example:</p>
+	<p>Take a number: 56789. Rotate left, you get 67895.</p>
+	<p>Keep the first digit in place and rotate left the other digits: 68957.</p>
+	<p>Keep the first two digits in place and rotate the other ones: 68579.</p>
+	<p>Keep the first three digits and rotate left the rest: 68597. Now it is over since keeping the first four it remains only one digit which rotated is itself.</p>
+	<p>You have the following sequence of numbers:</p>
+	<p>56789 -> 67895 -> 68957 -> 68579 -> 68597</p>
+	<p>and you must return the greatest: 68957.</p>
+	<p>Write function max_rot(n) which given a positive integer n returns the maximum number you got doing rotations similar to the above example.</p>
+	<p>So max_rot (or maxRot or ... depending on the language) is such as:</p>
+	<p>max_rot(56789) should return 68957</p>
+	<p>max_rot(38458215) should return 85821534</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function maxRot(n) {
+	  	let rotArr = [n];
+    	let arr = String(n).split("");
+    
+    	arr.forEach((v, i) => {
+        	let s = arr.splice(i, 1);
+        	arr.push(s);
+        	rotArr.push(+arr.join(""));
+    	});
+    
+    	return Math.max(...rotArr);
+	}
+
+	// 高票方案
+	function maxRot(n) {
+    	var str = n.toString();
+    	var arr = [str];
+    	for (var i=0;i<=str.length-1 ;i++){
+        	str = str.slice(0,i)+str.slice(i+1)+str[i];
+        	arr.push(str.split().join());
+    	}
+    	return Math.max.apply(null, arr);
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619321339458</em> __chinrunja</label>
+	<hr>
+
 	<!-- 2021/xx/xx updated --更新模版
 
 	<h2 id="Day xx">Day xx</h2>
