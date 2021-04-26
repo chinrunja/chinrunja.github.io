@@ -36,6 +36,7 @@
 		<li><a href="#Day 19">Day 19</a></li>
 		<li><a href="#Day 20">Day 20</a></li>
 		<li><a href="#Day 21">Day 21</a></li>
+		<li><a href="#Day 22">Day 22</a></li>
 		
 	</ul>
 	<hr>
@@ -2334,6 +2335,84 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1619321339458</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/26 updated -->
+
+	<h2 id="Day 22">Day 22</h2>
+	<h3>第一题</h3>
+	<p>Your task is to write function factorial</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function factorial(n){
+  		return n == 0 ? 1 : n * factorial(n - 1);
+	}
+
+	// 高票方案
+	const factorial = n => n ? factorial(n - 1) * n : 1;
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Create a function that returns the average of an array of numbers ("scores"), rounded to the nearest whole number. You are not allowed to use any loops (including for, for/in, while, and do/while loops).</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function average(scores) {
+    	return Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+	}
+
+	// 高票方案
+	function average(scores) {
+  		return Math.round(scores.reduce((x, y) => x+y, 0) / scores.length)
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>You are given a string of n lines, each substring being n characters long: For example:</p>
+	<p>s = "abcd\nefgh\nijkl\nmnop"</p>
+	<p>We will study some transformations of this square of strings.</p>
+	<ul>
+		<li>Clock rotation 180 degrees: rot
+		<p>rot(s) => "ponm\nlkji\nhgfe\ndcba"</p>
+		</li>
+		<li>selfie_and_rot(s) (or selfieAndRot or selfie-and-rot) It is initial string + string obtained by clock rotation 180 degrees with dots interspersed in order (hopefully) to better show the rotation when printed.
+		<p>s = "abcd\nefgh\nijkl\nmnop" --> "abcd....\nefgh....\nijkl....\nmnop....\n....ponm\n....lkji\n....hgfe\n....dcba"</p>
+		</li>
+	</ul>
+	<p>Write these two functions rotand selfie_and_rot</p>
+	<p>high-order function oper(fct, s) where</p>
+	<p>fct is the function of one variable f to apply to the string s (fct will be one of rot, selfie_and_rot)</p>
+	<p>Examples:</p>
+	<p>s = "abcd\nefgh\nijkl\nmnop"</p>
+	<p>oper(rot, s) => "ponm\nlkji\nhgfe\ndcba"</p>
+	<p>oper(selfie_and_rot, s) => "abcd....\nefgh....\nijkl....\nmnop....\n....ponm\n....lkji\n....hgfe\n....dcba"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function rot(strng) {
+    	return strng.split('\n').reverse().map(a => a.split('').reverse().join('')).join('\n');
+	}
+	function selfieAndRot(strng) {;
+    	let s = strng.split('\n');
+    	return (s.map(str => str + ".".repeat(str.length)).join('\n') + '\n' + s.reverse().map(str => ".".repeat(str.length) + str.split('').reverse().join('')).join('\n'));
+	}
+	function oper(fct, s) {
+    	return fct(s);
+	}
+
+	// 高票方案
+	function rot(s) {
+  		return s.split("").reverse().join("");
+	}
+
+	function selfieAndRot(s) {
+  		return (s = s.replace(/.+/g, t => t + t.replace(/./g, "."))) + "\n" + rot(s);
+	}
+
+	function oper(fn, s) {
+  		return fn(s);
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619404549916</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
