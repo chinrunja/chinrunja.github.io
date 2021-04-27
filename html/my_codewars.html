@@ -37,6 +37,7 @@
 		<li><a href="#Day 20">Day 20</a></li>
 		<li><a href="#Day 21">Day 21</a></li>
 		<li><a href="#Day 22">Day 22</a></li>
+		<li><a href="#Day 23">Day 23</a></li>
 		
 	</ul>
 	<hr>
@@ -2413,6 +2414,87 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1619404549916</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/27 updated -->
+
+	<h2 id="Day 23">Day 23</h2>
+	<h3>第一题</h3>
+	<p>Given a string of words, you need to find the highest scoring word.</p>
+	<p>Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.</p>
+	<p>You need to return the highest scoring word as a string.</p>
+	<p>If two words score the same, return the word that appears earliest in the original string.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function high(x){
+    	let alphabet = "abcdefghijklmnopqrstuvwxyz";
+	  	let arr = x.split(" ");
+    	let points = arr.map(str => str.split("").reduce((sum, char) => sum + alphabet.indexOf(char) + 1, 0));
+  
+    	return arr[points.indexOf(Math.max(...points))];
+	}
+
+
+	// 高票方案
+	function high(s){
+  		let as = s.split(' ').map(s=>[...s].reduce((a,b)=>a+b.charCodeAt(0)-96,0));
+  		return s.split(' ')[as.indexOf(Math.max(...as))];
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<p>Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:</p>
+	<p>domainName("http://github.com/carbonfive/raygun") == "github"</p>
+	<p>domainName("http://www.zombie-bites.com") == "zombie-bites"</p>
+	<p>domainName("https://www.cnet.com") == "cnet"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function domainName(url){
+	  	let arr = url.split('//');
+    	if (arr[1]) {
+        	let domain = arr[1].split('.');
+        	return domain[0] == 'www' ? domain[1] : domain[0];
+    	}
+    	let domain = arr[0].split('.');
+    	return domain[0] == 'www' ? domain[1] : domain[0];
+	}
+
+	// 高票方案
+	function domainName(url){
+  		url = url.replace("https://", '');
+  		url = url.replace("http://", '');
+  		url = url.replace("www.", '');
+  		return url.split('.')[0];
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<p>Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case).</p>
+	<p>Examples:</p>
+	<p>"the-stealth-warrior" gets converted to "theStealthWarrior"</p>
+	<p>"The_Stealth_Warrior" gets converted to "TheStealthWarrior"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function toCamelCase(str) {
+    	if (!str) return '';
+    	str = str.replace(/-/g, ' ');
+    	str = str.replace(/_/g, ' ');
+	  
+    	return str.split(" ").map((s, i) => {
+        	return i == 0 ? s : s[0].toUpperCase() + s.slice(1);
+    	}).join('');
+	}
+
+	// 高票方案
+	function toCamelCase(str){
+      	var regExp=/[-_]\w/ig;
+      	return str.replace(regExp,function(match){
+            return match.charAt(1).toUpperCase();
+       	});
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619488030342</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版

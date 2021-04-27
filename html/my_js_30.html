@@ -45,6 +45,7 @@
 		<li><a href="#Understanding JavaScript's Capture">第二十五天： Understanding JavaScript's Capture</a></li>
 		<li><a href="#Follow Along Nav">第二十六天： Follow Along Nav</a></li>
 		<li><a href="#Click And Drag">第二十七天： Click And Drag</a></li>
+		<li><a href="#Video Speed Controller">第二十八天： Video Speed Controller</a></li>
 		<!-- <li><a href="#xx">第xx天： xx</a></li> -->
 		
 	</ol>
@@ -1308,6 +1309,39 @@
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
 	<label>更新于 <em>timestamp: 1619437481503</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021-04-27 updated -->
+
+	<h2 id="Video Speed Controller">第二十八天： Video Speed Controller</h2>
+	<p><a href="../js30/day_28/index-START.html">示例</a></p>
+	<h3>今天的示例主要是实现点击切换播放速度，指南已给出完整代码</h3>
+	<pre><code class="language-javascript">
+	const speed = document.querySelector(".speed");
+	const speedBar = speed.querySelector(".speed-bar");
+	const video = document.querySelector(".flex");
+
+	function changeSpeed(e) {
+		let height = e.offsetY;
+		let percentage = e.offsetY / speed.offsetHeight;
+		let min = 0.5;
+		let max = 5;
+		let playbackRate = percentage * (max - min) + min;
+		speedBar.style.height = Math.round(percentage*100) + '%';
+		speedBar.textContent = playbackRate.toFixed(2) + 'x';
+		video.playbackRate = playbackRate;
+	}
+
+	speed.addEventListener('click', changeSpeed);
+	</code></pre>
+
+	<h3>ToDo & Thought</h3>
+	<ol>
+		<li>每天完成一个项目示例</li>
+		<li>网页美化</li>
+		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
+	</ol>
+	<label>更新于 <em>timestamp: 1619523673762</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-xx-xx updated --更新模版
