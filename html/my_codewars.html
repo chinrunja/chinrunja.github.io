@@ -38,6 +38,7 @@
 		<li><a href="#Day 21">Day 21</a></li>
 		<li><a href="#Day 22">Day 22</a></li>
 		<li><a href="#Day 23">Day 23</a></li>
+		<li><a href="#Day 24">Day 24</a></li>
 		
 	</ul>
 	<hr>
@@ -46,6 +47,7 @@
 
 	<h2 id="Day 01">Day 01</h2>
 	<h3>第一题</h3>
+	<h4>Filter out the geese</h4>
 	<p>Write a function, gooseFilter / goose-filter / goose_filter / GooseFilter, that takes an array of strings as an argument and returns a filtered array containing the same elements but with the 'geese' removed.
 	The geese are any strings in the following array, which is pre-populated in your solution:</p>
 	<pre><code class="language-javascript">
@@ -79,6 +81,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Who likes it?</h4>
 	<p>You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.</p>
 	<p>Implement a function likes :: [String] -> String, which must take in input array, containing the names of people who like an item. It must return the display text as shown in the examples:</p>
 	<pre><code class="language-javascript">
@@ -119,6 +122,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Disemvowel Trolls</h4>
 	<p>Trolls are attacking your comment section!</p>
 	<p>A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.</p>
 	<p>Your task is to write a function that takes a string and return a new string with all vowels removed.</p>
@@ -149,6 +153,7 @@
 
 	<h2 id="Day 02">Day 02</h2>
 	<h3>第一题</h3>
+	<h4>Complementary DNA</h4>
 	<p>Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.</p>
 	<p>In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).</p>
 	<pre><code class="language-javascript">
@@ -188,6 +193,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Growth of a Population</h4>
 	<p>In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?</p>
 	<pre><code class="language-javascript">
 	At the end of the first year there will be: 
@@ -231,6 +237,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Two to One</h4>
 	<p>Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.</p>
 	<p>Examples:</p>
 	<pre><code class="language-javascript">
@@ -263,6 +270,7 @@
 
 	<h2 id="Day 03">Day 03</h2>
 	<h3>第一题</h3>
+	<h4>Sum of Digits / Digital Root</h4>
 	<p>Digital root is the recursive sum of all the digits in a number.</p>
 	<p>Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.</p>
 	<pre><code class="language-javascript">
@@ -293,6 +301,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Detect Pangram</h4>
 	<p>A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).</p>
 	<p>Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.</p>
 	<pre><code class="language-javascript">
@@ -324,6 +333,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Multiples of 3 or 5</h4>
 	<p>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.</p>
 	<p>Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.</p>
 	<p>Note: If the number is a multiple of both 3 and 5, only count it once. Also, if a number is negative, return 0(for languages that do have them)</p>
@@ -366,6 +376,7 @@
 
 	<h2 id="Day 04">Day 04</h2>
 	<h3>第一题</h3>
+	<h4>Playing with digits</h4>
 	<p>Some numbers have funny properties. For example:</p>
 	<p>89 --> 8¹ + 9² = 89 * 1</p>
 	<p>695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2</p>
@@ -405,6 +416,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Stop gninnipS My sdroW!</h4>
 	<p>Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed (like the name of this kata).</p>
 	<ul>
 		<li>Strings passed in will consist of only letters and spaces.</li>
@@ -437,6 +449,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Rot13</h4>
 	<p>ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.</p>
 	<p>Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".</p>
 	<pre><code class="language-javascript">
@@ -469,6 +482,7 @@
 
 	<h2 id="Day 05">Day 05</h2>
 	<h3>第一题</h3>
+	<h4>Bouncing Balls</h4>
 	<p>A child is playing with a ball on the nth floor of a tall building. The height of this floor, h, is known.</p>
 	<p>He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).</p>
 	<p>His mother looks out of a window 1.5 meters from the ground.</p>
@@ -511,6 +525,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Take a Number And Sum Its Digits Raised To The Consecutive Powers And ....¡Eureka!!</h4>
 	<p>The number 89 is the first integer with more than one digit that fulfills the property partially introduced in the title of this kata. What's the use of saying "Eureka"? Because this sum gives the same number.</p>
 	<p>In effect: 89 = 8^1 + 9^2</p>
 	<p>The next number in having this property is 135.</p>
@@ -548,6 +563,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>PaginationHelper</h4>
 	<p>For this exercise you will be strengthening your page-fu mastery. You will complete the PaginationHelper class, which is a utility class helpful for querying paging information related to an array.</p>
 	<p>The class is designed to take in an array of values and an integer indicating how many items will be allowed per each page. The types of values contained within the collection/array are not relevant.</p>
 	<p>The following are some examples of how this class is used:</p>
@@ -625,6 +641,7 @@
 
 	<h2 id="Day 06">Day 06</h2>
 	<h3>第一题</h3>
+	<h4>Sum of Intervals</h4>
 	<p>Write a function called sumIntervals/sum_intervals() that accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.</p>
 	<p><strong>Intervals</strong></p>
 	<p>Intervals are represented by a pair of integers in the form of an array. The first value of the interval will always be less than the second value. Interval example: [1, 5] is an interval from 1 to 5. The length of this interval is 4.</p>
@@ -689,6 +706,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Integers: Recreation One</h4>
 	<p>1, 246, 2, 123, 3, 82, 6, 41 are the divisors of number 246. Squaring these divisors we get: 1, 60516, 4, 15129, 9, 6724, 36, 1681. The sum of these squares is 84100 which is 290 * 290.</p>
 	<p><strong>Task</strong></p>
 	<p>Find all integers between m and n (m and n integers such as 1 <= m <= n) such that the sum of their squared divisors is itself a square.</p>
@@ -753,6 +771,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Find the odd int</h4>
 	<p>Given an array of integers, find the one that appears an odd number of times.</p>
 	<p>There will always be only one integer that appears an odd number of times.</p>
 	<pre><code class="language-javascript">
@@ -800,6 +819,7 @@
 
 	<h2 id="Day 07">Day 07</h2>
 	<h3>第一题</h3>
+	<h4>Weight for weight</h4>
 	<p>My friend John and I are members of the "Fat to Fit Club (FFC)". John is worried because each month a list with the weights of members is published and each month he is the last on the list which means he is the heaviest.</p>
 	<p>I am the one who establishes the list so I told him: "Don't worry any more, I will modify the order of the list". It was decided to attribute a "weight" to numbers. The weight of a number will be from now on the sum of its digits.</p>
 	<p>For example 99 will have "weight" 18, 100 will have "weight" 1 so in the list 100 will come before 99.</p>
@@ -844,6 +864,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Where my anagrams at?</h4>
 	<p>What is an anagram? Well, two words are anagrams of each other if they both contain the same letters. For example:</p>
 	<p>'abba' & 'baab' == true<br>
 	'abba' & 'bbaa' == true<br>
@@ -887,6 +908,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Human Readable Time</h4>
 	<p>Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)</p>
 	<ul>
 		<li>HH = hours, padded to 2 digits, range: 00 - 99</li>
@@ -924,6 +946,7 @@
 
 	<h2 id="Day 08">Day 08</h2>
 	<h3>第一题</h3>
+	<h4>Pick peaks</h4>
 	<p>In this kata, you will write a function that returns the positions and the values of the "peaks" (or local maxima) of a numeric array.</p>
 	<p>For example, the array arr = [0, 1, 2, 5, 1, 0] has a peak at position 3 with a value of 5 (since arr[3] equals 5).</p>
 	<p>The output will be returned as an object with two properties: pos and peaks. Both of these properties should be arrays. If there is no peak in the given array, then the output should be {pos: [], peaks: []}.</p>
@@ -980,6 +1003,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Sum Strings as Numbers</h4>
 	<p>Given the string representations of two integers, return the string representation of the sum of those integers.</p>
 	<p>For example:</p>
 	<p>sumStrings('1','2') // => '3'</p>
@@ -1065,6 +1089,7 @@
 
 	<h2 id="Day 09">Day 09</h2>
 	<h3>第一题</h3>
+	<h4>Beginner Series #1 School Paperwork</h4>
 	<p>Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.</p>
 	<p>Your task is to calculate how many blank pages do you need. If n < 0 or m < 0 return 0.</p>
 	<p>Examples:</p>
@@ -1083,6 +1108,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>All Star Code Challenge #22</h4>
 	<p>Create a function that takes an integer argument of seconds and converts the value into a string describing how many hours and minutes comprise that many seconds.</p>
 	<p>Any remaining seconds left over are ignored.</p>
 	<p>For example:</p>
@@ -1108,6 +1134,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Irreducible Sum of Rationals</h4>
 	<p>You will have a list of rationals in the form</p>
 	<p>lst = [ [numer_1, denom_1] , ... , [numer_n, denom_n] ]</p>
 	<p>where all numbers are positive integers. You have to produce their sum N / D in an irreducible form: this means that N and D have only 1 as a common divisor.</p>
@@ -1158,6 +1185,7 @@
 
 	<h2 id="Day 10">Day 10</h2>
 	<h3>第一题</h3>
+	<h4>Find the stray number</h4>
 	<p>You are given an odd-length array of integers, in which all of them are the same, except for one single number.</p>
 	<p>Complete the method which accepts such an array, and returns that single different number.</p>
 	<p>The input array will always be valid! (odd-length >= 3)</p>
@@ -1188,6 +1216,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Counting Duplicates</h4>
 	<p>Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.</p>
 	<p>Examples:</p>
 	<pre><code class="language-javascript">
@@ -1224,6 +1253,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Do you speak "English"?</h4>
 	<p>Given a string of arbitrary length with any ascii characters. Write a function to determine whether the string contains the whole word "English".</p>
 	<p>The order of characters is important -- a string "abcEnglishdef" is correct but "abcnEglishsef" is not correct.</p>
 	<p>Upper or lower case letter does not matter -- "eNglisH" is also correct.</p>
@@ -1247,6 +1277,7 @@
 
 	<h2 id="Day 11">Day 11</h2>
 	<h3>第一题</h3>
+	<h4>Substituting Variables Into Strings: Padded Numbers</h4>
 	<p>Complete the solution so that it returns a formatted string. The return value should equal "Value is VALUE" where value is a 5 digit padded number.</p>
 	<p>Example:</p>
 	<p>solution(5) // should return "Value is 00005"</p>
@@ -1263,6 +1294,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Greatest common divisor</h4>
 	<p>Find the greatest common divisor of two positive integers. The integers can be large, so you need to find a clever solution.</p>
 	<p>The inputs x and y are always greater or equal to 1, so the greatest common divisor will always be an integer that is also greater or equal to 1.</p>
 	<pre><code class="language-javascript">
@@ -1281,6 +1313,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Sort Numbers</h4>
 	<p>Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.</p>
 	<p>For example:</p>
 	<p>solution([1, 2, 10, 50, 5]); // should return [1,2,5,10,50]</p>
@@ -1309,6 +1342,7 @@
 
 	<h2 id="Day 12">Day 12</h2>
 	<h3>第一题</h3>
+	<h4>JavaScript Array Filter</h4>
 	<p>JavaScript Arrays support a filter function (starting in JavaScript 1.6). Use the filter functionality to complete the function given.</p>
 	<p>The solution would work like the following:</p>
 	<p>getEvenNumbers([2,4,5,6]) // should == [2,4,6]</p>
@@ -1325,6 +1359,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Switcheroo</h4>
 	<p>Given a string made up of letters a, b, and/or c, switch the position of letters a and b (change a to b and vice versa). Leave any incidence of c untouched.</p>
 	<p>Example:</p>
 	<p>'acb' --> 'bca'</p>
@@ -1343,6 +1378,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Tortoise racing</h4>
 	<p>Two tortoises named A and B must run a race. A starts with an average speed of 720 feet per hour. Young B knows she runs faster than A, and furthermore has not finished her cabbage.</p>
 	<p>When she starts, at last, she can see that A has a 70 feet lead but B's speed is 850 feet per hour. How long will it take B to catch A?</p>
 	<p>More generally: given two speeds v1 (A's speed, integer > 0) and v2 (B's speed, integer > 0) and a lead g (integer > 0) how long will it take B to catch A?</p>
@@ -1378,6 +1414,7 @@
 
 	<h2 id="Day 13">Day 13</h2>
 	<h3>第一题</h3>
+	<h4>Don't Drink the Water</h4>
 	<p>Given a two-dimensional array representation of a glass of mixed liquids, sort the array such that the liquids appear in the glass based on their density. (Lower density floats to the top) The width of the glass will not change from top to bottom.</p>
 	<pre><code class="language-javascript">
 	======================
@@ -1445,6 +1482,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Mumbling</h4>
 	<p>This time no story, no theory. The examples below show you how to write function accum:</p>
 	<p>Examples:</p>
 	<p>accum("abcd") -> "A-Bb-Ccc-Dddd"</p>
@@ -1467,6 +1505,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Count the Digit</h4>
 	<p>Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer.</p>
 	<p>Square all numbers k (0 <= k <= n) between 0 and n.</p>
 	<p>Count the numbers of digits d used in the writing of all the k**2.</p>
@@ -1514,6 +1553,7 @@
 
 	<h2 id="Day 14">Day 14</h2>
 	<h3>第一题</h3>
+	<h4>Array.diff</h4>
 	<p>Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.</p>
 	<p>It should remove all values from list a, which are present in list b keeping their order.</p>
 	<p>arrayDiff([1,2],[1]) == [2]</p>
@@ -1538,6 +1578,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Moving Zeros To The End</h4>
 	<p>Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.</p>
 	<p>moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]</p>
 	<pre><code class="language-javascript">
@@ -1558,6 +1599,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Create Phone Number</h4>
 	<p>Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.</p>
 	<p>Example:</p>
 	<p>createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"</p>
@@ -1589,6 +1631,7 @@
 
 	<h2 id="Day 15">Day 15</h2>
 	<h3>第一题</h3>
+	<h4>Build Tower</h4>
 	<p>Build Tower by the following given argument: number of floors (integer and always greater than 0).</p>
 	<pre><code class="language-javascript">
 	// for example, a tower of 3 floors looks like below
@@ -1629,6 +1672,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Persistent Bugger.</h4>
 	<p>Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.</p>
 	<p>For example:</p>
 	<pre><code class="language-javascript">
@@ -1672,6 +1716,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Reverse or rotate?</h4>
 	<p>The input is a string str of digits. Cut the string into chunks (a chunk here is a substring of the initial string) of size sz (ignore the last chunk if its size is less than sz).</p>
 	<p>If a chunk represents an integer such as the sum of the cubes of its digits is divisible by 2, reverse that chunk; otherwise rotate it to the left by one position. Put together these modified chunks and return the result as a string.</p>
 	<p>sz is <= 0 or if str is empty return ""</p>
@@ -1732,6 +1777,7 @@
 
 	<h2 id="Day 16">Day 16</h2>
 	<h3>第一题</h3>
+	<h4>Word to binary</h4>
 	<p>Write a function that takes a string and returns an array containing binary numbers equivalent to the ASCII codes of the characters of the string. The binary strings should be eight digits long.</p>
 	<p>Example: 'man' should return [ '01101101', '01100001', '01101110' ]</p>
 	<pre><code class="language-javascript">
@@ -1746,6 +1792,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Meeting</h4>
 	<p>John has invited some friends. His list is:</p>
 	<P>s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;<br>
 	Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;<br>
@@ -1783,6 +1830,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Valid Spacing</h4>
 	<p>Your task is to write a function called valid_spacing() or validSpacing() which checks if a string has valid spacing. The function should return either True or False.</p>
 	<p>For this kata, the definition of valid spacing is one space between words, and no leading or trailing spaces. Below are some examples of what the function should return.</p>
 	<pre><code class="language-javascript">
@@ -1819,6 +1867,7 @@
 
 	<h2 id="Day 17">Day 17</h2>
 	<h3>第一题</h3>
+	<h4>Coding Meetup #1 - Higher-Order Functions Series - Count the number of JavaScript developers coming from Europe</h4>
 	<p>You will be given an array of objects (hashes in ruby) representing data about developers who have signed up to attend the coding meetup that you are organising for the first time.</p>
 	<p>Your task is to return the number of JavaScript developers coming from Europe.</p>
 	<p>For example, given the following list:</p>
@@ -1845,6 +1894,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Hands Up</h4>
 	<p>Imagine that you have an array of 3 integers each representing a different person. Each number can be 0, 1, or 2 which represents the number of hands that person holds up.</p>
 	<p>Now imagine there is a sequence which follows these rules:</p>
 	<ul>
@@ -1883,6 +1933,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Adjacent repeated words in a string</h4>
 	<p>You know how sometimes you write the the same word twice in a sentence, but then don't notice that it happened? For example, you've been distracted for a second. Did you notice that "the" is doubled in the first sentence of this description?</p>
 	<p>As as aS you can see, it's not easy to spot those errors, especially if words differ in case, like "as" at the beginning of this sentence.</p>
 	<p>Write a function that counts the number of sections repeating the same word (case insensitive). The occurence of two or more equal words next after each other counts as one.</p>
@@ -1932,6 +1983,7 @@
 
 	<h2 id="Day 18">Day 18</h2>
 	<h3>第一题</h3>
+	<h4>Evens times last</h4>
 	<p>Given a sequence of integers, return the sum of all the integers that have an even index, multiplied by the integer at the last index.</p>
 	<p>If the sequence is empty, you should return 0.</p>
 	<pre><code class="language-javascript">
@@ -1947,6 +1999,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Errors : histogram</h4>
 	<p>In a factory a printer prints labels for boxes. The printer uses colors which, for the sake of simplicity, are named with letters from a to z (except letters u, w, x or z that are for errors).</p>
 	<p>The colors used by the printer are recorded in a control string. For example a control string would be aaabbbbhaijjjm meaning that the printer used three times color a, four times color b, one time color h then one time color a... and so on.</p>
 	<p>Sometimes there are problems: lack of colors, technical malfunction and a control string is produced e.g. uuaaaxbbbbyyhwawiwjjjwwxym where errors are reported with letters u, w, x or z.</p>
@@ -1992,6 +2045,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Numbers to Letters</h4>
 	<p>Given an array of numbers (in string format), you must return a string. The numbers correspond to the letters of the alphabet in reverse order: a=26, z=1 etc. You should also account for '!', '?' and ' ' that are represented by '27', '28' and '29' respectively.</p>
 	<pre><code class="language-javascript">
 	// 我的方案
@@ -2017,6 +2071,7 @@
 
 	<h2 id="Day 19">Day 19</h2>
 	<h3>第一题</h3>
+	<h4>Spraying trees</h4>
 	<p>There are five workers : James,John,Robert,Michael and William.They work one by one and on weekends they rest. Order is same as in the description(James works on mondays,John works on tuesdays and so on).You have to create a function 'task' that will take 3 arguments(w, n, c):</p>
 	<ol>
 		<li>Weekday</li>
@@ -2042,6 +2097,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Positions Average</h4>
 	<p>Suppose you have 4 numbers: '0', '9', '6', '4' and 3 strings composed with them:</p>
 	<p>s1 = "6900690040"</p>
 	<p>s2 = "4690606946"</p>
@@ -2087,6 +2143,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Twisted Sum</h4>
 	<p>Find the sum of the digits of all the numbers from 1 to N (both ends included).</p>
 	<p>Examples:</p>
 	<pre><code class="language-javascript">
@@ -2127,6 +2184,7 @@
 
 	<h2 id="Day 20">Day 20</h2>
 	<h3>第一题</h3>
+	<h4>Geometry Basics: Distance between points in 2D</h4>
 	<p>This series of katas will introduce you to basics of doing geometry with computers.</p>
 	<p>Point objects have x and y attributes (X and Y in C#) attributes.</p>
 	<p>Write a function calculating distance between Point a and Point b.</p>
@@ -2144,6 +2202,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Remove First and Last Character</h4>
 	<p>It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.</p>
 	<pre><code class="language-javascript">
 	// 我的方案
@@ -2158,6 +2217,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Make A Window</h4>
 	<p>Make me a window. I'll give you a number (N). You return a window.</p>
 	<p>The window will always be 2 x 2.</p>
 	<p>The window needs to have N number of periods across and N number of periods vertically in each pane.</p>
@@ -2199,6 +2259,7 @@
 
 	<h2 id="Day 21">Day 21</h2>
 	<h3>第一题</h3>
+	<h4>Moves in squared strings (I)</h4>
 	<p>This kata is the first of a sequence of four about "Squared Strings".</p>
 	<p>You are given a string of n lines, each substring being n characters long: For example:</p>
 	<p>s = "abcd\nefgh\nijkl\nmnop"</p>
@@ -2235,6 +2296,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Human readable duration format</h4>
 	<p>Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.</p>
 	<p>The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds.</p>
 	<p>It is much easier to understand with an example:</p>
@@ -2296,6 +2358,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Rotate for a Max</h4>
 	<p>Let us begin with an example:</p>
 	<p>Take a number: 56789. Rotate left, you get 67895.</p>
 	<p>Keep the first digit in place and rotate left the other digits: 68957.</p>
@@ -2342,6 +2405,7 @@
 
 	<h2 id="Day 22">Day 22</h2>
 	<h3>第一题</h3>
+	<h4>Factorial</h4>
 	<p>Your task is to write function factorial</p>
 	<pre><code class="language-javascript">
 	// 我的方案
@@ -2354,6 +2418,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Average Scores</h4>
 	<p>Create a function that returns the average of an array of numbers ("scores"), rounded to the nearest whole number. You are not allowed to use any loops (including for, for/in, while, and do/while loops).</p>
 	<pre><code class="language-javascript">
 	// 我的方案
@@ -2368,6 +2433,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Moves in squared strings (II)</h4>
 	<p>You are given a string of n lines, each substring being n characters long: For example:</p>
 	<p>s = "abcd\nefgh\nijkl\nmnop"</p>
 	<p>We will study some transformations of this square of strings.</p>
@@ -2420,6 +2486,7 @@
 
 	<h2 id="Day 23">Day 23</h2>
 	<h3>第一题</h3>
+	<h4>Highest Scoring Word</h4>
 	<p>Given a string of words, you need to find the highest scoring word.</p>
 	<p>Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.</p>
 	<p>You need to return the highest scoring word as a string.</p>
@@ -2443,6 +2510,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4>Extract the domain name from a URL</h4>
 	<p>Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:</p>
 	<p>domainName("http://github.com/carbonfive/raygun") == "github"</p>
 	<p>domainName("http://www.zombie-bites.com") == "zombie-bites"</p>
@@ -2469,6 +2537,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Convert string to camel case</h4>
 	<p>Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case).</p>
 	<p>Examples:</p>
 	<p>"the-stealth-warrior" gets converted to "theStealthWarrior"</p>
@@ -2495,6 +2564,152 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1619488030342</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/04/28 updated -->
+
+	<h2 id="Day 24">Day 24</h2>
+	<h3>第一题</h3>
+	<h4>Roman Numerals Encoder</h4>
+	<p>Create a function taking a positive integer as its parameter and returning a string containing the Roman Numeral representation of that integer.</p>
+	<p>Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero. In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.</p>
+	<p>Example:</p>
+	<p>solution(1000); // should return 'M'</p>
+	<p>Help:</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Symbol</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> I </td>
+				<td> 1 </td>
+			</tr>
+			<tr>
+				<td> V </td>
+				<td> 5 </td>
+			</tr>
+			<tr>
+				<td> X </td>
+				<td> 10 </td>
+			</tr>
+			<tr>
+				<td> L </td>
+				<td> 50 </td>
+			</tr>
+			<tr>
+				<td> C </td>
+				<td> 100 </td>
+			</tr>
+			<tr>
+				<td> D </td>
+				<td> 500 </td>
+			</tr>
+			<tr>
+				<td> M </td>
+				<td> 1000 </td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Remember that there can't be more than 3 identical symbols in a row.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function solution(number){
+  		let obj = {I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000};
+    
+    	function encoder(num) {
+    	    if (num < 10) {
+    	        if (num == 4) return "IV";
+    	        if (num == 9) return "IX";
+    	        return search(num, obj.I, obj.V, "I", "V");
+    	    } else if (num < 100) {
+    	        if (num == 40) return "XL";
+    	        if (num == 90) return "XC";
+    	        return search(num, obj.X, obj.L, "X", "L");
+    	    } else if (num < 1000) {
+    	        if (num == 400) return "CD";
+    	        if (num == 900) return "CM";
+    	        return search(num, obj.C, obj.D, "C", "D");
+    	    } else {
+    	        return "M".repeat(num / 1000);
+    	    }
+    	}
+    
+    	function search(n, a, b, c, d) {
+    	    for (let i = 0; i <= 3; i++) {
+    	        for (let j = 0; j <= 3; j++) {
+    	            if (i * b + j * a == n) {
+    	                return  d.repeat(i) + c.repeat(j);
+    	            }
+    	        }
+    	    }
+    	}
+    
+    	return [...String(number)].map((num, i) => {
+    	    if (num == '0') return "";
+    	    num = (+num) * 10 **([...String(number)].length - i - 1);
+    	    return encoder(num);
+    	}).join("");
+	}
+
+	// 高票方案
+	function solution(number){
+		var roman = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1 }
+
+		var ans = '';
+		while(number>0){
+    		for(a in roman){ 
+        		if(roman[a]<=number){ ans += a; number-=roman[a]; break;}
+    		}
+		}
+		return ans;
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Simple Pig Latin</h4>
+	<p>Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.</p>
+	<p>Examples:</p>
+	<p>pigIt('Pig latin is cool'); // igPay atinlay siay oolcay</p>
+	<p>pigIt('Hello world !');     // elloHay orldway !</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function pigIt(str){
+	  	return str.split(" ").map(word => {
+        	if (word == "?" || word == "!") return word;
+        	return word.slice(1) + word[0] + 'ay';
+    	}).join(" ");
+	}
+
+	// 高票方案
+	function pigIt(str){
+  		return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3");
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Isograms</h4>
+	<p>An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.</p>
+	<p>isIsogram("Dermatoglyphics") == true</p>
+	<p>isIsogram("aba") == false</p>
+	<p>isIsogram("moOse") == false // -- ignore letter case</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function isIsogram(str){
+	  	let set = new Set(str.toLowerCase().split(""));
+    	return str.length == set.size ? true : false;
+	}
+
+	// 高票方案
+	function isIsogram(str){ 
+  		return !/(\w).*\1/i.test(str)
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619574620206</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
