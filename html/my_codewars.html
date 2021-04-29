@@ -39,6 +39,7 @@
 		<li><a href="#Day 22">Day 22</a></li>
 		<li><a href="#Day 23">Day 23</a></li>
 		<li><a href="#Day 24">Day 24</a></li>
+		<li><a href="#Day 25">Day 25</a></li>
 		
 	</ul>
 	<hr>
@@ -2712,9 +2713,128 @@
 	<label>更新于 <em>timestamp: 1619574620206</em> __chinrunja</label>
 	<hr>
 
+	<!-- 2021/04/29 updated -->
+
+	<h2 id="Day 25">Day 25</h2>
+	<h3>第一题</h3>
+	<h4>Turn String Input into Hash</h4>
+	<p>Please write a function that will take a string as input and return a hash. The string will be formatted as such. The key will always be a symbol and the value will always be an integer.</p>
+	<p>"a=1, b=2, c=3, d=4"</p>
+	<p>This string should return a hash that looks like</p>
+	<p>{ 'a': 1, 'b': 2, 'c': 3, 'd': 4}</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function strToHash(str) {
+    	if (!str.length) return {};
+    	let results = str.split(", ").map(str => str.split("="));
+    	return results.reduce((obj, arr) => {
+        	obj[arr[0]] = +arr[1];
+        	return obj;
+    	}, {});
+	}
+
+	// 高票方案
+	// --暂无高票方案
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>How Much?</h4>
+	<p>I always thought that my old friend John was rather richer than he looked, but I never knew exactly how much money he actually had. One day (as I was plying him with questions) he said:</p>
+	<ul>
+		<li>"Imagine I have between m and n Zloty..." (or did he say Quetzal? I can't remember!)</li>
+		<li>"If I were to buy 9 cars costing c each, I'd only have 1 Zloty (or was it Meticals?) left."</li>
+		<li>"And if I were to buy 7 boats at b each, I'd only have 2 Ringglets (or was it Zloty?) left."</li>
+	</ul>
+	<p>Could you tell me in each possible case:</p>
+	<ol>
+		<li>how much money f he could possibly have ?</li>
+		<li>the cost c of a car?</li>
+		<li>the cost b of a boat?</li>
+	</ol>
+	<p>So, I will have a better idea about his fortune. Note that if m-n is big enough, you might have a lot of possible answers.</p>
+	<p>Each answer should be given as ["M: f", "B: b", "C: c"] and all the answers as [ ["M: f", "B: b", "C: c"], ... ]. "M" stands for money, "B" for boats, "C" for cars.</p>
+	<p>Note: m, n, f, b, c are positive integers, where 0 <= m <= n or m >= n >= 0. m and n are inclusive.</p>
+	<p>Examples:</p>
+	<pre><code class="language-javascript">
+	howmuch(1, 100)      => [["M: 37", "B: 5", "C: 4"], ["M: 100", "B: 14", "C: 11"]]
+	howmuch(1000, 1100)  => [["M: 1045", "B: 149", "C: 116"]]
+	howmuch(10000, 9950) => [["M: 9991", "B: 1427", "C: 1110"]]
+	howmuch(0, 200)      => [["M: 37", "B: 5", "C: 4"], ["M: 100", "B: 14", "C: 11"], ["M: 163", "B: 23", "C: 18"]]
+	</code></pre>
+	<p>Explanation of the results for howmuch(1, 100):</p>
+	<ul>
+		<li>In the first answer his possible fortune is 37:</li>
+		<li>so he can buy 7 boats each worth 5: 37 - 7 * 5 = 2</li>
+		<li>or he can buy 9 cars worth 4 each: 37 - 9 * 4 = 1</li>
+		<li>The second possible answer is 100:</li>
+		<li>he can buy 7 boats each worth 14: 100 - 7 * 14 = 2</li>
+		<li>or he can buy 9 cars worth 11: 100 - 9 * 11 = 1</li>
+	</ul>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function howmuch(m, n) {
+    	let arr = [];
+    	for (let i = Math.min(m, n); i <= Math.max(m, n); i++) {
+        	let b = (i - 2) / 7;
+        	let c = (i - 1) / 9;
+        	if ((i - 2) % 7 == 0 && (i - 1) % 9 == 0) {
+            	arr.push(["M: " + i, "B: " + b, "C: " + c]);
+        	}
+    	}
+    	return arr;
+	}
+
+	// 高票方案
+	function howmuch(m, n) {
+  		let out = [], h = Math.max(m, n);
+  		for(let i = Math.max(Math.min(m, n), 37); i <= h; i++) {
+    		if((i - 1) % 9 == 0 && (i - 2) % 7 == 0) out.push([`M: ${i}`, `B: ${(i - 2) / 7}`, `C: ${(i - 1) / 9}`]);
+  		}
+  		return out;
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Take a Ten Minute Walk</h4>
+	<p>You live in the city of Cartesia where all roads are laid out in a perfect grid. You arrived ten minutes too early to an appointment, so you decided to take the opportunity to go for a short walk. The city provides its citizens with a Walk Generating App on their phones -- everytime you press the button it sends you an array of one-letter strings representing directions to walk (eg. ['n', 's', 'w', 'e']). You always walk only a single block for each letter (direction) and you know it takes you one minute to traverse one city block, so create a function that will return true if the walk the app gives you will take you exactly ten minutes (you don't want to be early or late!) and will, of course, return you to your starting point. Return false otherwise.</p>
+	<p>Note: you will always receive a valid array containing a random assortment of direction letters ('n', 's', 'e', or 'w' only). It will never give you an empty array (that's not a walk, that's standing still!).</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function isValidWalk(walk) {
+    	if (walk.length != 10) return false;
+    	let obj = {n: 0, s: 0, w: 0, e: 0};
+    	for (let char of walk) {
+        	obj[char]++;
+    	}
+    	return obj.n == obj.s && obj.w == obj.e;
+	}
+
+	// 高票方案
+	function isValidWalk(walk) {
+  		var dx = 0;
+  		var dy = 0;
+  		var dt = walk.length;
+  
+  		for (var i = 0; i < walk.length; i++) {
+    		switch (walk[i]) {
+      			case 'n': dy--; break;
+      			case 's': dy++; break;
+      			case 'w': dx--; break;
+      			case 'e': dx++; break;
+    		}
+  		}
+  
+  		return dt === 10 && dx === 0 && dy === 0;
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619661609384</em> __chinrunja</label>
+	<hr>
+
 	<!-- 2021/xx/xx updated --更新模版
 
 	<h2 id="Day xx">Day xx</h2>
+	<h4></h4>
 	<h3>第一题</h3>
 	<p></p>
 	<pre><code class="language-javascript">
@@ -2723,6 +2843,7 @@
 	</code></pre>
 
 	<h3>第二题</h3>
+	<h4></h4>
 	<p></p>
 	<pre><code class="language-javascript">
 	// 我的方案
@@ -2730,6 +2851,7 @@
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4></h4>
 	<p></p>
 	<pre><code class="language-javascript">
 	// 我的方案
