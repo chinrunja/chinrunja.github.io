@@ -75,20 +75,23 @@
 		</li>
 		<li>完成后如下（需添加至HTML的&lt;script&gt;标签内）：
 			<pre><code class="language-javascript">
+	// JS 部分
 	// 此处window可改成document
 	window.addEventListener('keydown', event => {
 	// 以下两个const声明、声音播放、添加playing类等来自指南
     const key = document.querySelector(`div[data-key="${event.keyCode}"]`);
     const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
 
+    // 新增事件委托，防止"audio.current = 0"赋值报错--210430
+    if (!key) return ;
+
     // 播放音频
-    audio.currentTime = 0;
+    audio.currentTime = 0; // 使长按播放效果出现
     audio.play();
 
-    // 添加样式，需查看CSS文件获取类名
+    // 添加类名，触发点击效果样式
     key.classList.add("playing");
 
-    // console.log(key, audio); // 检测是否获取到key,audio元素
     })
 
     // 移除类名取消样式
@@ -98,16 +101,66 @@
 
     const keys = document.querySelectorAll('.key');
 
-    // console.log(keys); // 检查是否获取到key元素
-
-    // 为所有key添加transitionend事件处理
+    // 待音乐播放结束，移除样式
     keys.forEach(e => {
       e.addEventListener("transitionend", remove, false);
     })
 			</code></pre>
 		</li>
 	</ol>
+	<pre><code class="language-css">
+	/* CSS 部分 */
+	html {
+  		font-size: 10px;
+  		/*background:url(http://i.imgur.com/b9r5sEL.jpg) bottom center;*/
+  		/*background-size: cover;*/
+	}
+	body,html {
+  		margin: 0;
+  		padding: 0;
+  		font-family: sans-serif;
+	}
 
+	.keys {
+  		display:flex;
+  		flex:1;
+  		min-height:100vh;
+  		align-items: center;
+  		justify-content: center;
+	}
+
+	.key {
+  		border:4px solid black;
+  		border-radius:5px;
+  		margin:1rem;
+  		font-size: 1.5rem;
+  		padding:1rem .5rem;
+  		transition:all .07s;
+  		width:100px;
+  		text-align: center;
+  		color:white;
+  		background:rgba(0,0,0,0.4);
+  		text-shadow:0 0 5px black;
+	}
+
+	.playing {
+  		transform:scale(1.1);
+  		border-color:#ffc600;
+  		box-shadow: 0 0 10px #ffc600;
+	}
+
+	kbd {
+  		display: block;
+  		font-size: 40px;
+	}
+
+	.sound {
+  		font-size: 1.2rem;
+  		text-transform: uppercase;
+  		letter-spacing: 1px;
+  		color:#ffc600;
+	}
+	</code></pre>
 
 	<h3>ToDo & Thought</h3>
 	<ol>
@@ -115,7 +168,7 @@
 		<li>减少不必要的注释</li>
 		<li>网页美化</li>
 	</ol>
-	<label>更新于 <em>timestamp: 1617199831615</em> __chinrunja</label>
+	<label>更新于 <em>timestamp: 1617199831615/1619789105402</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-04-01 updated -->

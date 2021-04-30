@@ -40,6 +40,7 @@
 		<li><a href="#Day 23">Day 23</a></li>
 		<li><a href="#Day 24">Day 24</a></li>
 		<li><a href="#Day 25">Day 25</a></li>
+		<li><a href="#Day 26">Day 26</a></li>
 		
 	</ul>
 	<hr>
@@ -2831,26 +2832,134 @@
 	<label>更新于 <em>timestamp: 1619661609384</em> __chinrunja</label>
 	<hr>
 
-	<!-- 2021/xx/xx updated --更新模版
+	<!-- 2021/04/30 updated -->
 
-	<h2 id="Day xx">Day xx</h2>
-	<h4></h4>
+	<h2 id="Day 26">Day 26</h2>
 	<h3>第一题</h3>
-	<p></p>
+	<h4>How many numbers III?</h4>
+	<p>We want to generate all the numbers of three digits where:</p>
+	<ul>
+		<li>the sum of their digits is equal to 10.</li>
+		<li>their digits are in increasing order (the numbers may have two or more equal contiguous digits)</li>
+	</ul>
+	<p>The numbers that fulfill the two above constraints are: 118, 127, 136, 145, 226, 235, 244, 334</p>
+	<p>Make a function that receives two arguments:</p>
+	<ul>
+		<li>the sum of digits value</li>
+		<li>the desired number of digits for the numbers</li>
+	</ul>
+	<p>The function should output an array with three values: [1,2,3]</p>
+	<ol>
+		<li>the total number of possible numbers</li>
+		<li>the minimum number</li>
+		<li>the maximum number</li>
+	</ol>
+	<p>The example given above should be:</p>
+	<p>findAll(10, 3) => [8, "118", "334"]</p>
+	<p>If we have only one possible number as a solution, it should output a result like the one below:</p>
+	<p>findAll(27, 3) => [1, "999", "999"]</p>
+	<p>If there are no possible numbers, the function should output the empty array.</p>
+	<p>findAll(84, 4) => []</p>
+	<p>The number of solutions climbs up when the number of digits increases.</p>
+	<p>findAll(35, 6) => [123, '116999', '566666']</p>
 	<pre><code class="language-javascript">
-	// 我的方案
+	// 我的方案--测试超时，优化中
+	function findAll(n, k) {
+    	let result = [];
+    	if (n / k > 9) return result;
+    	for (let i = Number("1".repeat(k)); i <= Number("9".repeat(k)); i++) {
+        	let judge;
+        	if (String(i).search("0") != -1) continue;
+        	String(i).split("").forEach((v, i, arr) => {
+            	if (+v > +arr[i+1]) judge = true;
+        	});
+        	if (judge) continue;
+        	let numSum = String(i).split("").reduce((sum, num) => sum + +num, 0);
+        	if (numSum == n) result.push(String(i));
+    	}
+    	let len = result.length;
+    
+    	return [len, result[0], result[len - 1]];
+	}
+
 	// 高票方案
 	</code></pre>
 
 	<h3>第二题</h3>
-	<h4></h4>
-	<p></p>
+	<h4>(Ready for) Prime Time</h4>
+	<p>We need prime numbers and we need them now!</p>
+	<p>Write a method that takes a maximum bound and returns all primes up to and including the maximum bound.</p>
+	<p>For example,</p>
+	<p>11 => [2, 3, 5, 7, 11]</p>
 	<pre><code class="language-javascript">
 	// 我的方案
+	function prime(num) {
+  		let arr = [2];
+  		if (num < 2) return [];
+  		next: for (let i = 3; i <= num; i++) {
+    		for (let j = 2; j < i; j++) {
+      			if (i % j == 0) continue next;
+    		}
+    		arr.push(i);
+  		}
+  		return arr;
+	}
+
 	// 高票方案
+	function prime(num) {
+  		var primes = [];
+  		loop: for (var i = 2; i <= num; i++) {
+    		for (var j = 0; j <= primes.length; j++)
+      			if (i % primes[j] === 0) continue loop;
+    		primes.push(i);
+  		}
+  		return primes;
+	}
 	</code></pre>
 
 	<h3>第三题</h3>
+	<h4>Find the vowels</h4>
+	<p>We want to know the index of the vowels in a given word, for example, there are two vowels in the word super (the second and fourth letters).</p>
+	<p>So given a string "super", we should return a list of [2, 4].</p>
+	<p>Some examples:</p>
+	<p>Mmmm  => []</p>
+	<p>Super => [2,4]</p>
+	<p>Apple => [1,5]</p>
+	<p>YoMama -> [1,2,4,6]</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function vowelIndices(word){
+  		let arr = [];
+  		let vowel = ['a','e','i','o','u','y'];
+  		word = word.toLowerCase();
+  		for (let char of word) {
+    		if (vowel.includes(char)) {
+      			arr.push(word.indexOf(char) + 1);
+      			word = word.replace(char, " ");
+    		}
+  		}
+  		return arr;
+	}
+
+	// 高票方案
+	function vowelIndices(word) {
+		var arr = [];
+  		for(var i = 0; i < word.length; i++) {
+    		if(/[aeioyu]/i.test(word[i])) {
+      			arr.push(i+1);
+    		}
+  		}
+  		return arr;
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619792277223</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/xx/xx updated --更新模版
+
+	<h2 id="Day xx">Day xx</h2>
+	<h3></h3>
 	<h4></h4>
 	<p></p>
 	<pre><code class="language-javascript">
