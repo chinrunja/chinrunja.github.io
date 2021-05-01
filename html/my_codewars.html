@@ -41,6 +41,7 @@
 		<li><a href="#Day 24">Day 24</a></li>
 		<li><a href="#Day 25">Day 25</a></li>
 		<li><a href="#Day 26">Day 26</a></li>
+		<li><a href="#Day 27">Day 27</a></li>
 		
 	</ul>
 	<hr>
@@ -2954,6 +2955,68 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1619792277223</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/01 updated -->
+
+	<h2 id="Day 27">Day 27</h2>
+	<h3>第一题</h3>
+	<h4>Map over a list of lists</h4>
+	<p>Write a function which maps a function over the lists in a list:</p>
+	<p>function gridMap(fn,xss) { return [[]]; }</p>
+	<p>Example 1:</p>
+	<pre><code class="language-javascript">
+	// Example 1
+	const xss = [ [1,2,3]
+            	, [4,5,6]
+            	];
+
+	gridMap( x => x+1 , xss )  =>  [[2,3,4],[5,6,7]]
+	gridMap( x => x**2 , xss )  =>  [[1,4,9],[16,25,36]]
+
+	// Example 2
+	const xss = [['h','E','l','l','O'],['w','O','r','L','d']];
+
+	gridMap( x => x.toUpperCase() , xss )  =>  [['H','E','L','L','O'],['W','O','R','L','D']]
+	</code></pre>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function gridMap(fn,a) {
+  		return a.map(arr => arr.map(fn));
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>String repeat</h4>
+	<p>Write a function called repeatStr which repeats the given string string exactly n times.</p>
+	<p>repeatStr(6, "I") // "IIIIII"</p>
+	<p>repeatStr(5, "Hello") // "HelloHelloHelloHelloHello"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function repeatStr(n, s) {
+  		return s.repeat(n);
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>How many lightsabers do you own?</h4>
+	<p>Inspired by the development team at Vooza, write the function that</p>
+	<ul>
+		<li>accepts the name of a programmer, and</li>
+		<li>returns the number of lightsabers owned by that person.</li>
+	</ul>
+	<p>The only person who owns lightsabers is Zach, by the way. He owns 18, which is an awesome number of lightsabers. Anyone else owns 0.</p>
+	<p>For example(Input --> Output):</p>
+	<p>"anyone else" --> 0</p>
+	<p>"Zach" --> 18</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function howManyLightsabersDoYouOwn(name) {
+  		return name == "Zach" ? 18 : 0;
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619876915078</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版

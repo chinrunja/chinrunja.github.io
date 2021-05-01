@@ -106,8 +106,6 @@
       e.addEventListener("transitionend", remove, false);
     })
 			</code></pre>
-		</li>
-	</ol>
 	<pre><code class="language-css">
 	/* CSS 部分 */
 	html {
@@ -161,6 +159,8 @@
   		color:#ffc600;
 	}
 	</code></pre>
+		</li>
+	</ol>
 
 	<h3>ToDo & Thought</h3>
 	<ol>
@@ -200,48 +200,122 @@
 		<li>完成如下（代码清晰易懂，就不注释了）：
 	<pre><code class="language-css">
 	/* CSS 部分 */
+	html {
+		background: url(clock.jpg);
+		background-size: cover;
+		font-family:'helvetica neue';
+		text-align: center;
+		font-size: 10px;
+	}
+
+	html::after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: inherit;
+		filter: blur(2px);
+		z-index: -1;
+	}
+
+	body {
+		font-size: 2rem;
+		align-items: center;
+	}
+
+	.clock {
+		width: 30rem;
+		height: 30rem;
+		border:20px solid white;
+		border-radius:50%;
+		margin:50px auto;
+		position: relative;
+		padding:2rem;
+		box-shadow:
+			0 0 0 4px rgba(0,0,0,0.1),
+			inset 0 0 0 3px #EFEFEF,
+			inset 0 0 10px black,
+			0 0 10px rgba(0,0,0,0.2);
+	}
+
+	.clock-face {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transform: translateY(-3px); /* account for the height of the clock hands */
+	}
+
+	.hand {
+		width:50%;
+		height:6px;
+		background:black;
+		position: absolute;
+		top:50%;
+
+		transform-origin: right;
+		transition: all .5s;
+	}
+
 	.hour-hand {
-      height:6px;
-      background:blue;
+		height:8px;
+		background:blue;
+		border-radius: 50%;
+		margin-top: -height/2;
+	}
 
-      margin-top: -height/2;
-    }
+	.min-hand {
+		height:6px;
+		background:green;
+		border-radius: 50%;
+		margin-top: -height/2;
+	}
 
-    .min-hand {
-      height:3px;
-      background:green;
+	.second-hand {
+		height:4px;
+		background:red;
+		border-radius: 50%;
+		margin-top: -height/2;
+		transition: all 1s;
+	}
 
-      margin-top: -height/2;
-    }
+	.clock-face::after {
+		width: .8em;
+		height: .8em;
+		left: 50%;
+		top: 50%;
+		position: absolute;
+		display: block;
+		transform: translate(-50%, -50%);
+		content: '';
+		background-color: #a8c5d1;
+		border-radius: 50%;
+		box-shadow:
+			0 0 0 2px rgba(0,0,0,0.1),
+			0 0 10px rgba(0,0,0,0.2);
+	}
 
-    .second-hand {
-      height:1px;
-      background:red;
+	h1 {
+		padding: 8px;
+		display: inline-block;
+		text-align: center;
+		line-height: 1;
+		border: 3px solid white;
+		border-radius: 10px;
+	}
 
-      margin-top: -height/2;
-      transition: all 1s;
+	.hour {
+		color: blue;
+	}
 
-    }
+	.minute {
+		color: green;
+	}
 
-    .clock-face::after {
-      width: .8em;
-      height: .8em;
-      left: 50%;
-      top: 50%;
-      position: absolute;
-      display: block;
-      transform: translate(-50%, -50%);
-      content: '';
-      background-color: #a8c5d1;
-      border-radius: 50%;
-      box-shadow:
-        0 0 0 2px rgba(0,0,0,0.1),
-        0 0 10px rgba(0,0,0,0.2);
-    }
-
-    h1 {
-      text-align: center;
-    }
+	.second {
+		color: red;
+	}
 	</code></pre>
 	<pre><code class="language-javascript">
 	// JS 部分
@@ -250,29 +324,34 @@
     const hourHand = document.querySelector('.hour-hand');
     const minHand = document.querySelector('.min-hand');
     const secHand = document.querySelector('.second-hand');
-    const time = document.getElementsByTagName('h1')[0];
+    const hours = document.querySelector('.hour');
+    const minutes = document.querySelector('.minute');
+    const seconds = document.querySelector('.second');
 
     function setDate() {
-      let date = new Date(),
-          hour = date.getHours(),
-          minute = date.getMinutes(),
-          second = date.getSeconds();
+      	let date = new Date(),
+          	hour = date.getHours(),
+          	minute = date.getMinutes(),
+          	second = date.getSeconds();
 
-      const hourDeg = (90 + (hour / 12) * 360 + (minute / 12 / 60) * 360);
-      const minDeg = 90 + (minute / 60) * 360;
-      const secDeg = 90 + (second / 60) * 360;
+      	const hourDeg = (90 + (hour / 12) * 360 + (minute / 12 / 60) * 360);
+      	const minDeg = 90 + (minute / 60) * 360;
+      	const secDeg = 90 + (second / 60) * 360;
 
-      if (secDeg === 90) secHand.style.transition = 'all 0s';
-      else secHand.style.transition = 'all 0.05s';
+      	if (secDeg === 90) secHand.style.transition = 'all 0s';
+      	else secHand.style.transition = 'all 0.05s';
 
-      if (minDeg === 90) minHand.style.transition = 'all 0s';
-      else minHand.style.transition = 'all 0.1s';
+      	if (minDeg === 90) minHand.style.transition = 'all 0s';
+      	else minHand.style.transition = 'all 0.1s';
 
-      hourHand.style.transform = `rotate(${hourDeg}deg)`;
-      minHand.style.transform = `rotate(${minDeg}deg)`;
-      secHand.style.transform = `rotate(${secDeg}deg)`;
+      	hourHand.style.transform = `rotate(${hourDeg}deg)`;
+      	minHand.style.transform = `rotate(${minDeg}deg)`;
+      	secHand.style.transform = `rotate(${secDeg}deg)`;
 
-      time.textContent = `${('0' + hour).slice(-2)}:${('0'+ minute).slice(-2)}:${('0' + second).slice(-2)}`;
+      	hours.textContent = `${('0' + hour).slice(-2)}`;
+      	minutes.textContent = `${('0'+ minute).slice(-2)}`;
+      	seconds.textContent = `${('0' + second).slice(-2)}`;
+    }
 	</code></pre>
 		</li>
 	</ol>
@@ -282,7 +361,7 @@
 		<li>每天完成一个项目示例</li>
 		<li>网页美化</li>
 	</ol>
-	<label>更新于 <em>timestamp: 1617288509615</em> __chinrunja</label>
+	<label>更新于 <em>timestamp: 1617288509615/1619874838233</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-04-02 updated -->
