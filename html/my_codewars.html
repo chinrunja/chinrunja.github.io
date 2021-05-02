@@ -42,6 +42,7 @@
 		<li><a href="#Day 25">Day 25</a></li>
 		<li><a href="#Day 26">Day 26</a></li>
 		<li><a href="#Day 27">Day 27</a></li>
+		<li><a href="#Day 28">Day 28</a></li>
 		
 	</ul>
 	<hr>
@@ -3017,6 +3018,45 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1619876915078</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/02 updated -->
+
+	<h2 id="Day 28">Day 28</h2>
+	<h3>第一题</h3>
+	<h4>Convert boolean values to strings 'Yes' or 'No'.</h4>
+	<p>Complete the method that takes a boolean value and return a "Yes" string for true, or a "No" string for false.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function boolToWord( bool ){
+    	return bool ? 'Yes' : 'No';
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Area or Perimeter</h4>
+	<p>You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.</p>
+	<p>If it is a square, return its area. If it is a rectangle, return its perimeter.</p>
+	<p>area_or_perimeter(6, 10) --> 32</p>
+	<p>area_or_perimeter(3, 3) --> 9</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	const areaOrPerimeter = function(l , w) {
+    	return l == w ? l * w : 2 * (l + w);
+	};
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Will you make it?</h4>
+	<p>You were camping with your friends far away from home, but when it's time to go back, you realize that your fuel is running out and the nearest pump is 50 miles away! You know that on average, your car runs on about 25 miles per gallon. There are 2 gallons left. Considering these factors, write a function that tells you if it is possible to get to the pump or not. Function should return true (1 in Prolog) if it is possible and false (0 in Prolog) if not. The input values are always positive.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+    	return distanceToPump / mpg <= fuelLeft;
+	};
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1619965048627</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
