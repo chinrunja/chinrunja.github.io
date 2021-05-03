@@ -43,6 +43,7 @@
 		<li><a href="#Day 26">Day 26</a></li>
 		<li><a href="#Day 27">Day 27</a></li>
 		<li><a href="#Day 28">Day 28</a></li>
+		<li><a href="#Day 29">Day 29</a></li>
 		
 	</ul>
 	<hr>
@@ -3057,6 +3058,103 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1619965048627</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/03 updated -->
+
+	<h2 id="Day 29">Day 29</h2>
+	<h3>第一题</h3>
+	<h4>RGB To Hex Conversion</h4>
+	<p>The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.</p>
+	<p>Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.</p>
+	<p>The following are examples of expected output values:</p>
+	<p>rgb(255, 255, 255) // returns FFFFFF</p>
+	<p>rgb(255, 255, 300) // returns FFFFFF</p>
+	<p>rgb(0,0,0) // returns 000000</p>
+	<p>rgb(148, 0, 211) // returns 9400D3</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function rgb(r, g, b){
+	  	let hex = "";
+    	for (let num of arguments) {
+        	if (num >= 255) {
+            	hex += "FF";
+        	} else  if (num <= 0) {
+            	hex += "00";
+        	} else {
+            	hex += ("0" + num.toString(16)).slice(-2);
+        	}
+    	}
+    	return hex.toUpperCase();
+	}
+
+	// 高票方案
+	function rgb(r, g, b){
+	  	return toHex(r)+toHex(g)+toHex(b);
+	}
+
+	function toHex(d) {
+	    if(d < 0 ) {return "00";}
+	    if(d > 255 ) {return "FF";}
+	    return  ("0"+(Number(d).toString(16))).slice(-2).toUpperCase()
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Vowel Count</h4>
+	<p>Return the number (count) of vowels in the given string.</p>
+	<p>We will consider a, e, i, o, u as vowels for this Kata (but not y).</p>
+	<p>The input string will only consist of lower case letters and/or spaces.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function getCount(str) {
+	    let reg = /[aeiou]/g;
+	    let result = str.match(reg);
+	    return result ? result.length : 0;
+	}
+
+	// 高票方案
+	function getCount(str) {
+  		return (str.match(/[aeiou]/ig)||[]).length;
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Find The Parity Outlier</h4>
+	<p>You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.</p>
+	<p>Examples:</p>
+	<p>[2, 4, 0, 100, 4, 11, 2602, 36]</p>
+	<p>Should return: 11 (the only odd number)</p>
+	<p>[160, 3, 1719, 19, 11, 13, -21]</p>
+	<p>Should return: 160 (the only even number)</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function findOutlier(integers){
+    	let odd = [], even = [];
+	  	for (let num of integers) {
+        	if (num % 2 == 0) {
+            	even.push(num);
+            	if (even.length > odd.length && odd.length > 0) return odd[0];
+            	if (even.length < odd.length) return even[0];
+        	} else {
+            	odd.push(num);
+            	if (odd.length > even.length && even.length > 0) return even[0];
+            	if (odd.length < even.length) return odd[0];
+        	}
+    	}
+	}
+
+	// 高票方案
+	function findOutlier(int){
+  		var even = int.filter(a=>a%2==0);
+  		var odd = int.filter(a=>a%2!==0);
+  		return even.length==1? even[0] : odd[0];
+	}
+	</code></pre>
+
+	<p></p>
+	<p></p>
+	<label>更新于 <em>timestamp: 1620011651946</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
