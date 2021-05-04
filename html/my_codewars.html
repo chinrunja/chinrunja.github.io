@@ -44,6 +44,7 @@
 		<li><a href="#Day 27">Day 27</a></li>
 		<li><a href="#Day 28">Day 28</a></li>
 		<li><a href="#Day 29">Day 29</a></li>
+		<li><a href="#Day 30">Day 30</a></li>
 		
 	</ul>
 	<hr>
@@ -3155,6 +3156,90 @@
 	<p></p>
 	<p></p>
 	<label>更新于 <em>timestamp: 1620011651946</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/04 updated -->
+
+	<h2 id="Day 30">Day 30</h2>
+	<h3>第一题</h3>
+	<h4>Duplicate Encoder</h4>
+	<p>The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.</p>
+	<p>Examples:</p>
+	<p>"din"      =>  "((("</p>
+	<p>"recede"   =>  "()()()"</p>
+	<p>"Success"  =>  ")())())"</p>
+	<p>"(( @"     =>  "))((" </p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function duplicateEncode(word){
+	    let obj = {}, result = "";
+	    let arr = word.toLowerCase().split("");
+	    arr.forEach(v => {
+	        if (!obj[v]) obj[v] = 0;
+	        obj[v]++;
+	    });
+	    arr.forEach(v => {
+	        if (obj[v] > 1) result += ")";
+	        else result += "(";
+	    });
+	    return result;
+	}
+
+	// 高票方案
+	function duplicateEncode(word){
+  		return word
+    		.toLowerCase()
+    		.split('')
+    		.map( function (a, i, w) {
+      			return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')'
+    		})
+    		.join('');
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Bit Counting</h4>
+	<p>Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number. You can guarantee that input is non-negative.</p>
+	<p>Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	var countBits = function(n) {
+    	let result = n.toString(2).match(/1/g);
+    	return result ? result.length : 0;
+	};
+
+	// 高票方案
+	countBits = n => n.toString(2).split('0').join('').length;
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Replace With Alphabet Position</h4>
+	<p>In this kata you are required to, given a string, replace every letter with its position in the alphabet.</p>
+	<p>If anything in the text isn't a letter, ignore it and don't return it.</p>
+	<p>"a" = 1, "b" = 2, etc.</p>
+	<p>Example:</p>
+	<p>alphabetPosition("The sunset sets at twelve o' clock.")</p>
+	<p>Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" (as a string)</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function alphabetPosition(text) {
+	    let alphabet = "abcdefghijklmnopqrstuvwxyz";
+	    text = text.toLowerCase().match(/[a-z]/g);
+	    if (!text) return "";
+	    return text.map(char => alphabet.indexOf(char) + 1).join(" ");
+	}
+
+	// 高票方案
+	function alphabetPosition(text) {
+	  	return text
+		  	.toUpperCase()
+		    .match(/[a-z]/gi)
+		    .map( (c) => c.charCodeAt() - 64)
+		    .join(' ');
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1620088011793</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
