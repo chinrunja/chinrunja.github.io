@@ -45,6 +45,7 @@
 		<li><a href="#Day 28">Day 28</a></li>
 		<li><a href="#Day 29">Day 29</a></li>
 		<li><a href="#Day 30">Day 30</a></li>
+		<li><a href="#Day 31">Day 31</a></li>
 		
 	</ul>
 	<hr>
@@ -3240,6 +3241,93 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1620088011793</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/05 updated -->
+
+	<h2 id="Day 31">Day 31</h2>
+	<h3>第一题</h3>
+	<h4>Your order, please</h4>
+	<p>Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.</p>
+	<p>Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).</p>
+	<p>If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.</p>
+	<p>Examples:</p>
+	<p>"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"</p>
+	<p>"4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"</p>
+	<p>""  -->  ""</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function order(words){
+	    return words
+	    	.split(" ")
+	    	.sort(
+	    		(a, b) => (+a.match(/\d/) > +b.match(/\d/)) ? 1 : -1
+	    	)
+	    	.join(" ");
+	}
+
+	// 高票方案
+	function order(words){
+  		return words.split(' ').sort(function(a, b){
+      		return a.match(/\d/) - b.match(/\d/);
+  		}).join(' ');
+	} 
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Tribonacci Sequence</h4>
+	<p>As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying to pronounce it :(</p>
+	<p>So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:</p>
+	<p>[1, 1 ,1, 3, 5, 9, 17, 31, ...]</p>
+	<p>But what if we started with [0, 0, 1] as a signature? As starting with [0, 1] instead of [1, 1] basically shifts the common Fibonacci sequence by once place, you may be tempted to think that we would get the same sequence shifted by 2 places, but that is not the case and we would get:</p>
+	<p>[0, 0, 1, 1, 2, 4, 7, 13, 24, ...]</p>
+	<p>Well, you may have guessed it by now, but to be clear: you need to create a fibonacci function that given a signature array/list, returns the first n elements - signature included of the so seeded sequence.</p>
+	<p>Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified ;)</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function tribonacci(signature,n){
+	  	let arr = [...signature];
+    	while (arr.length < n) {
+        	let l = arr.length;
+        	arr.push(arr[l-1] + arr[l-2] + arr[l-3]);
+    	}
+    	return arr.slice(0, n);
+	}
+
+	// 高票方案
+	function tribonacci(signature,n){  
+  		for (var i = 0; i < n-3; i++) {
+    	signature.push(signature[i] + signature[i+1] + signature[i+2]);
+  		}
+  		return signature.slice(0, n);
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Unique In Order</h4>
+	<p>Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.</p>
+	<p>For example:</p>
+	<p>uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']</p>
+	<p>uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']</p>
+	<p>uniqueInOrder([1,2,2,3,3])       == [1,2,3]</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	var uniqueInOrder=function(iterable){
+	    let arr = [];
+	    for (let char of iterable) {
+	        if (arr[arr.length - 1] != char)
+	            arr.push(char);
+	    }
+	    return arr;
+	}
+
+	// 高票方案
+	var uniqueInOrder=function(iterable){
+	    return [...iterable].filter((a, i) => a !== iterable[i-1])
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1620176447530</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版

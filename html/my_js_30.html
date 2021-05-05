@@ -23,7 +23,7 @@
 		<li><a href="#Scoped CSS Variables and JS">第三天： Scoped CSS Variables and JS</a></li>
 		<li><a href="#Array Cardio 💪">第四天： Array Cardio 💪</a></li>
 		<li><a href="#Flex Panels 💪">第五天： Flex Panels 💪</a></li>
-		<li><a href="#Type Ahead 👀">第六天： Type Ahead 👀--待返工</a></li>
+		<li><a href="#Type Ahead 👀">第六天： Type Ahead 👀</a></li>
 		<li><a href="#Array Cardio 💪💪">第七天： Array Cardio 💪💪</a></li>
 		<li><a href="#HTML5 Canvas">第八天： HTML5 Canvas</a></li>
 		<li><a href="#Console Tricks!">第九天： Console Tricks!</a></li>
@@ -983,6 +983,56 @@
     	lastChecked = this;
   	}
 	</code></pre>
+	<pre><code class="language-css">
+	/* CSS 部分 */
+	html {
+		font-family: sans-serif;
+	  	background:#ffc600;
+	}
+
+	.inbox {
+		max-width:400px;
+		margin:50px auto;
+		background:white;
+		border-radius:5px;
+		box-shadow:10px 10px 0 rgba(0,0,0,0.1);
+	}
+
+	.item {
+	  	display:flex;
+	  	align-items:center;
+	  	border-bottom: 1px solid #F1F1F1;
+	}
+
+	.item:last-child {
+	  	border-bottom:0;
+	}
+
+	input:checked + p {
+	  	background:#F9F9F9;
+	  	text-decoration: line-through;
+	}
+
+	input[type="checkbox"] {
+	  	margin:20px;
+	}
+
+	p {
+	  	margin:0;
+	  	padding:20px;
+	  	transition:background 0.2s;
+	  	flex:1;
+	  	font-family:'helvetica neue';
+	  	font-size: 20px;
+	  	font-weight: 200;
+	  	border-left: 1px solid #F1F1F1; /*#D1E2FF*/
+	}
+
+	.details {
+	  	text-align: center;
+	  	font-size: 15px;
+	}
+	</code></pre>
 
 	<h3>ToDo & Thought</h3>
 	<ol>
@@ -990,7 +1040,7 @@
 		<li>网页美化</li>
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
-	<label>更新于 <em>timestamp: 1617973892735</em> __chinrunja</label>
+	<label>更新于 <em>timestamp: 1617973892735/1620219910660</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-04-10 updated -->
