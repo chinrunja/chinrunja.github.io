@@ -46,6 +46,7 @@
 		<li><a href="#Day 29">Day 29</a></li>
 		<li><a href="#Day 30">Day 30</a></li>
 		<li><a href="#Day 31">Day 31</a></li>
+		<li><a href="#Day 32">Day 32</a></li>
 		
 	</ul>
 	<hr>
@@ -3328,6 +3329,120 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1620176447530</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/06 updated -->
+
+	<h2 id="Day 32">Day 32</h2>
+	<h3>第一题</h3>
+	<h4>Equal Sides Of An Array</h4>
+	<p>You are going to be given an array of integers. Your job is to take that array and find an index N where the sum of the integers to the left of N is equal to the sum of the integers to the right of N. If there is no index that would make this happen, return -1.</p>
+	<p>For example:</p>
+	<p>Let's say you are given the array {1,2,3,4,3,2,1}:</p>
+	<p>Your function will return the index 3, because at the 3rd position of the array, the sum of left side of the index ({1,2,3}) and the sum of the right side of the index ({3,2,1}) both equal 6.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function findEvenIndex(arr) {
+	  	let len = arr.length,
+		    i = len - 1;
+	  	while (i >= 0) {
+        	let leftSum = arr.slice(0, i).reduce((sum, num) => sum + num, 0);
+        	let rightSum = arr.slice(i+1).reduce((sum, num) => sum + num, 0);
+		    if (leftSum == rightSum) return i;
+		    i--;
+	  	}
+	  	return -1;
+	}
+
+	// 高票方案
+	function findEvenIndex(arr) {
+  		var left = 0, right = arr.reduce(function(pv, cv) { return pv + cv; }, 0);
+  		for(var i = 0; i < arr.length; i++) {
+      		if(i > 0) left += arr[i-1];
+      		right -= arr[i];
+      
+      		if(left == right) return i;
+  		}
+  
+  		return -1;
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>IQ Test</h4>
+	<p>Bob is preparing to pass IQ test. The most frequent task in this test is to find out which one of the given numbers differs from the others. Bob observed that one number usually differs from the others in evenness. Help Bob — to check his answers, he needs a program that among the given numbers finds one that is different in evenness, and return a position of this number.</p>
+	<p>! Keep in mind that your task is to help Bob solve a real IQ test, which means indexes of the elements start from 1 (not 0)</p>
+	<p>Examples:</p>
+	<p>iqTest("2 4 7 8 10") => 3 // Third number is odd, while the rest of the numbers are even</p>
+	<p>iqTest("1 2 1 1") => 2 // Second number is even, while the rest of the numbers are odd</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function iqTest(numbers){
+    	let arr = numbers.split(" ");
+    	let odd = arr.filter(v => v % 2 == 1);
+    	let even = arr.filter(v => v % 2 == 0);
+    	return odd.length == 1 ? arr.indexOf(odd[0]) + 1 : arr.indexOf(even[0]) + 1;
+	}
+
+	// 高票方案
+	function iqTest(numbers){
+  		var nums = numbers.split(" ").map(x => x % 2);  
+  		var sum = nums.reduce((a,b) => a + b);  
+  		var target = sum > 1 ? 0 : 1;
+  
+  		return nums.indexOf(target) + 1;
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Vasya - Clerk</h4>
+	<p>The new "Avengers" movie has just been released! There are a lot of people at the cinema box office standing in a huge line. Each of them has a single 100, 50 or 25 dollar bill. An "Avengers" ticket costs 25 dollars.</p>
+	<p>Vasya is currently working as a clerk. He wants to sell a ticket to every single person in this line.</p>
+	<p>Can Vasya sell a ticket to every person and give change if he initially has no money and sells the tickets strictly in the order people queue?</p>
+	<p>Return YES, if Vasya can sell a ticket to every person and give change with the bills he has at hand at that moment. Otherwise return NO.</p>
+	<p>Examples:</p>
+	<p>tickets([25, 25, 50]) // => YES </p>
+	<p>tickets([25, 100]) // => NO. Vasya will not have enough money to give change to 100 dollars</p>
+	<p>tickets([25, 25, 50, 50, 100]) // => NO. Vasya will not have the right bills to give 75 dollars of change (you can't make two bills of 25 from one of 50)</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function tickets(arr){
+	  	let a = 0,
+		    b = 0,
+		    result;
+	  	if (arr[0] != 25) return "NO";
+	  	for (let v of arr) {
+		    if (v == 25) a++;
+		    else if (v == 50) {
+			    a--;
+			    b++;
+		    } else {
+			    if (b > 0) {
+				    b--;
+				    a--;
+			    } else {
+				    a = a - 3;
+			    }
+		    }
+			if (a < 0) return "NO";
+	  	}
+	  	return "YES";
+	}
+
+	// 高票方案
+	function tickets(peopleInLine){
+  		let [c25,c50,c100] = [0,0,0];
+  		for(let v of peopleInLine) {
+    		if(v===25) c25++;
+    		if(v===50) {c50++; c25--;}
+    		if(v===100) {c25--; c50>0?c50--:c25-=2;}
+    		if(c25<0||c50<0) return 'NO'
+  		}
+  		return 'YES'
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1620266795592</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
