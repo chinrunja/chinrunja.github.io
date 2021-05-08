@@ -48,6 +48,7 @@
 		<li><a href="#Day 31">Day 31</a></li>
 		<li><a href="#Day 32">Day 32</a></li>
 		<li><a href="#Day 33">Day 33</a></li>
+		<li><a href="#Day 34">Day 34</a></li>
 		
 	</ul>
 	<hr>
@@ -3511,6 +3512,103 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1620351138194</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/08 updated -->
+
+	<h2 id="Day 34">Day 34</h2>
+	<h3>第一题</h3>
+	<h4>Consecutive strings</h4>
+	<p>You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.</p>
+	<p>Examples:</p>
+	<p>strarr = ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], k = 2</p>
+	<p>Concatenate the consecutive strings of strarr by 2, we get:</p>
+	<p>treefoling   (length 10)  concatenation of strarr[0] and strarr[1]</p>
+	<p>folingtrashy ("      12)  concatenation of strarr[1] and strarr[2]</p>
+	<p>trashyblue   ("      10)  concatenation of strarr[2] and strarr[3]</p>
+	<p>blueabcdef   ("      10)  concatenation of strarr[3] and strarr[4]</p>
+	<p>abcdefuvwxyz ("      12)  concatenation of strarr[4] and strarr[5]</p>
+	<p>Two strings are the longest: "folingtrashy" and "abcdefuvwxyz".</p>
+	<p>The first that came is "folingtrashy" so </p>
+	<p>longest_consec(strarr, 2) should return "folingtrashy".</p>
+	<p>In the same way:</p>
+	<p>longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2) --> "abigailtheta"</p>
+	<p>n being the length of the string array, if n = 0 or k > n or k <= 0 return "".</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function longestConsec(strarr, k) {
+    	if (k > strarr.length || k < 0) return "";
+	  	let concatstr = [];
+	  	strarr.forEach((v, i) => {
+		    if (i <= strarr.length - k) {
+			  	concatstr.push(strarr.slice(i, i + k).join(""));
+		    }
+	  	});
+	  	let lenarr = Array.from(concatstr, v => v.length);
+	  	return concatstr[lenarr.indexOf(Math.max(...lenarr))];
+	}
+
+	// 高票方案
+	function longestConsec(strarr, k) {
+	    var longest = "";
+	    for(var i=0;k>0 && i<=strarr.length-k;i++){
+	      	var tempArray = strarr.slice(i,i+k);
+	      	var tempStr = tempArray.join("");
+	      	if(tempStr.length > longest.length){
+	        	longest = tempStr;
+	      	}
+	    }
+	    return longest;
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Find the unique number</h4>
+	<p>There is an array with some numbers. All numbers are equal except for one. Try to find it!</p>
+	<p>findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2</p>
+	<p>findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55</p>
+	<p>It’s guaranteed that array contains at least 3 numbers.</p>
+	<p>The tests contain some very huge arrays, so think about performance.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function findUniq(arr) {
+		return arr.filter(v => v == arr[0]).length > 1
+      		? arr.filter(v => v != arr[0])[0]
+      		: arr[0];
+	}
+
+	// 高票方案
+	function findUniq(arr) {
+  		arr.sort((a,b)=>a-b);
+  		return arr[0]==arr[1]?arr.pop():arr[0]
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Split Strings</h4>
+	<p>Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').</p>
+	<p>Examples:</p>
+	<p>solution('abc') // should return ['ab', 'c_']</p>
+	<p>solution('abcdef') // should return ['ab', 'cd', 'ef']</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function solution(str) {
+	  	if (str.length % 2 != 0) str += "_";
+    	let arr = [], n = 0;
+    	while (n < str.length) {
+        	arr.push(str.slice(n, n + 2));
+        	n += 2;
+    	}
+    	return arr;
+	}
+	
+	// 高票方案
+	function solution(s) {
+   		return (s+"_").match(/.{2}/g)||[]
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1620473989382</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
