@@ -49,6 +49,7 @@
 		<li><a href="#Day 32">Day 32</a></li>
 		<li><a href="#Day 33">Day 33</a></li>
 		<li><a href="#Day 34">Day 34</a></li>
+		<li><a href="#Day 35">Day 35</a></li>
 		
 	</ul>
 	<hr>
@@ -3609,6 +3610,124 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1620473989382</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/09 updated -->
+
+	<h2 id="Day 35">Day 35</h2>
+	<h3>第一题</h3>
+	<h4>Sum of Pairs</h4>
+	<p>Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.</p>
+	<pre><code class="language-javascript">
+	sum_pairs([11, 3, 7, 5],         10)
+	#              ^--^      3 + 7 = 10
+	== [3, 7]
+
+	sum_pairs([4, 3, 2, 3, 4],         6)
+	#          ^-----^         4 + 2 = 6, indices: 0, 2 *
+	#             ^-----^      3 + 3 = 6, indices: 1, 3
+	#                ^-----^   2 + 4 = 6, indices: 2, 4
+	#  * entire pair is earlier, and therefore is the correct answer
+	== [4, 2]
+
+	sum_pairs([0, 0, -2, 3], 2)
+	#  there are no pairs of values that can be added to produce 2.
+	== None/nil/undefined (Based on the language)
+
+	sum_pairs([10, 5, 2, 3, 7, 5],         10)
+	#              ^-----------^   5 + 5 = 10, indices: 1, 5
+	#                    ^--^      3 + 7 = 10, indices: 3, 4 *
+	#  * entire pair is earlier, and therefore is the correct answer
+	== [3, 7]
+	</code></pre>
+	<p>Negative numbers and duplicate numbers can and will appear.</p>
+	<p>NOTE: There will also be lists tested of lengths upwards of 10,000,000 elements. Be sure your code doesn't time out.</p>
+	<pre><code class="language-javascript">
+	// 我的方案--测试超时待优化
+	function sumPairs(ints, s) {
+	    let minIndex = ints.length,
+	        result;
+	    for (let i = 0; i < ints.length; i++) {
+	        let idx = ints.indexOf(s - ints[i], i + 1);
+	        if (idx > i && idx < minIndex) {
+	            result = [ints[i], s - ints[i]];
+	            minIndex = idx;
+	        }
+	    }
+	    return result;
+	}
+
+	// 高票方案
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Lowest product of 4 consecutive numbers</h4>
+	<p>Create a function that returns the lowest product of 4 consecutive digits in a number given as a string.</p>
+	<p>This should only work if the number has 4 digits or more. If not, return "Number is too small".</p>
+	<p>Example:</p>
+	<p>lowestProduct("123456789")--> 24 (1x2x3x4)</p>
+	<p>lowestProduct("35") --> "Number is too small"</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function lowestProduct(input) {
+	    if ( input.length < 4) return "Number is too small";
+	    let n = 0,
+	        result = [];
+	    while ( n <= input.length - 4 ) {
+	        result.push(input.slice(n, n + 4).split("").reduce((prod, v) => prod * +v));
+	        n++;
+	    }
+	    return Math.min(...result);
+	}
+
+	// 高票方案
+	function lowestProduct(input) {
+  		let arr = input.split``.map((x,i,a) => a.length - i < 4 ? Infinity : x * a[i+1] * a[i+2] * a[i+3]);
+  		return input < 1000 ? "Number is too small" : Math.min(...arr);
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Scramblies</h4>
+	<p>Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.</p>
+	<p>Notes:</p>
+	<p>Only lower case letters will be used (a-z). No punctuation or digits will be included.</p>
+	<p>Performance needs to be considered</p>
+	<p>Input strings s1 and s2 are null terminated.</p>
+	<p>Examples:</p>
+	<p>scramble('rkqodlw', 'world') ==> true</p>
+	<p>scramble('cedewaraaossoqqyt', 'codewars') ==> true</p>
+	<p>scramble('katas', 'steak') ==> false</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function scramble(str1, str2) {
+  
+	    function stats(str) {
+	        let obj = {};
+	        for (let char of str) {
+	            if (!obj[char]) obj[char] = 0;
+	            obj[char]++;
+	        }
+	        return obj;
+	    }
+	  
+	    let obj1 = stats(str1),
+	        obj2 = stats(str2);
+	    
+	    for (let char of str2) {
+	        if (!obj1[char] || obj1[char] < obj2[char]) return false;
+	    }
+	    return true;
+	}
+
+	// 高票方案
+	function scramble(str1, str2) {
+		let occurences = str1.split("").reduce((arr, cur) => { arr[cur] ? arr[cur]++ : arr[cur] = 1; return arr; }, {});
+		return str2.split("").every((character) => --occurences[character] >= 0);
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1620530079848</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
