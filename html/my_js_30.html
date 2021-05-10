@@ -1704,6 +1704,42 @@
 	document.getElementById('bands').innerHTML = '&lt;li&gt;'+sortedbands.join('&lt;/li&gt;&lt;li&gt;')+'&lt;/li&gt;';
 	*/
 	</code></pre>
+	<pre><code class="language-css">
+	/* CSS 部分 */
+	body {
+	    margin: 0;
+	    font-family: sans-serif;
+	    background: url("./day_17.jpg");
+	    background-size: cover;
+	    display: flex;
+	    align-items: center;
+	    min-height: 100vh;
+	}
+
+	#bands {
+	    list-style: inside square;
+	    font-size: 20px;
+	    background: white;
+	    width: 500px;
+	    margin: auto;
+	    padding: 0;
+	    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+	}
+
+	#bands li {
+	    border-bottom: 1px solid #efefef;
+	    padding: 20px;
+	}
+
+	#bands li:last-child {
+	    border-bottom: 0;
+	}
+
+	a {
+	    color: #ffc600;
+	    text-decoration: none;
+	}
+	</code></pre>
 
 	<h3>ToDo & Thought</h3>
 	<ol>
@@ -1711,7 +1747,7 @@
 		<li>网页美化</li>
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
-	<label>更新于 <em>timestamp: 1618575186973</em> __chinrunja</label>
+	<label>更新于 <em>timestamp: 1618575186973/1620652543181</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-04-17 updated -->

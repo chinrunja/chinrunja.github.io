@@ -12,6 +12,7 @@
 	<!-- 2021/04/05 updated -->
 
 	<h1>Codewars--JavaScript答题记录</h1>
+	<h4 style="background: yellow">于timestamp: 1620609845812 停止更新__chinrunja</h4>
 	<hr>
 	<h2 id="索引">索引</h2>
 	<ul>
@@ -50,6 +51,7 @@
 		<li><a href="#Day 33">Day 33</a></li>
 		<li><a href="#Day 34">Day 34</a></li>
 		<li><a href="#Day 35">Day 35</a></li>
+		<li><a href="#Day 36">Day 36</a></li>
 		
 	</ul>
 	<hr>
@@ -3728,6 +3730,59 @@
 	</code></pre>
 
 	<label>更新于 <em>timestamp: 1620530079848</em> __chinrunja</label>
+	<hr>
+
+	<!-- 2021/05/10 updated -->
+
+	<h2 id="Day 36">Day 36</h2>
+	<h3>第一题</h3>
+	<h4>Even or Odd</h4>
+	<p>Create a function (or write a script in Shell) that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function even_or_odd(number) {
+    	return (number % 2) ? "Odd" : "Even";
+	}
+	</code></pre>
+
+	<h3>第二题</h3>
+	<h4>Highest and Lowest</h4>
+	<p>In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.</p>
+	<p>Example:</p>
+	<p>highAndLow("1 2 3 4 5");  // return "5 1"</p>
+	<p>highAndLow("1 2 -3 4 5"); // return "5 -3"</p>
+	<p>highAndLow("1 9 3 4 -5"); // return "9 -5"</p>
+	<p>Notes</p>
+	<ul>
+		<li>All numbers are valid Int32, no need to validate them.</li>
+		<li>There will always be at least one number in the input string.</li>
+		<li>Output string must be two numbers separated by a single space, and highest number is first.</li>
+	</ul>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function highAndLow(numbers){
+	  	let numarr = numbers.split(" ");
+    	return `${Math.max(...numarr)} ${Math.min(...numarr)}`;
+	}
+	</code></pre>
+
+	<h3>第三题</h3>
+	<h4>Square Every Digit</h4>
+	<p>Welcome. In this kata, you are asked to square every digit of a number and concatenate them.</p>
+	<p>For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.</p>
+	<p>Note: The function accepts an integer and returns an integer</p>
+	<pre><code class="language-javascript">
+	// 我的方案
+	function squareDigits(num){
+	    return +(num
+	        .toString()
+	        .split("")
+	        .map(v => +v * +v)
+	        .join(""));
+	}
+	</code></pre>
+
+	<label>更新于 <em>timestamp: 1620609845812</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021/xx/xx updated --更新模版
