@@ -2606,6 +2606,7 @@
 	<p><a href="../js30/day_28/index-START.html">示例</a></p>
 	<h3>今天的示例主要是实现点击切换播放速度，指南已给出完整代码</h3>
 	<pre><code class="language-javascript">
+	// JavaScript 部分
 	const speed = document.querySelector(".speed");
 	const speedBar = speed.querySelector(".speed-bar");
 	const video = document.querySelector(".flex");
@@ -2623,6 +2624,51 @@
 
 	speed.addEventListener('click', changeSpeed);
 	</code></pre>
+	<pre><code class="language-css">
+	/* CSS 部分 */
+	body {
+	  margin: 0;
+	  display:flex;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 100vh;
+	  background:#4C4C4C url('https://unsplash.it/1500/900?image=1021');
+	  background-size:cover;
+	  font-family: sans-serif;
+	}
+
+	.wrapper {
+	  width:850px;
+	  display:flex;
+	}
+
+	video {
+	  box-shadow:0 0 1px 3px rgba(0,0,0,0.1);
+	}
+
+	.speed {
+	  background:#efefef;
+	  flex:1;
+	  display:flex;
+	  align-items:flex-start;
+	  margin:10px;
+	  border-radius:50px;
+	  box-shadow:0 0 1px 3px rgba(0,0,0,0.1);
+	  overflow: hidden;
+	}
+
+	.speed-bar {
+	  width:100%;
+	  background:linear-gradient(-170deg, #2376ae 0%, #c16ecf 100%);
+	  text-shadow:1px 1px 0 rgba(0,0,0,0.2);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  padding:2px;
+	  color:white;
+	  height:16.3%;
+	}
+	</code></pre>
 
 	<h3>ToDo & Thought</h3>
 	<ol>
@@ -2630,7 +2676,7 @@
 		<li>网页美化</li>
 		<li>不只是用JS完成效果，CSS也好好深入了解一下</li>
 	</ol>
-	<label>更新于 <em>timestamp: 1619523673762</em> __chinrunja</label>
+	<label>更新于 <em>timestamp: 1619523673762/1621344424781</em> __chinrunja</label>
 	<hr>
 
 	<!-- 2021-04-28 updated -->
