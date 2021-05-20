@@ -16,16 +16,18 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 10rem;
+  font-size: 8rem;
   line-height: 1;
-  margin-bottom: 20;
+  margin-bottom: 20px;
 }
 
 button {
   background-color: #FF3;
-  font-size: 4rem;
+  font-size: 2rem;
   font-family: 'Amatic SC', cursive;
   line-height: 1;
+  border-radius: 1rem;
+  padding: 10px 15px;
 }
 
 button:hover {
