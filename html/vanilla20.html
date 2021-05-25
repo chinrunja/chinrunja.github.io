@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+	<title>My JavaScript30</title>
+  <link rel="icon" href="../img/favicon.jpg">
+	<link rel="stylesheet" type="text/css" href="../css/vanilla20.css">
+	<link rel="stylesheet" type="text/css" href="../css/modules/prism.css">
+</head>
+<body>
+
+	<h1>我的Vanilla20小记</h1>
+	<h2>项目来源<a href="https://github.com/bradtraversy/vanillawebprojects">20+ Web Projects With Vanilla JavaScript</h2>
+	<hr>
+
+	<h2 id="索引">索引</h2>
+	<ol>
+		<li><a href="#Form Validator">第一天：Form Validator</a></li>
+		<!-- <li><a href="xxx">第XX天：xxx</a></li> -->
+
+	</ol>
+
+	<div class="fixed"><a class="index" href="#索引">回到索引</a></div>
+	<hr>
+
+	<h2 id="Form Validator">第一天： Form Validator</h2>
+	<p>Simple client side form validation. Check required, length, email and password match</p>
+
+	<h3>Project Specifications</h3>
+	<ul>
+		<li>Create form UI</li>
+		<li>Show error messages under specific inputs</li>
+		<li>checkRequired() to accept array of inputs</li>
+		<li>checkLength() to check min and max length</li>
+		<li>checkEmail() to validate email with regex</li>
+		<li>checkPasswordsMatch() to match confirm password</li>
+	</ul>
+	<p><a href="../vanilla20/day_01/index.html">完成示例</a></p>
+	<label>更新于 <em>timestamp: 1621945901084</em> __chinrunja</label>
+	<hr>
+
+	<script src="../script/modules/prism.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		let backToTop = document.querySelector('.fixed');
+
+		backToTop.hidden = true;
+
+		window.onscroll = () => {
+			backToTop.hidden = (pageYOffset < 1020);
+		}
+	</script>
+
+</body>
+</html>
