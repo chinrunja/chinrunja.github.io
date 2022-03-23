@@ -129,42 +129,42 @@
         "list": [
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "裙子套装"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "短袖"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "连衣裙"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "时尚套装"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "半身裙"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "防晒衣"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "背心"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "短裤"
           }
         ]
@@ -173,42 +173,42 @@
         "list": [
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "T恤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "针织衫"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "衬衫"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "雪纺衫"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "背心"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "卫衣"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "西装外套"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "牛仔外套"
           }
         ]
@@ -217,42 +217,42 @@
         "list": [
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "阔腿裤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "工装裤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "西装裤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "打底裤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "直筒裤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "哈伦裤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "格子裤"
           },
           {
             "link": "#",
-            "image": "../img/mouse.jpg",
+            "image": "./img/mouse.jpg",
             "title": "运动裤"
           }
         ]
@@ -893,7 +893,7 @@
     },
     "itemParams": {
       "info": {
-        "images": ["../img/flower-1.jpg"],
+        "images": ["./img/flower-1.jpg"],
         "set": [
           {
             "key": "厚簿",
@@ -952,7 +952,7 @@
     },
     "columns": ["销量1580", "收藏33", "24小时发货"],
     "shopInfo": {
-      "shopLogo": "../img/mouse.jpg",
+      "shopLogo": "./img/mouse.jpg",
       "name": "my-shop-name",
       "cFans": 6888,
       "cSells": 9999,
@@ -986,11 +986,7 @@
       "detailImage": [
         {
           "key": "keyword ...",
-          "list": [
-            "../img/bridge.jpg",
-            "../img/coffee.jpg",
-            "../img/shanghai.jpg"
-          ]
+          "list": ["./img/bridge.jpg", "./img/coffee.jpg", "./img/shanghai.jpg"]
         }
       ]
     },
@@ -1000,10 +996,10 @@
         {
           "content": "刚好合适，物美价廉，衣服面料很好，穿着很舒服，版型也好看，非常棒。",
           "user": {
-            "avatar": "../img/mouse.jpg",
+            "avatar": "./img/mouse.jpg",
             "uname": "user-name"
           },
-          "images": ["../img/tulip.jpg", "../img/tulip-2.jpg"],
+          "images": ["./img/tulip.jpg", "./img/tulip-2.jpg"],
           "created": 1647126885,
           "style": "白色,M码"
         }
@@ -1015,7 +1011,7 @@
       {
         "id": "7",
         "show": {
-          "img": "../img/tulip-red.jpg"
+          "img": "./img/tulip-red.jpg"
         },
         "title": "tulip-red",
         "price": "46",
@@ -1024,7 +1020,7 @@
       {
         "id": "8",
         "show": {
-          "img": "../img/tulip-yellow.jpg"
+          "img": "./img/tulip-yellow.jpg"
         },
         "title": "tulip-yellow",
         "price": "24",
@@ -1033,7 +1029,7 @@
       {
         "id": "9",
         "show": {
-          "img": "../img/shanghai.jpg"
+          "img": "./img/shanghai.jpg"
         },
         "title": "shangehai",
         "price": "168",
@@ -1042,7 +1038,7 @@
       {
         "id": "4",
         "show": {
-          "img": "../img/klematis.jpg"
+          "img": "./img/klematis.jpg"
         },
         "title": "klematis",
         "price": "80",
@@ -1051,7 +1047,7 @@
       {
         "id": "5",
         "show": {
-          "img": "../img/shanghai.jpg"
+          "img": "./img/shanghai.jpg"
         },
         "title": "shanghai",
         "price": "88",
@@ -1060,7 +1056,7 @@
       {
         "id": "6",
         "show": {
-          "img": "../img/tiyugongyuan.jpg"
+          "img": "./img/tiyugongyuan.jpg"
         },
         "title": "playground",
         "price": "999",
@@ -1069,7 +1065,7 @@
       {
         "id": "0",
         "show": {
-          "img": "../img/bridge.jpg"
+          "img": "./img/bridge.jpg"
         },
         "title": "bridge",
         "price": "12",
@@ -1078,7 +1074,7 @@
       {
         "id": "1",
         "show": {
-          "img": "../img/coffee.jpg"
+          "img": "./img/coffee.jpg"
         },
         "title": "coffee",
         "price": "42",
