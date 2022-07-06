@@ -1,0 +1,1 @@
+import{d as s,c as l,a as r,b as a,o as i}from"./index.1f1e4f00.js";const p=s({setup(_){const c=e=>{console.log(e)},t=(e,o)=>{console.log(e,o)};return(e,o)=>{const n=a("m-choose-city");return i(),l("div",null,[r(n,{onSelectCity:c,onSelectProvince:t})])}}});export{p as default};

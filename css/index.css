@@ -1,25 +1,27 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
-  
+
 html {
   font-size: 10px;
   background-color: #a9a9a9;
 }
-  
+
 body {
   width: 70%;
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
 }
-  
+
 h1 {
   font-size: 4rem;
   text-align: center;
 }
-  
-p, li {
+
+p,
+li {
   font-size: 1.6rem;
   line-height: 1.5;
 }
@@ -29,12 +31,16 @@ header {
   text-align: center;
 }
 
-main, header, nav, footer {
+main,
+header,
+nav,
+footer {
   padding: 1%;
 }
 
 nav {
-  height: 50px;
+  height: auto;
+  margin: 1rem;
   flex: 100%;
   display: flex;
 }
@@ -44,12 +50,15 @@ nav ul {
   list-style-type: none;
   flex: 2;
   display: flex;
+  flex-wrap: wrap;
 }
 
 nav li {
   display: inline;
+  padding: 5px;
   text-align: center;
   flex: 1;
+  vertical-align: middle;
 }
 
 footer {

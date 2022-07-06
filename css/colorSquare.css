@@ -1,14 +1,19 @@
+body {
+  text-align: center;
+}
+
 div {
-    margin: 0;
-    width: 100px;
-    height: 100px;
-    background-color: black;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  background-color: black;
 }
 
 section {
-    width: 400px;
-    height: 400px;
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    border: 10px solid grey;
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  border: 10px solid grey;
+  margin: 0 auto;
 }
