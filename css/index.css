@@ -42,22 +42,22 @@ nav {
   height: auto;
   margin: 1rem;
   flex: 100%;
-  display: flex;
+  /* display: flex; */
 }
 
 nav ul {
-  padding: 0;
+  /* padding: 0; */
   list-style-type: none;
   flex: 2;
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
 }
 
 nav li {
-  display: inline;
+  /* display: inline; */
   padding: 5px;
-  text-align: center;
-  flex: 1;
+  /* text-align: center; */
+  /* flex: 1; */
   vertical-align: middle;
 }
 
