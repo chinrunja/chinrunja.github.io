@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My VIM(gVIM) _vimrc | chin&#39;s vuepress-demo</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="by vuepress">
+    
+    <link rel="preload" href="/vuepress/assets/css/0.styles.2157e9a8.css" as="style"><link rel="preload" href="/vuepress/assets/js/app.c35b34e3.js" as="script"><link rel="preload" href="/vuepress/assets/js/2.7b571ddb.js" as="script"><link rel="preload" href="/vuepress/assets/js/11.eb173a6a.js" as="script"><link rel="prefetch" href="/vuepress/assets/js/10.5f0b706c.js"><link rel="prefetch" href="/vuepress/assets/js/12.2eb94371.js"><link rel="prefetch" href="/vuepress/assets/js/13.1ae2edb4.js"><link rel="prefetch" href="/vuepress/assets/js/3.ab767734.js"><link rel="prefetch" href="/vuepress/assets/js/4.81e283e3.js"><link rel="prefetch" href="/vuepress/assets/js/5.4c0a2c22.js"><link rel="prefetch" href="/vuepress/assets/js/6.da403337.js"><link rel="prefetch" href="/vuepress/assets/js/7.bf83393e.js"><link rel="prefetch" href="/vuepress/assets/js/8.dd339691.js"><link rel="prefetch" href="/vuepress/assets/js/9.787bdac4.js">
+    <link rel="stylesheet" href="/vuepress/assets/css/0.styles.2157e9a8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vuepress/" class="home-link router-link-active"><!----> <span class="site-name">chin's vuepress-demo</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vuepress/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyBlog" class="dropdown-title"><span class="title">MyBlog</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyBlog" class="mobile-dropdown-title"><span class="title">MyBlog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://chinrunja.github.io/vuepress/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  vuepress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://chinrunja.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  githubpages
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/vuepress/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyBlog" class="dropdown-title"><span class="title">MyBlog</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyBlog" class="mobile-dropdown-title"><span class="title">MyBlog</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://chinrunja.github.io/vuepress/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  vuepress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://chinrunja.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  githubpages
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/vuepress/" class="sidebar-heading clickable router-link-active"><span>Note</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress/" aria-current="page" class="sidebar-link">开始</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/vuepress/note/Tool/settings" class="sidebar-heading clickable open"><span>常用工具配置</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress/note/Tool/vsc.html" class="sidebar-link">VS Code 配置</a></li><li><a href="/vuepress/note/Tool/vim.html" aria-current="page" class="active sidebar-link">gVIM 配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vuepress/note/Tool/vim.html#my-vim-gvim-vimrc" class="sidebar-link">My VIM(gVIM) _vimrc</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/vuepress/note/Markdown/markdown" class="sidebar-heading clickable"><span>Markdown笔记</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress/note/Markdown/markdown.html" class="sidebar-link">markdown语法</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/vuepress/note/Webpack/webpack" class="sidebar-heading clickable"><span>Webpack的使用</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress/note/Webpack/webpack.html" class="sidebar-link">Webpack</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/vuepress/note/Sort/sort" class="sidebar-heading clickable"><span>排序算法</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/vuepress/note/Sort/sort.html" class="sidebar-link">十种常用排序</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="my-vim-gvim-vimrc"><a href="#my-vim-gvim-vimrc" class="header-anchor">#</a> My VIM(gVIM) <code>_vimrc</code></h2> <p>Extensions:</p> <ul><li>emmet-vim</li> <li>lightline.vim</li> <li>nerdtree</li> <li>oceanic-next-vim</li></ul> <div class="language-_vimrc extra-class"><pre class="language-text"><code>&quot; Startup {{{
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
+&quot; }}}
+
+&quot; General {{{
+set nocompatible
+set noundofile
+set noswapfile
+set nobackup
+set nobomb
+
+set autochdir
+set history=1024
+set whichwrap=b,s,&lt;,&gt;,[,]
+set backspace=indent,eol,start whichwrap+=&lt;,&gt;,[,]
+set clipboard+=unnamed
+set winaltkeys=no
+&quot; }}}
+
+&quot; Lang &amp; Encoding {{{
+let $LANG = 'en_US.UTF-8'
+
+set langmenu=zh_CN
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,gbk2312,gbk,gb18030,cp936,utf-16,big5,euc-jp,latin1
+
+language en_US
+&quot; }}}
+
+&quot; GUI {{{
+&quot; colorscheme Tomorrow-Night
+
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+let &amp;t_SI = &quot;\&lt;Esc&gt;]50;CursorShap=1\x7&quot;
+let &amp;t_SR = &quot;\&lt;Esc&gt;]50;CursorShap=2\x7&quot;
+let &amp;t_EI = &quot;\&lt;Esc&gt;]50;CursorShap=0\x7&quot;
+
+set ruler
+set number
+set showcmd
+set hlsearch
+set wildmenu
+set incsearch
+set smartcase
+set cursorline
+set ignorecase
+set splitbelow
+set splitright
+exec &quot;nohlsearch&quot;
+
+set scrolloff=5
+set lines=35 columns=140
+
+set guioptions-=T
+set guioptions-=m
+set guioptions-=L
+set guioptions-=r
+set guioptions-=b
+set guioptions-=e
+
+&quot; set listchars=tab:▸\ ,eol:¬,trail:·,extends:&gt;,precedes:&lt;
+set nolist
+set guifont=Consolas:h12:cANSI:qDRAFT
+&quot; }}}
+
+&quot; Format {{{
+set tw=0
+set tabstop=2
+set foldlevel=99
+set indentexpr=
+set shiftwidth=2
+set laststatus=2
+set foldmethod=indent
+set softtabstop=2
+
+set autoindent
+set smartindent
+set expandtab
+
+syntax on
+&quot; }}}
+
+&quot; Keymap {{{
+let mapleader=&quot;,&quot;
+
+inoremap jj &lt;esc&gt;
+
+noremap J 5j
+noremap K 5k
+noremap H 7h
+noremap L 7l
+
+noremap &lt;leader&gt;&lt;cr&gt; :nohlsearch&lt;CR&gt;
+
+nmap &lt;leader&gt;s :source $HOME/_vimrc&lt;cr&gt;
+nmap &lt;leader&gt;e :e $HOME/_vimrc&lt;cr&gt;
+
+map s &lt;nop&gt;
+map S :w&lt;CR&gt;
+map Q :q&lt;CR&gt;
+map ; :
+
+map tk :tabnew&lt;cr&gt;
+map tc :tabclose&lt;cr&gt;
+map th :tabp&lt;cr&gt;
+map tl :tabn&lt;cr&gt;
+
+map sl :set splitright&lt;CR&gt;:vsplit&lt;CR&gt;
+map sh :set nosplitright&lt;CR&gt;:vsplit&lt;CR&gt;
+map sj :set splitbelow&lt;CR&gt;:split&lt;CR&gt;
+map sk :set nosplitbelow&lt;CR&gt;:split&lt;CR&gt;
+
+map sv &lt;C-w&gt;t&lt;C-w&gt;H
+map sr &lt;C-w&gt;t&lt;C-w&gt;K
+
+nmap &lt;C-j&gt; &lt;C-W&gt;j
+nmap &lt;C-k&gt; &lt;C-W&gt;k
+nmap &lt;C-h&gt; &lt;C-W&gt;h
+nmap &lt;C-l&gt; &lt;C-W&gt;l
+
+nnoremap &lt;M-j&gt; :resize +5&lt;cr&gt;
+nnoremap &lt;M-k&gt; :resize -5&lt;cr&gt;
+nnoremap &lt;M-h&gt; :vertical resize -5&lt;cr&gt;
+nnoremap &lt;M-l&gt; :vertical resize +5&lt;cr&gt;
+
+noremap - Nzz
+noremap = nzz
+
+noremap &lt;leader&gt;h ^
+noremap &lt;leader&gt;l $
+
+inoremap &lt;M-j&gt; &lt;Down&gt;
+inoremap &lt;M-k&gt; &lt;Up&gt;
+inoremap &lt;M-h&gt; &lt;Left&gt;
+inoremap &lt;M-l&gt; &lt;Right&gt;
+
+inoremap &lt;M-n&gt; &lt;C-n&gt;
+
+inoremap &lt;M-p&gt; &lt;Esc&gt;a()&lt;Esc&gt;i
+inoremap &lt;M-b&gt; &lt;Esc&gt;a[]&lt;Esc&gt;i
+inoremap &lt;M-c&gt; &lt;Esc&gt;a{}&lt;Esc&gt;i
+inoremap &lt;M-f&gt; &lt;Esc&gt;a()&lt;Space&gt;{&lt;CR&gt;}&lt;Esc&gt;O&lt;++&gt;&lt;Esc&gt;3ba
+inoremap &lt;M-a&gt; &lt;Esc&gt;a()&lt;Space&gt;=&gt;&lt;Space&gt;{&lt;CR&gt;}&lt;Esc&gt;O&lt;++&gt;&lt;Esc&gt;4ba
+
+inoremap &lt;C-u&gt; &lt;Esc&gt;mzgUiw`za
+nnoremap vv ^vg_
+
+map &lt;S-Insert&gt; &quot;+gP
+cmap &lt;S-Insert&gt; &lt;C-R&gt;+
+cmap &lt;C-V&gt; &lt;C-R&gt;+
+imap &lt;C-v&gt; &quot;+gP
+imap &lt;C-V&gt; &quot;+gP
+vmap &lt;C-c&gt; &quot;+y
+
+vnoremap &lt;BS&gt; d
+vnoremap &lt;C-C&gt; &quot;+y
+vnoremap &lt;C-Insert&gt; &quot;+y
+
+exe 'inoremap &lt;script&gt; &lt;C-V&gt;' paste#paste_cmd['i']
+exe 'vnoremap &lt;script&gt; &lt;C-V&gt;' paste#paste_cmd['v']
+
+map &lt;leader&gt;cmd :!start&lt;cr&gt;
+map &lt;leader&gt;ex :!start explorer %:p:h&lt;CR&gt;
+map &lt;leader&gt;pt a&lt;C-R&gt;=strftime(&quot;%Y/%m/%d %a %T&quot;)&lt;CR&gt;&lt;Esc&gt;
+
+map &lt;leader&gt;m a&lt;++&gt;&lt;Esc&gt;
+map &lt;leader&gt;&lt;leader&gt; &lt;Esc&gt;/&lt;++&gt;&lt;CR&gt;:nohlsearch&lt;CR&gt;&quot;_c4l
+
+nmap &lt;leader&gt;fn a&lt;C-R&gt;=substitute(expand(&quot;%&quot;), &quot;/&quot;, &quot;\\&quot;, &quot;g&quot;)&lt;CR&gt;&lt;Esc&gt;
+&quot; nmap &lt;leader&gt;fn :let @*=substitute(expand(&quot;%&quot;), &quot;/&quot;, &quot;\\&quot;, &quot;g&quot;)&lt;CR&gt;
+nmap &lt;leader&gt;fp a&lt;C-R&gt;=substitute(expand(&quot;%:p&quot;), &quot;/&quot;, &quot;\\&quot;, &quot;g&quot;)&lt;CR&gt;&lt;Esc&gt;
+&quot; nmap &lt;leader&gt;fp :let @*=substitute(expand(&quot;%:p&quot;), &quot;/&quot;, &quot;\\&quot;, &quot;g&quot;)&lt;CR&gt;
+
+nnoremap &lt;C-up&gt; :buffers&lt;CR&gt;
+nnoremap &lt;C-down&gt; :bd&lt;CR&gt;
+nnoremap &lt;C-left&gt; :bp&lt;CR&gt;
+nnoremap &lt;C-right&gt; :bn&lt;CR&gt;
+&quot; }}}
+
+&quot; Plug {{{
+call plug#begin('~/vimfiles/plugged')
+
+&quot; ----- NerdTree ----- {{{
+Plug 'scrooloose/nerdtree'
+
+let NERDTreeIgnore=['.vscode', 'node_modules']
+let NERDTreeBookmarksFile = $VIM . '/NERDTreeBookmarks'
+
+let NERDTreeMinimalUI = 1
+let NERDTreeBookmarksSort = 1
+let NERDTreeShowBookmarks = 1
+let NERDTreeShowLineNumbers = 0
+
+let g:NERDTreeWinPos = 'left'
+let g:NERDTreeDirArrowExpandable = '+--'
+let g:NERDTreeDirArrowCollapsible = '---'
+
+nmap &lt;leader&gt;n :NERDTreeToggle &lt;cr&gt;
+
+if exists('g:NERDTreeWinPos')
+   autocmd vimenter * NERDTree D:\front_end
+endif
+&quot; }}}
+
+&quot; ----- oceanic-next-vim ----- {{{
+Plug 'adrian5/oceanic-next-vim'
+&quot;  }}}
+
+&quot; ----- lightline ----- {{{
+Plug 'itchyny/lightline.vim'
+&quot;  }}}
+
+&quot; ----- Emmet ----- {{{
+Plug 'mattn/emmet-vim'
+&quot; }}}
+
+call plug#end()
+&quot; }}}
+
+&quot; Colorscheme {{{
+colorscheme oceanicnext
+
+let g:lightline = { 'colorscheme': 'oceanicnext' }
+&quot; }}}
+
+&quot; Function {{{
+
+&quot; Remove trailing whitespace when writing a buffer, but not for diff files
+function! RemoveTrailingWhitespace()
+  if &amp;ft != &quot;diff&quot;
+    let b:curcol = col(&quot;.&quot;)
+    let b:curline = line(&quot;.&quot;)
+    silent! %s/\s\+$//
+    silent! %s/\(\s*\n\)\+\%$//
+    call cursor(b:curline, b:curcol)
+  endif
+endfunction
+
+&quot; Return to last edit line
+function! BackToLastEditingLine()
+  if line(&quot;'\&quot;&quot;) &gt; 1 &amp;&amp; line(&quot;'\&quot;&quot;) &lt;= line(&quot;$&quot;) |
+    exe &quot;normal! g`\&quot;&quot; |
+  endif
+endfunction
+
+&quot; ----- Call Function ----- {{{
+
+&quot; global
+au BufWritePre * call RemoveTrailingWhitespace()
+au BufReadPost * call BackToLastEditingLine()
+
+&quot; filetype vim
+augroup ft_vim
+  au!
+
+  au FileType vim setlocal foldlevel=0
+  au FileType vim setlocal foldmethod=marker
+augroup END
+&quot; }}}
+
+&quot; }}}
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vuepress/note/Tool/vsc.html" class="prev">
+        VS Code 配置
+      </a></span> <span class="next"><a href="/vuepress/note/Markdown/markdown.html">
+        markdown语法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vuepress/assets/js/app.c35b34e3.js" defer></script><script src="/vuepress/assets/js/2.7b571ddb.js" defer></script><script src="/vuepress/assets/js/11.eb173a6a.js" defer></script>
+  </body>
+</html>
